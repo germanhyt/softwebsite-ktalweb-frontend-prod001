@@ -1,11 +1,47 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Header from "@/components/Header";
+import Layout from "../layouts/Layout.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+
+import "../assets/styles/global.css";
+import HeroBanner from "@/components/HeroBanner";
+
+import NegocioMereceUnaWeb from "@/assets/images/tu_negocio_merce_una_web.webp?url";
 ---
 
 <Layout>
-	<Welcome />
+  <Header client:load />
+
+  <HeroBanner client:load />
+
+  <section
+    class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-8 py-12"
+  >
+    <div class="max-w-lg 3xl:max-w-2xl text-start">
+      <h2
+        class="font-nunito text-3xl md:text-4xl font-bold text-black mb-4 pr-8"
+      >
+        Tu negocio merece una página web
+      </h2>
+      <p class="font-nunito font-medium text-lg text-gray-600 pr-4">
+        Hoy en día es necesario contar con una herramienta digital adicional a
+        las redes sociales, que sea una pista de aterrizaje para todos esos
+        usuarios que desean explorar y conocer más sobre tu negocio.
+      </p>
+    </div>
+    <div class="">
+      <img
+        src={NegocioMereceUnaWeb}
+        alt="Negocio digital"
+        class="rounded-lg shadow-md"
+      />
+    </div>
+  </section>
+
+  <section></section>
+  <section></section>
+  <section></section>
+  <section></section>
 </Layout>

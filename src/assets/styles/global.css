@@ -1,0 +1,10 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap"); */
+
+@font-face {
+  font-family: "Nunito";
+  src: url("https://fonts.gstatic.com/s/nunito/v16/XRXV3I6Li01BKofINeaB.woff2") format("woff2");
+}
+
+/* existing imports */
+@import "tailwindcss";
+@config "../../../tailwind.config.ts";
