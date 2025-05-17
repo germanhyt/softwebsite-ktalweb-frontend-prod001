@@ -7,8 +7,15 @@ import Layout from "../layouts/Layout.astro";
 
 import "../assets/styles/global.css";
 import HeroBanner from "@/components/HeroBanner";
+import SolicitarCTABannerSection from "@/components/SolicitarCTABannerSection";
+import DescargarBrochureSection from "@/components/DescargarBrochureSection";
+import Footer from "@/components/Footer";
 
 import NegocioMereceUnaWeb from "@/assets/images/tu_negocio_merce_una_web.webp?url";
+
+import Soluciones1 from "@/assets/images/soluciones_1.WEBP?url";
+import Soluciones2 from "@/assets/images/soluciones_2.WEBP?url";
+import Soluciones3 from "@/assets/images/soluciones_3.WEBP?url";
 ---
 
 <Layout>
@@ -40,8 +47,168 @@ import NegocioMereceUnaWeb from "@/assets/images/tu_negocio_merce_una_web.webp?u
     </div>
   </section>
 
-  <section></section>
-  <section></section>
-  <section></section>
-  <section></section>
+  <section class="container mx-auto py-12">
+    <h2
+      class="text-center font-nunito text-3xl md:text-4xl font-bold text-black mb-8"
+    >
+      ¿Cuál de nuestras soluciones va mejor con tu negocio?
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Card 1 -->
+      <div class="bg-white shadow-md rounded-lg p-6 text-center">
+        <img
+          src={Soluciones1}
+          alt="Landing Page"
+          class="h-[6rem] mx-auto mb-4"
+        />
+        <h3 class="font-nunito text-xl font-bold text-black mb-2">
+          Landing Page
+        </h3>
+        <p class="font-nunito text-gray-600 mb-4">
+          Página enfocada a la promoción de un objetivo, ya sea desde completar
+          un formulario, descargar contenido o lo que necesites para tu proyecto
+          o negocio.
+        </p>
+        <button
+          class="bg-primary-purple-100 text-white font-bold py-2 px-4 rounded-2xl"
+          >Cotizar</button
+        >
+      </div>
+
+      <!-- Card 2 -->
+      <div class="bg-white shadow-md rounded-lg p-6 text-center">
+        <img
+          src={Soluciones2}
+          alt="Tienda Virtual"
+          class="h-[6rem] mx-auto mb-4"
+        />
+        <h3 class="font-nunito text-xl font-bold text-black mb-2">
+          Tienda virtual
+        </h3>
+        <p class="font-nunito text-gray-600 mb-4">
+          Ponte en contacto con tus clientes potenciales y genera más ventas con
+          una web que te permita ofrecer tus productos en todo momento.
+        </p>
+        <button
+          class="bg-primary-purple-100 text-white font-bold py-2 px-4 rounded-2xl"
+          >Cotizar</button
+        >
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bg-white shadow-md rounded-lg p-6 text-center">
+        <img
+          src={Soluciones3}
+          alt="Catálogo Digital"
+          class="h-[6rem] mx-auto mb-4"
+        />
+        <h3 class="font-nunito text-xl font-bold text-black mb-2">
+          Catálogo digital
+        </h3>
+        <p class="font-nunito text-gray-600 mb-4">
+          Si eres de los que prefiere más las ventas por redes y estás buscando
+          promocionar una cantidad mínima de productos en pocos pasos. ¡Te
+          ofrecemos una solución práctica y muy eficiente!
+        </p>
+        <button
+          class="bg-primary-purple-100 text-white font-bold py-2 px-4 rounded-2xl"
+          >Cotizar</button
+        >
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 bg-white">
+    <h2
+      class="text-center font-nunito text-3xl md:text-4xl font-bold text-black mb-8"
+    >
+      Estas empresas apuestan por nuestra experiencia<br />y resultados
+    </h2>
+    <div class="container mx-auto overflow-hidden relative w-full">
+      <div
+        class="carousel-track flex items-center gap-12 animate-carousel min-w-max"
+      >
+        <img
+          src="/src/assets/images/logo_zukarzen.webp"
+          alt="Zukar Zen"
+          class="h-16 inline-block"
+        />
+        <img
+          src="/src/assets/images/logo_laboratoria.webp"
+          alt="Laboratoria"
+          class="h-16 inline-block"
+        />
+        <img
+          src="/src/assets/images/logo_bcp.webp"
+          alt="BCP"
+          class="h-16 inline-block"
+        />
+        <img
+          src="/src/assets/images/logo_offroadperu.webp"
+          alt="Off Road Peru"
+          class="h-16 inline-block"
+        />
+        <img
+          src="/src/assets/images/logo_lvenergy.webp"
+          alt="L&V Energy"
+          class="h-16 inline-block"
+        />
+        <img
+          src="/src/assets/images/logo_mckinsey.webp"
+          alt="McKinsey & Company"
+          class="h-16 inline-block"
+        />
+        <!-- Duplicar para efecto infinito -->
+        <img
+          src="/src/assets/images/logo_zukarzen.webp"
+          alt="Zukar Zen"
+          class="h-16 inline-block"
+        />
+        <img
+          src="/src/assets/images/logo_laboratoria.webp"
+          alt="Laboratoria"
+          class="h-16 inline-block"
+        />
+        <img
+          src="/src/assets/images/logo_bcp.webp"
+          alt="BCP"
+          class="h-16 inline-block"
+        />
+        <img
+          src="/src/assets/images/logo_offroadperu.webp"
+          alt="Off Road Peru"
+          class="h-16 inline-block"
+        />
+        <img
+          src="/src/assets/images/logo_lvenergy.webp"
+          alt="L&V Energy"
+          class="h-16 inline-block"
+        />
+        <img
+          src="/src/assets/images/logo_mckinsey.webp"
+          alt="McKinsey & Company"
+          class="h-16 inline-block"
+        />
+      </div>
+    </div>
+  </section>
+  <style>
+    @keyframes carousel {
+      0% {
+        transform: translateX(-50%);
+      }
+      100% {
+        transform: translateX(0.4%);
+      }
+    }
+    .animate-carousel {
+      animation: carousel 8s linear infinite;
+    }
+  </style>
+
+  <SolicitarCTABannerSection client:load />
+
+  <DescargarBrochureSection client:load />
+
+  <Footer client:load />
 </Layout>
