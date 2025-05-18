@@ -1,6 +1,8 @@
 import React from 'react'
 import { VscArrowCircleRight } from 'react-icons/vsc'
 
+import satisfechoResultados from '@/assets/images/web_satisfecho_resultado.webp?url'
+
 const SolicitarCTABannerSection = () => {
     return (
         <>
@@ -25,7 +27,7 @@ const SolicitarCTABannerSection = () => {
                 </div>
                 <div className="flex-1 flex justify-center">
                     <img
-                        src="/src/assets/images/web_satisfecho_resultado.webp"
+                        src={satisfechoResultados}
                         alt="Auditoría web"
                         className="rounded-lg object-cover w-full max-w-md h-64 md:h-72"
                     />
