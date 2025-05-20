@@ -1,6 +1,8 @@
 import React from 'react';
 import { FaInstagram, FaFacebookF, FaTiktok, FaArrowUp } from 'react-icons/fa';
 
+import Logo from '@/src/assets/logo.webp?url';
+
 const Footer = () => {
     return (
         <footer className="bg-white border-t border-primary-purple-50 pt-8 pb-4 relative">
@@ -18,7 +20,7 @@ const Footer = () => {
                 {/* Logo y ubicación */}
                 <div className="flex-1 min-w-[180px]">
                     <img
-                        src="/src/assets/logo.webp"
+                        src={Logo}
                         alt="Logo Ktalweb"
                         className="w-32 h-auto mb-2"
                     />
