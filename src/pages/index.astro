@@ -60,7 +60,7 @@ import logoMcKinsey from "@/assets/images/logo_mckinsey.webp?url";
   </section>
 
   <section
-    class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-8 py-16"
+    class="container mx-auto flex flex-col-reverse md:flex-row items-center justify-between gap-8 py-16"
   >
     <div class="flex-1 flex justify-center relative">
       <div
@@ -74,14 +74,12 @@ import logoMcKinsey from "@/assets/images/logo_mckinsey.webp?url";
       </div>
 
       <video
-        class="z-10 rounded-lg shadow-md"
+        class="z-10 rounded-lg shadow-md w-full md:w-[80%]"
         src={"https://res.cloudinary.com/dz0ajaf3i/video/upload/v1747593767/KTALWEB/INDEX_VIDEO_bzv3hk.mov"}
         autoplay
         loop
         muted
         playsinline
-        width="80%"
-        height="auto"
       >
       </video>
     </div>
@@ -197,19 +195,21 @@ import logoMcKinsey from "@/assets/images/logo_mckinsey.webp?url";
           class="h-full border border-primary-purple-100
           relative z-10 bg-white shadow-md rounded-lg p-6 text-center"
         >
-          <img
-            src={Soluciones1}
-            alt="Landing Page"
-            class="h-[6rem] mx-auto mb-4"
-          />
-          <h3 class="font-nunito text-xl font-bold text-black mb-2">
-            Landing Page
-          </h3>
-          <p class="font-nunito text-gray-600 mb-4">
-            Página enfocada a la promoción de un objetivo, ya sea desde
-            completar un formulario, descargar contenido o lo que necesites para
-            tu proyecto o negocio.
-          </p>
+          <div class="md:min-h-[380px] lg:min-h-[310px] xl:min-h-[270px]">
+            <img
+              src={Soluciones1}
+              alt="Landing Page"
+              class="h-[6rem] mx-auto mb-4"
+            />
+            <h3 class="font-nunito text-xl font-bold text-black mb-2">
+              Landing Page
+            </h3>
+            <p class="font-nunito text-gray-600 mb-4">
+              Página enfocada a la promoción de un objetivo, ya sea desde
+              completar un formulario, descargar contenido o lo que necesites
+              para tu proyecto o negocio.
+            </p>
+          </div>
           <button
             class="bg-primary-purple-100 text-white font-bold py-2 px-4 rounded-2xl"
             >Cotizar</button
@@ -227,18 +227,20 @@ import logoMcKinsey from "@/assets/images/logo_mckinsey.webp?url";
           class="h-full border border-primary-purple-100
           relative z-10 bg-white shadow-md rounded-lg p-6 text-center"
         >
-          <img
-            src={Soluciones2}
-            alt="Tienda Virtual"
-            class="h-[6rem] mx-auto mb-4"
-          />
-          <h3 class="font-nunito text-xl font-bold text-black mb-2">
-            Tienda virtual
-          </h3>
-          <p class="font-nunito text-gray-600 mb-4">
-            Ponte en contacto con tus clientes potenciales y genera más ventas
-            con una web que te permita ofrecer tus productos en todo momento.
-          </p>
+          <div class="md:min-h-[380px] lg:min-h-[310px] xl:min-h-[270px]">
+            <img
+              src={Soluciones2}
+              alt="Tienda Virtual"
+              class="h-[6rem] mx-auto mb-4"
+            />
+            <h3 class="font-nunito text-xl font-bold text-black mb-2">
+              Tienda virtual
+            </h3>
+            <p class="font-nunito text-gray-600 mb-4">
+              Ponte en contacto con tus clientes potenciales y genera más ventas
+              con una web que te permita ofrecer tus productos en todo momento.
+            </p>
+          </div>
           <button
             class="bg-primary-purple-100 text-white font-bold py-2 px-4 rounded-2xl"
             >Cotizar</button
@@ -256,19 +258,21 @@ import logoMcKinsey from "@/assets/images/logo_mckinsey.webp?url";
           class="h-full border border-primary-purple-100
            relative z-10 bg-white shadow-md rounded-lg p-6 text-center"
         >
-          <img
-            src={Soluciones3}
-            alt="Catálogo Digital"
-            class="h-[6rem] mx-auto mb-4"
-          />
-          <h3 class="font-nunito text-xl font-bold text-black mb-2">
-            Catálogo digital
-          </h3>
-          <p class="font-nunito text-gray-600 mb-4">
-            Si eres de los que prefiere más las ventas por redes y estás
-            buscando promocionar una cantidad mínima de productos en pocos
-            pasos. ¡Te ofrecemos una solución práctica y muy eficiente!
-          </p>
+          <div class="md:min-h-[380px] lg:min-h-[310px] xl:min-h-[270px]">
+            <img
+              src={Soluciones3}
+              alt="Catálogo Digital"
+              class="h-[6rem] mx-auto mb-4"
+            />
+            <h3 class="font-nunito text-xl font-bold text-black mb-2">
+              Catálogo digital
+            </h3>
+            <p class="font-nunito text-gray-600 mb-4">
+              Si eres de los que prefiere más las ventas por redes y estás
+              buscando promocionar una cantidad mínima de productos en pocos
+              pasos. ¡Te ofrecemos una solución práctica y muy eficiente!
+            </p>
+          </div>
           <button
             class="bg-primary-purple-100 text-white font-bold py-2 px-4 rounded-2xl"
             >Cotizar</button
@@ -320,6 +324,7 @@ import logoMcKinsey from "@/assets/images/logo_mckinsey.webp?url";
       </div>
     </div>
   </section>
+
   <style>
     @keyframes carousel {
       0% {

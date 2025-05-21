@@ -22,7 +22,7 @@ const SolicitarCTABannerSection = () => {
                     >
                         Solicitar auditoría gratuita
 
-                        <VscArrowCircleRight className="text-4xl" />
+                        <VscArrowCircleRight className="text-2xl" />
                     </button>
                 </div>
                 <div className="flex-1 flex justify-center">

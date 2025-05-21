@@ -5,7 +5,7 @@ import Logo from '@/assets/logo.webp?url';
 
 const Footer = () => {
     return (
-        <footer className="bg-white border-t border-primary-purple-50 pt-8 pb-4 relative">
+        <footer className="bg-white border-t border-primary-purple-100 pt-8 pb-4 relative">
             {/* Botón scroll top */}
             <div className="absolute left-1/2 -top-6 transform -translate-x-1/2 z-10">
                 <button
@@ -16,19 +16,18 @@ const Footer = () => {
                     <FaArrowUp className="text-xl" />
                 </button>
             </div>
-            <div className="container mx-auto flex flex-col md:flex-row justify-between items-start gap-8 pb-4">
+            <div className="container mx-auto grid grid-cols-2 sm:grid-cols-4 justify-between items-start gap-8 pb-4">
                 {/* Logo y ubicación */}
-                <div className="flex-1 min-w-[180px]">
+                <div className="">
                     <img
                         src={Logo}
                         alt="Logo Ktalweb"
                         className="w-32 h-auto mb-2"
                     />
-
                     <div className="text-gray-600 mt-2 text-sm font-nunito">Lima, Perú</div>
                 </div>
                 {/* Navegación */}
-                <div className="flex-1 justify-center min-w-[120px]">
+                <div className="">
                     <div className=''>
                         <div className="font-bold text-black mb-1 font-nunito">Explora</div>
                         <nav className="flex flex-col gap-1 text-sm">
@@ -38,17 +37,21 @@ const Footer = () => {
                     </div>
                 </div>
                 {/* Contacto */}
-                <div className="flex-1 min-w-[180px]">
-                    <div className="font-bold text-black mb-1 font-nunito">Contacto</div>
-                    <div className="text-sm text-black font-nunito">ktalweb.peru@gmail.com</div>
+                <div className="flex justify-center">
+                    <div className=''>
+                        <div className="font-bold text-black mb-1 font-nunito">Contacto</div>
+                        <div className="text-sm text-black font-nunito break-all">ktalweb.peru@gmail.com</div>
+                    </div>
                 </div>
                 {/* Redes sociales */}
-                <div className="flex-1 min-w-[120px]">
-                    <div className="font-bold text-black mb-1 font-nunito">Síguenos</div>
-                    <div className="flex gap-3 mt-1">
-                        <a href="#" aria-label="Instagram" className="text-black hover:text-primary-purple-100 text-2xl"><FaInstagram /></a>
-                        <a href="#" aria-label="Facebook" className="text-black hover:text-primary-purple-100 text-2xl"><FaFacebookF /></a>
-                        <a href="#" aria-label="TikTok" className="text-black hover:text-primary-purple-100 text-2xl"><FaTiktok /></a>
+                <div className="flex justify-center">
+                    <div className=''>
+                        <div className="font-bold text-black mb-1 font-nunito">Síguenos</div>
+                        <div className="flex gap-3 mt-1">
+                            <a href="https://www.instagram.com/ktalweb.pe" aria-label="Instagram" className="text-black hover:text-primary-purple-100 text-2xl"><FaInstagram /></a>
+                            <a href="https://www.facebook.com/profile.php?id=61574115239227&sk=reels_tab" aria-label="Facebook" className="text-black hover:text-primary-purple-100 text-2xl"><FaFacebookF /></a>
+                            <a href="https://www.tiktok.com/@ktalweb.pe" aria-label="TikTok" className="text-black hover:text-primary-purple-100 text-2xl"><FaTiktok /></a>
+                        </div>
                     </div>
                 </div>
             </div>

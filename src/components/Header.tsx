@@ -46,7 +46,7 @@ const Header = () => {
 
           {/* Navigation -- sm screen */}
           <nav
-            className="hidden md:flex items-center space-x-4 bg-tertiary-white-200 px-6 py-2 rounded-2xl"
+            className="hidden md:flex items-center space-x-4 bg-tertiary-white-200 px-6 py-2 rounded-3xl"
             aria-label="Main Navigation"
           >
             <a
