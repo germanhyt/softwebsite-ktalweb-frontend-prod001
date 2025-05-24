@@ -28,6 +28,15 @@ import logoLaboratoria from "@/assets/images/logo_laboratoria.webp?url";
 import logoBCP from "@/assets/images/logo_bcp.webp?url";
 import logoLVEnergy from "@/assets/images/logo_lvenergy.webp?url";
 import logoMcKinsey from "@/assets/images/logo_mckinsey.webp?url";
+
+const logos = [
+  { src: logoZukarZen, alt: "Zukar Zen" },
+  { src: logoLaboratoria, alt: "Laboratoria" },
+  { src: logoBCP, alt: "BCP" },
+  { src: logoOffroad, alt: "Off Road Peru" },
+  { src: logoLVEnergy, alt: "L&V Energy" },
+  { src: logoMcKinsey, alt: "McKinsey & Company" },
+];
 ---
 
 <Layout>
@@ -35,6 +44,7 @@ import logoMcKinsey from "@/assets/images/logo_mckinsey.webp?url";
 
   <HeroBanner client:load />
 
+  <!-- Tu negocio merece una página web -->
   <section
     class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-8 py-12"
   >
@@ -59,6 +69,7 @@ import logoMcKinsey from "@/assets/images/logo_mckinsey.webp?url";
     </div>
   </section>
 
+  <!-- Te entregamos resultados reales y medibles -->
   <section
     class="container mx-auto flex flex-col-reverse md:flex-row items-center justify-between gap-8 py-16"
   >
@@ -114,6 +125,7 @@ import logoMcKinsey from "@/assets/images/logo_mckinsey.webp?url";
     </div>
   </section>
 
+  <!-- Proceso de trabajo -->
   <section class="container mx-auto py-16">
     <h2
       class="text-center font-nunito text-3xl md:text-4xl font-bold text-black mb-14"
@@ -124,7 +136,7 @@ import logoMcKinsey from "@/assets/images/logo_mckinsey.webp?url";
       <div class="flex flex-col items-center text-center relative">
         <div class="flex items-center w-full mb-4 px-4">
           <img src={proceso1} alt="Solicitar" class="h-10 w-10 mx-auto mb-2" />
-          <span class="hidden md:block flex-1 h-px bg-gray-200 ml-2"></span>
+          <span class="hidden md:block flex-1 h-[2px] bg-gray-200 ml-2"></span>
         </div>
         <h3 class="font-nunito font-bold text-lg 3xl:text-xl text-black mb-2">
           Punto de partida
@@ -137,7 +149,7 @@ import logoMcKinsey from "@/assets/images/logo_mckinsey.webp?url";
       <div class="flex flex-col items-center text-center relative">
         <div class="flex items-center w-full mb-4 px-4">
           <img src={proceso2} alt="Solicitar" class="h-10 w-10 mx-auto mb-2" />
-          <span class="hidden md:block flex-1 h-px bg-gray-200 ml-2"></span>
+          <span class="hidden md:block flex-1 h-[2px] bg-gray-200 ml-2"></span>
         </div>
         <h3 class="font-nunito font-bold text-lg 3xl:text-xl text-black mb-2">
           Feedback y modificaciones
@@ -150,7 +162,7 @@ import logoMcKinsey from "@/assets/images/logo_mckinsey.webp?url";
       <div class="flex flex-col items-center text-center relative">
         <div class="flex items-center w-full mb-4 px-4">
           <img src={proceso3} alt="Solicitar" class="h-10 w-10 mx-auto mb-2" />
-          <span class="hidden md:block flex-1 h-px bg-gray-200 ml-2"></span>
+          <span class="hidden md:block flex-1 h-[2px] bg-gray-200 ml-2"></span>
         </div>
         <h3 class="font-nunito font-bold text-lg 3xl:text-xl text-black mb-2">
           Pasos finales
@@ -164,7 +176,7 @@ import logoMcKinsey from "@/assets/images/logo_mckinsey.webp?url";
       <div class="flex flex-col items-center text-center relative">
         <div class="flex items-center w-full mb-4 px-4">
           <img src={proceso4} alt="Solicitar" class="h-10 w-10 mx-auto mb-2" />
-          <span class="hidden md:block flex-1 h-px bg-gray-200 ml-2"></span>
+          <span class="hidden md:block flex-1 h-[2px] bg-gray-200 ml-2"></span>
         </div>
         <h3 class="font-nunito font-bold text-lg 3xl:text-xl text-black mb-2">
           Lanzamiento y publicación
@@ -178,6 +190,7 @@ import logoMcKinsey from "@/assets/images/logo_mckinsey.webp?url";
     </div>
   </section>
 
+  <!-- Soluciones -->
   <section class="container mx-auto py-12">
     <h2
       class="text-center font-nunito text-3xl md:text-4xl font-bold text-black mb-8"
@@ -282,60 +295,75 @@ import logoMcKinsey from "@/assets/images/logo_mckinsey.webp?url";
     </div>
   </section>
 
-  <section class="py-12 bg-white">
-    <h2
-      class="text-center font-nunito text-3xl md:text-4xl font-bold text-black mb-8"
-    >
-      Estas empresas apuestan por nuestra experiencia<br />y resultados
-    </h2>
-    <div class="container mx-auto overflow-hidden relative w-full">
+  <!-- Empresas que confían en nosotros -->
+  <section class="py-12 bg-white" aria-label="Empresas que confían en nosotros">
+    <div class="container mx-auto">
+      <h2
+        class="text-center font-nunito text-3xl md:text-4xl font-bold text-black mb-8"
+      >
+        Estas empresas apuestan por nuestra experiencia<br />y resultados
+      </h2>
+    </div>
+
+    <div class="3xl:container mx-auto overflow-hidden relative w-full">
       <div
         class="carousel-track flex items-center gap-12 animate-carousel min-w-max"
       >
-        <img src={logoZukarZen} alt="Zukar Zen" class="h-16 inline-block" />
-        <img
-          src={logoLaboratoria}
-          alt="Laboratoria"
-          class="h-16 inline-block"
-        />
-        <img src={logoBCP} alt="BCP" class="h-16 inline-block" />
-        <img src={logoOffroad} alt="Off Road Peru" class="h-16 inline-block" />
-        <img src={logoLVEnergy} alt="L&V Energy" class="h-16 inline-block" />
-        <img
-          src={logoMcKinsey}
-          alt="McKinsey & Company"
-          class="h-16 inline-block"
-        />
-        <!-- Duplicar para efecto infinito -->
-        <img src={logoZukarZen} alt="Zukar Zen" class="h-16 inline-block" />
-        <img
-          src={logoLaboratoria}
-          alt="Laboratoria"
-          class="h-16 inline-block"
-        />
-        <img src={logoBCP} alt="BCP" class="h-16 inline-block" />
-        <img src={logoOffroad} alt="Off Road Peru" class="h-16 inline-block" />
-        <img src={logoLVEnergy} alt="L&V Energy" class="h-16 inline-block" />
-        <img
-          src={logoMcKinsey}
-          alt="McKinsey & Company"
-          class="h-16 inline-block"
-        />
+        {
+          logos.map((logo, i) => (
+            <img
+              src={logo.src}
+              alt={logo.alt}
+              class="h-14 inline-block"
+              loading="lazy"
+              width="auto"
+              aria-hidden="true"
+            />
+          ))
+        }
+
+        {/* Mapear los logos duplicados para el efecto infinito */}
+        {
+          logos.map((logo, i) => (
+            <img
+              src={logo.src}
+              alt={logo.alt}
+              class="h-14 inline-block"
+              loading="lazy"
+              width="auto"
+              aria-hidden="true"
+            />
+          ))
+        }
       </div>
     </div>
   </section>
 
-  <style>
+  <style is:global>
     @keyframes carousel {
       0% {
         transform: translateX(-50%);
       }
       100% {
-        transform: translateX(0.4%);
+        transform: translateX(0.36%);
       }
     }
     .animate-carousel {
       animation: carousel 8s linear infinite;
+    }
+
+    /* Prevenir layout shift */
+    .carousel-track {
+      will-change: transform;
+    }
+
+    /* Optimización para móviles */
+    @media (prefers-reduced-motion: reduce) {
+      .animate-carousel {
+        animation: none;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
     }
   </style>
 

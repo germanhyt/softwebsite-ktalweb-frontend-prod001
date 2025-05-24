@@ -71,8 +71,8 @@ const PortfolioCarousel: React.FC<Props> = ({ cases }) => {
                             alt={current.title + " mockup " + (idx + 1)}
                             className={
                                 idx === 0
-                                    ? "rounded-lg shadow w-full max-w-sm mb-16"
-                                    : "absolute top-28 right-0 z-10 rounded-lg shadow w-32 md:w-36"
+                                    ? "rounded-lg shadow w-full max-w-sm mb-16  pr-12 lg:pr-auto "
+                                    : "absolute top-16 sm:top-28 right-0 3xl:right-10 z-10 rounded-lg shadow w-24 sm:w-32 md:w-36"
                             }
                         />
                     ))}

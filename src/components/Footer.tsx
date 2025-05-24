@@ -44,7 +44,7 @@ const Footer = () => {
                     </div>
                 </div>
                 {/* Redes sociales */}
-                <div className="flex justify-center">
+                <div className="flex md:justify-center">
                     <div className=''>
                         <div className="font-bold text-black mb-1 font-nunito">Síguenos</div>
                         <div className="flex gap-3 mt-1">
@@ -56,7 +56,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="text-center text-black text-sm mt-2">
-                Copyright © 2025 Ktalweb Peru.
+                Copyright © {new Date().getFullYear()} Ktalweb Peru.
             </div>
         </footer>
     );
