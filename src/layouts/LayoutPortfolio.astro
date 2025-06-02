@@ -1,22 +1,77 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Portafolio</title>
+
+    <meta name="description" content="Portafolio de proyectos Ktalweb" />
+    <meta
+      name="keywords"
+      content="ktalweb, portafolio, proyectos, desarrollo web"
+    />
+    <meta name="author" content="Ktalweb" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Portafolio Ktalweb" />
+    <meta property="og:description" content="Portafolio de proyectos Ktalweb" />
+    <meta property="og:image" content="/logo.webp" />
+    <meta property="og:url" content="https://ktalweb.com/portfolio" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@ktalweb" />
+    <meta name="twitter:creator" content="@ktalweb" />
+    <meta name="twitter:title" content="Portafolio Ktalweb" />
+    <meta
+      name="twitter:description"
+      content="Portafolio de proyectos Ktalweb"
+    />
+    <meta name="twitter:image" content="/logo.webp" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://ktalweb.com/portfolio" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+  </head>
+  
+  <body>
+    <slot />
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
 </style>
+
+<!-- 
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords.join(", ")} />
+    <meta name="author" content={author} />
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={ogUrl} />
+    <meta name="twitter:card" content={twitterCard} />
+    <meta name="twitter:site" content={twitterSite} />
+    <meta name="twitter:creator" content={twitterCreator} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <meta name="robots" content={robots} />
+
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="apple-touch-icon" href="/favicon.png" /> -->

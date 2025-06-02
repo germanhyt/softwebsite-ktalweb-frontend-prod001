@@ -1,0 +1,76 @@
+export const defaultSEO = {
+    title: 'Ktalweb - Comienza a digitalizar tu negocio',
+    description: 'Ktalweb es la solución para contruir tu página web profesional, rápida y optimizada para SEO. Ofrecemos diseño web personalizado, tiendas virtuales y landing pages que convierten. ¡Digitaliza tu negocio hoy mismo!',
+    keywords: [
+        // Diseño y desarrollo general
+        "Diseño de landing page profesional",
+        "Diseño web responsive para negocios",
+        "Crear página web profesional en Perú",
+        "Diseñador web freelance experto",
+        "Desarrollo de páginas web a medida",
+        "Diseño UX/UI para conversiones",
+        "Páginas web optimizadas para móviles",
+        "Diseño web personalizado para empresas",
+        "Webs rápidas con buen SEO",
+        "Diseño de ecommerce atractivo",
+
+        // Tiendas virtuales y ecommerce
+        "Crear tienda online profesional",
+        "Desarrollo de ecommerce completo",
+        "Tienda virtual con pasarelas de pago",
+        "Integrar MercadoPago en tienda online",
+        "Solución ecommerce para pymes Perú",
+        "Tienda virtual escalable y segura",
+        "Web con carrito de compras integrado",
+        "Vender productos por internet Perú",
+        "Tienda online responsive 2024",
+        "Ecommerce con administrador fácil",
+
+        // Landing pages y conversión
+        "Landing page que convierte visitantes",
+        "Diseñar página de captación leads",
+        "Landing page para campañas Ads",
+        "Página de aterrizaje alta conversión",
+        "Crear squeeze page profesional",
+        "Landing page para generación de leads",
+        "Diseño de funnel de ventas efectivo",
+        "Página de ventas persuasiva",
+        "Landing page con formulario óptimo",
+        "One page site para servicios",
+
+        // SEO y rendimiento
+        "Páginas web con SEO básico incluido",
+        "Optimización velocidad carga web",
+        "Web con certificado SSL gratis",
+        "Diseño web SEO-friendly Perú",
+        "Integración Google Analytics 4",
+        "Web optimizada para buscadores",
+        "Meta tags y SEO técnico profesional",
+        "Estructura web para buen posicionamiento",
+        "Contenido optimizado para SEO",
+        "Migración web sin perder SEO",
+
+        // Soluciones comerciales
+        "Páginas web económicas para emprendedores",
+        "Web corporativa moderna y funcional",
+        "Presencia online profesional económica",
+        "Paquete completo web + hosting Perú",
+        "Mantenimiento web incluido mensual",
+        "Cómo crear mi página web profesional",
+        "Necesito web para mi negocio urgente",
+        "Cuánto cuesta página web en Perú",
+        "Contratar diseñador web confiable",
+    ],
+    author: 'Ktalweb',
+    // ...otras configuraciones SEO...
+    ogType: 'website',
+    ogImage: 'https://ktalweb.pe/logo.webp',
+    ogUrl: 'https://innovabcp2025.pe',
+    twitterCard: 'summary_large_image',
+    twitterSite: '@ktalweb',
+    twitterCreator: '@ktalweb',
+    twitterImage: 'https://ktalweb.pe/logo.webp',
+
+    canonicalUrl: 'https://ktalweb.pe',
+    robots: 'index, follow',
+};

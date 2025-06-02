@@ -27,11 +27,11 @@ const HeroBanner = () => {
             ></video>
 
             {/* Contenido del Hero */}
-            <div className="mx-auto max-w-md px-5 sm:max-w-xl md:max-w-3xl relative z-10 flex flex-col items-start justify-center h-full  text-white ">
+            <div className="mx-auto max-w-md px-5 sm:max-w-xl md:max-w-[40rem] relative z-10 flex flex-col items-start justify-center h-full  text-white ">
                 <h1 className="font-nunito text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-                    ¡Bienvenido al primer paso para digitalizar tu negocio!
-                    <br className='flex sm:hidden' />
-                    <span className="bg-[#3B206E] px-2 py-1 rounded-xl text-2xl sm:text-3xl lg:text-4xl font-semibold sm:ml-4">
+                    ¡Comienza hoy a <br /> digitalizar tu negocio!
+                    <br className='flex' />
+                    <span className="bg-[#3B206E] px-2 py-1 rounded-xl text-2xl sm:text-3xl lg:text-4xl font-semibold sm:ml-0">
                         {messages[currentMessage]}
                     </span>
                 </h1>

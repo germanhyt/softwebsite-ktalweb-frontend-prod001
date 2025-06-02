@@ -44,6 +44,80 @@ const logos = [
 
   <HeroBanner client:load />
 
+  <!-- Empresas que confían en nosotros -->
+  <section class="py-12 bg-white" aria-label="Empresas que confían en nosotros">
+    <div class="container mx-auto">
+      <h2
+        class="text-center font-nunito text-3xl md:text-4xl font-bold text-black mb-8"
+      >
+        Estos clientes estan invirtiendo en potenciar
+        <br />
+        su presencia digital con nosotros
+      </h2>
+    </div>
+
+    <div class="3xl:container mx-auto overflow-hidden relative w-full">
+      <div
+        class="carousel-track flex items-center gap-12 animate-carousel min-w-max"
+      >
+        {
+          logos.map((logo, i) => (
+            <img
+              src={logo.src}
+              alt={logo.alt}
+              class="h-14 inline-block"
+              loading="lazy"
+              width="auto"
+              aria-hidden="true"
+            />
+          ))
+        }
+
+        {/* Mapear los logos duplicados para el efecto infinito */}
+        {
+          logos.map((logo, i) => (
+            <img
+              src={logo.src}
+              alt={logo.alt}
+              class="h-14 inline-block"
+              loading="lazy"
+              width="auto"
+              aria-hidden="true"
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <style is:global>
+    @keyframes carousel {
+      0% {
+        transform: translateX(-50%);
+      }
+      100% {
+        transform: translateX(0.36%);
+      }
+    }
+    .animate-carousel {
+      animation: carousel 8s linear infinite;
+    }
+
+    /* Prevenir layout shift */
+    .carousel-track {
+      will-change: transform;
+    }
+
+    /* Optimización para móviles */
+    @media (prefers-reduced-motion: reduce) {
+      .animate-carousel {
+        animation: none;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+
   <!-- Tu negocio merece una página web -->
   <section
     class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-8 py-12"
@@ -294,78 +368,6 @@ const logos = [
       </div>
     </div>
   </section>
-
-  <!-- Empresas que confían en nosotros -->
-  <section class="py-12 bg-white" aria-label="Empresas que confían en nosotros">
-    <div class="container mx-auto">
-      <h2
-        class="text-center font-nunito text-3xl md:text-4xl font-bold text-black mb-8"
-      >
-        Estas empresas apuestan por nuestra experiencia<br />y resultados
-      </h2>
-    </div>
-
-    <div class="3xl:container mx-auto overflow-hidden relative w-full">
-      <div
-        class="carousel-track flex items-center gap-12 animate-carousel min-w-max"
-      >
-        {
-          logos.map((logo, i) => (
-            <img
-              src={logo.src}
-              alt={logo.alt}
-              class="h-14 inline-block"
-              loading="lazy"
-              width="auto"
-              aria-hidden="true"
-            />
-          ))
-        }
-
-        {/* Mapear los logos duplicados para el efecto infinito */}
-        {
-          logos.map((logo, i) => (
-            <img
-              src={logo.src}
-              alt={logo.alt}
-              class="h-14 inline-block"
-              loading="lazy"
-              width="auto"
-              aria-hidden="true"
-            />
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
-  <style is:global>
-    @keyframes carousel {
-      0% {
-        transform: translateX(-50%);
-      }
-      100% {
-        transform: translateX(0.36%);
-      }
-    }
-    .animate-carousel {
-      animation: carousel 8s linear infinite;
-    }
-
-    /* Prevenir layout shift */
-    .carousel-track {
-      will-change: transform;
-    }
-
-    /* Optimización para móviles */
-    @media (prefers-reduced-motion: reduce) {
-      .animate-carousel {
-        animation: none;
-        justify-content: center;
-        flex-wrap: wrap;
-      }
-    }
-  </style>
 
   <SolicitarCTABannerSection client:load />
 
