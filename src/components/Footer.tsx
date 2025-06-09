@@ -10,7 +10,11 @@ const Footer = () => {
             <div className="absolute left-1/2 -top-6 transform -translate-x-1/2 z-10">
                 <button
                     onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                    className="bg-primary-purple-100 text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg border-2 border-white hover:bg-primary-purple-200 transition"
+                    className="
+                    bg-primary-purple-100 text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg border-2 border-white 
+                    hover:bg-primary-purple-200 transition
+                    hover:cursor-pointer
+                    "
                     aria-label="Volver arriba"
                 >
                     <FaArrowUp className="text-xl" />
