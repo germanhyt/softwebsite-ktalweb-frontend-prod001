@@ -13,7 +13,7 @@ const SolicitarCTABannerSection = () => {
                     color: '#FFFFFF',
                 }}
             >
-                <div className='container mx-auto flex flex-col md:flex-row items-center justify-between gap-8 py-12 rounded-lg'>
+                <div className='py-12 lg:py-16 container mx-auto flex flex-col md:flex-row items-center justify-between gap-8 rounded-lg'>
                     <div className="max-w-lg 3xl:max-w-2xl text-start flex-1">
                         <h2 className="font-nunito text-3xl md:text-4xl font-bold mb-4">
                             ¿No estás satisfecho con los resultados de tu web actual?

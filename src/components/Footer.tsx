@@ -7,17 +7,17 @@ const Footer = () => {
     return (
         <footer className="bg-white border-t border-primary-purple-100 pt-8 pb-4 relative">
             {/* Botón scroll top */}
-            <div className="absolute left-1/2 -top-6 transform -translate-x-1/2 z-10">
+            <div className="absolute right-1/12 -top-6 transform -translate-x-1/3 z-10">
                 <button
                     onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                     className="
-                    bg-primary-purple-100 text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg border-2 border-white 
+                    bg-primary-purple-100 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg border-2 border-white 
                     hover:bg-primary-purple-200 transition
                     hover:cursor-pointer
                     "
                     aria-label="Volver arriba"
                 >
-                    <FaArrowUp className="text-xl" />
+                    <FaArrowUp className="text-[1.5rem]" />
                 </button>
             </div>
             <div className="container mx-auto grid grid-cols-2 sm:grid-cols-4 justify-between items-start gap-8 pb-4">
@@ -36,7 +36,7 @@ const Footer = () => {
                         <div className="font-bold text-black mb-1 font-nunito">Explora</div>
                         <nav className="flex flex-col gap-1 text-sm">
                             <a href="/" className="hover:underline text-black font-nunito">Inicio</a>
-                            <a href="/portfolio" className="hover:underline text-black font-nunito">Portafolio</a>
+                            <a href="/portfolio" className="hover:underline text-black font-nunito">Casos de éxito</a>
                         </nav>
                     </div>
                 </div>
@@ -44,7 +44,12 @@ const Footer = () => {
                 <div className="flex justify-center">
                     <div className=''>
                         <div className="font-bold text-black mb-1 font-nunito">Contacto</div>
-                        <div className="text-sm text-black font-nunito break-all">ktalweb.peru@gmail.com</div>
+                        <div className="text-sm text-black font-nunito break-all">
+                            {/* Envío de correo a ktalweb.peru@gmail.com */}
+                            <a href="mailto:ktalweb.peru@gmail.com" className="hover:underline">
+                                ktalweb.peru@gmail.com
+                            </a>
+                        </div>
                     </div>
                 </div>
                 {/* Redes sociales */}

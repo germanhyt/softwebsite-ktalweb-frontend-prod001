@@ -31,12 +31,12 @@ const HeroBanner = () => {
                 <h1 className="font-nunito text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
                     ¡Comienza hoy a <br /> digitalizar tu negocio!
                     <br className='flex' />
-                    <div className='relative inline-block mt-2'>
+                    <div className='relative inline-block mt-3'>
                         <div
                             className="z-0 absolute inset-0 bg-gradient-to-r from-[#5919C1] to-[#3B206E] rounded-xl"
                             style={{ filter: "blur(16px)" }}
                         ></div>
-                        <span className="relative z-10 px-2 rounded-xl text-2xl sm:text-3xl lg:text-4xl font-semibold sm:ml-0">
+                        <span className="relative z-10 px-2 rounded-xl text-2xl sm:text-3xl lg:text-[2.75rem] font-semibold sm:ml-0">
                             {messages[currentMessage]}
                         </span>
                     </div>

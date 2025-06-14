@@ -11,7 +11,6 @@ import SolicitarCTABannerSection from "@/components/SolicitarCTABannerSection";
 import DescargarBrochureSection from "@/components/DescargarBrochureSection";
 import Footer from "@/components/Footer";
 
-
 import Soluciones1 from "@/assets/images/soluciones_1.webp?url";
 import Soluciones2 from "@/assets/images/soluciones_2.webp?url";
 import Soluciones3 from "@/assets/images/soluciones_3.webp?url";
@@ -45,10 +44,13 @@ const logos = [
   <HeroBanner client:load />
 
   <!-- Empresas que confían en nosotros -->
-  <section class="py-12 bg-white" aria-label="Empresas que confían en nosotros">
+  <section
+    class="py-12 lg:py-16 bg-white"
+    aria-label="Empresas que confían en nosotros"
+  >
     <div class="container mx-auto">
       <h2
-        class="text-center font-nunito text-3xl md:text-4xl font-bold text-black mb-8"
+        class="text-center font-nunito text-3xl md:text-4xl font-bold text-black mb-8 lg:mb-12"
       >
         Estos clientes estan invirtiendo en <span
           class="text-primary-purple-100">potenciar</span
@@ -124,7 +126,7 @@ const logos = [
 
   <!-- Tu negocio merece una página web -->
   <section
-    class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-8 py-12"
+    class="py-12 lg:py-16 container mx-auto flex flex-col md:flex-row items-center justify-between gap-8"
   >
     <div class="md:w-2/5 max-w-lg 3xl:max-w-2xl text-start">
       <h2
@@ -153,7 +155,7 @@ const logos = [
 
       <video
         class="z-10 rounded-lg shadow-md w-full md:w-[80%]"
-        src={"https://res.cloudinary.com/dz0ajaf3i/video/upload/v1747593767/KTALWEB/INDEX_VIDEO_bzv3hk.mov"}
+        src={"https://res.cloudinary.com/dz0ajaf3i/video/upload/v1749927871/KTALWEB/video_ktalweb_bci6b8.mov"}
         autoplay
         loop
         muted
@@ -164,7 +166,7 @@ const logos = [
   </section>
 
   <!-- Diseñadas para captar, convertir y crecer -->
-  <section class="py-12 bg-white">
+  <section class="py-12 lg:py-16 bg-white">
     <div class="container mx-auto text-center mb-8">
       <h2 class="font-nunito text-3xl md:text-4xl font-bold text-black mb-6">
         Diseñadas para <span class="text-primary-purple-100"
@@ -398,11 +400,15 @@ const logos = [
   </section>
 
   <!-- Proceso de trabajo -->
-  <section class="container mx-auto py-16">
+  <section class="py-12 lg:py-16 container mx-auto">
     <h2
       class="text-center font-nunito text-3xl md:text-4xl font-bold text-black mb-14"
     >
-      Estamos para asesorarte en todo el<br />proceso
+      Estamos para asesorarte <span class="text-primary-purple-100"
+        >en todo el</span
+      >
+      <br />
+      <span class="text-primary-purple-100">proceso</span>
     </h2>
     <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
       <div class="flex flex-col items-center text-center relative">
@@ -463,11 +469,13 @@ const logos = [
   </section>
 
   <!-- Soluciones -->
-  <section class="container mx-auto py-12">
+  <section class="py-12 lg:pb-20 lg:pt-16 container mx-auto">
     <h2
-      class="text-center font-nunito text-3xl md:text-4xl font-bold text-black mb-8"
+      class="text-center font-nunito text-3xl md:text-4xl font-bold text-black mb-12 lg:mb-16"
     >
-      ¿Cuál de nuestras soluciones va mejor con tu negocio?
+      ¿Cuál de nuestras soluciones va mejor con <span
+        class="text-primary-purple-100">tu negocio?</span
+      >
     </h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <!-- Card 1 -->

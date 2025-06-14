@@ -67,7 +67,7 @@ const Header = () => {
                 navigate('/portfolio');
               }}
             >
-              Portafolio
+              Casos de éxito
             </a>
           </nav>
 
@@ -112,7 +112,9 @@ const Header = () => {
 
           {/* Contact Button */}
           <a
-            href="/contact"
+            // api de whats con +51 923 416 407
+            href="https://api.whatsapp.com/send?phone=51923416407&text=Hola%20Ktalweb,%20me%20gustaría%20saber%20más%20sobre%20sus%20servicios."
+            target='_blank'
             className="hidden md:flex  px-6 py-2 text-primary-purple-100 font-semibold rounded-full hover:bg-primary-purple-100 hover:text-white border border-primary-purple-100"
             aria-label="Contact Us"
           >
@@ -151,13 +153,14 @@ const Header = () => {
                   navigate('/portfolio');
                 }}
               >
-                Portafolio
+                Casos de éxito
               </a>
             </nav>
 
             <div className='flex justify-center mt-4'>
               <a
-                href="/contact"
+                href="https://api.whatsapp.com/send?phone=51923416407&text=Hola%20Ktalweb,%20me%20gustaría%20saber%20más%20sobre%20sus%20servicios."
+                target='_blank'
                 className="px-6 py-2 text-primary-purple-100 font-semibold rounded-full hover:bg-primary-purple-100 hover:text-white border border-primary-purple-100"
                 aria-label="Contact Us"
               >
