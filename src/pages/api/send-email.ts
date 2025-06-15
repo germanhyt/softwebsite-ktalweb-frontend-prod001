@@ -28,15 +28,15 @@ import { Resend } from 'resend';
 
 
 export const POST: APIRoute = async ({ request }) => {
-    const resend = new Resend(import.meta.env.RESEND_API_KEY);
+    const resend = new Resend(import.meta.env.RESEND_API || '');
 
     try {
         const body = await request.json();
-        const { to, name, message } = body;
+        const { name, message } = body;
 
         const data = await resend.emails.send({
             from: 'onboarding@resend.dev',
-            to,
+            to: 'germanhuaytalla22@gmail.com',
             subject: 'Mensaje de contacto',
             html: `<p>Hola ${name},</p><p>${message}</p>`,
             //   react: EmailTemplate({ name, message }),
