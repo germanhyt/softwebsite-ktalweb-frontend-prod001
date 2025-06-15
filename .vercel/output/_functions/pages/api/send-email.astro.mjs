@@ -105,7 +105,7 @@ async function handleAction(param, path, context) {
 }
 toActionProxy();
 
-const resend = new Resend("");
+const resend = new Resend("re_JMXP6WVd_KZvKCtGePd9ZBF9RewJgz2iy");
 const server = {
   send: defineAction({
     accept: "form",
