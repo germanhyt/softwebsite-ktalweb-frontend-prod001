@@ -1,4 +1,4 @@
-import { c as createComponent, e as createAstro, f as addAttribute, r as renderHead, g as renderSlot, h as renderTemplate, i as renderComponent, m as maybeRenderHead } from '../chunks/astro/server_CL16h7-1.mjs';
+import { c as createComponent, b as createAstro, e as addAttribute, r as renderHead, f as renderSlot, g as renderTemplate, h as renderComponent, m as maybeRenderHead } from '../chunks/astro/server_BPzZAder.mjs';
 import 'kleur/colors';
 import { H as Header, l as logoOffroad, a as logoLVEnergy, b as logoZukarZen, D as DescargarBrochureSection, F as Footer } from '../chunks/logo_zukarzen_S1AoyHhw.mjs';
 import 'clsx';
