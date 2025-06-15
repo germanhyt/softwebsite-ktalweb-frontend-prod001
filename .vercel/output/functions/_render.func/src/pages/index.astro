@@ -1,0 +1,602 @@
+---
+import Header from "@/components/Header";
+import Layout from "../layouts/Layout.astro";
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+
+import "../assets/styles/global.css";
+import HeroBanner from "@/components/HeroBanner";
+import SolicitarCTABannerSection from "@/components/SolicitarCTABannerSection";
+import DescargarBrochureSection from "@/components/DescargarBrochureSection";
+import Footer from "@/components/Footer";
+
+import Soluciones1 from "@/assets/images/soluciones_1.webp?url";
+import Soluciones2 from "@/assets/images/soluciones_2.webp?url";
+import Soluciones3 from "@/assets/images/soluciones_3.webp?url";
+
+import proceso1 from "@/assets/images/proceso_1.webp?url";
+import proceso2 from "@/assets/images/proceso_2.webp?url";
+import proceso3 from "@/assets/images/proceso_3.webp?url";
+import proceso4 from "@/assets/images/proceso_4.webp?url";
+
+import logoOffroad from "@/assets/images/logo_offroadperu.webp?url";
+import logoZukarZen from "@/assets/images/logo_zukarzen.webp?url";
+import logoLaboratoria from "@/assets/images/logo_laboratoria.webp?url";
+import logoBCP from "@/assets/images/logo_bcp.webp?url";
+import logoLVEnergy from "@/assets/images/logo_lvenergy.webp?url";
+import logoMcKinsey from "@/assets/images/logo_mckinsey.webp?url";
+import diseno from "@/assets/images/diseño_captar_convertir_crecer.webp?url";
+
+const logos = [
+  { src: logoZukarZen, alt: "Zukar Zen" },
+  { src: logoLaboratoria, alt: "Laboratoria" },
+  { src: logoBCP, alt: "BCP" },
+  { src: logoOffroad, alt: "Off Road Peru" },
+  { src: logoLVEnergy, alt: "L&V Energy" },
+  { src: logoMcKinsey, alt: "McKinsey & Company" },
+];
+---
+
+<Layout>
+  <Header client:load />
+
+  <HeroBanner client:load />
+
+  <!-- Empresas que confían en nosotros -->
+  <section
+    class="py-12 lg:py-16 bg-white"
+    aria-label="Empresas que confían en nosotros"
+  >
+    <div class="container mx-auto">
+      <h2
+        class="text-center font-nunito text-3xl md:text-4xl font-bold text-black mb-8 lg:mb-12"
+      >
+        Estos clientes estan invirtiendo en <span
+          class="text-primary-purple-100">potenciar</span
+        >
+        <br />
+        <span class="text-primary-purple-100">
+          su presencia digital con nosotros</span
+        >
+      </h2>
+    </div>
+
+    <div class="3xl:container mx-auto overflow-hidden relative w-full">
+      <div
+        class="carousel-track flex items-center gap-12 animate-carousel min-w-max"
+      >
+        {
+          logos.map((logo, i) => (
+            <img
+              src={logo.src}
+              alt={logo.alt}
+              class="h-14 inline-block"
+              loading="lazy"
+              width="auto"
+              aria-hidden="true"
+            />
+          ))
+        }
+
+        {/* Mapear los logos duplicados para el efecto infinito */}
+        {
+          logos.map((logo, i) => (
+            <img
+              src={logo.src}
+              alt={logo.alt}
+              class="h-14 inline-block"
+              loading="lazy"
+              width="auto"
+              aria-hidden="true"
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <style is:global>
+    @keyframes carousel {
+      0% {
+        transform: translateX(-50%);
+      }
+      100% {
+        transform: translateX(0.36%);
+      }
+    }
+    .animate-carousel {
+      animation: carousel 8s linear infinite;
+    }
+
+    /* Prevenir layout shift */
+    .carousel-track {
+      will-change: transform;
+    }
+
+    /* Optimización para móviles */
+    @media (prefers-reduced-motion: reduce) {
+      .animate-carousel {
+        animation: none;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+
+  <!-- Tu negocio merece una página web -->
+  <section
+    class="py-12 lg:py-16 container mx-auto flex flex-col md:flex-row items-center justify-between gap-8"
+  >
+    <div class="md:w-2/5 max-w-lg 3xl:max-w-2xl text-start">
+      <h2
+        class="font-nunito text-3xl md:text-4xl font-bold text-black mb-4 pr-8"
+      >
+        Creamos la web <span class="text-primary-purple-100">que </span>
+        <br />
+        <span class="text-primary-purple-100">merece tu negocio</span>
+      </h2>
+      <p class="font-nunito font-medium text-lg text-gray-600 pr-4">
+        Hoy en día es necesario contar con una herramienta digital adicional a
+        las redes sociales, que sea una pista de aterrizaje para todos esos
+        usuarios que desean explorar y conocer más sobre tu negocio.
+      </p>
+    </div>
+    <div class="flex-1 flex justify-center relative">
+      <div
+        class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[95%] h-[120%] z-0 pointer-events-none"
+      >
+        <div
+          class="w-full h-full rounded-2xl"
+          style="background:radial-gradient(ellipse at center, rgba(226, 208, 255, 0.75) 70%, rgba(139,139,217,0.0) 75%); filter: blur(32px);"
+        >
+        </div>
+      </div>
+
+      <video
+        class="z-10 rounded-lg shadow-md w-full md:w-[80%]"
+        src={"https://res.cloudinary.com/dz0ajaf3i/video/upload/v1749927871/KTALWEB/video_ktalweb_bci6b8.mov"}
+        autoplay
+        loop
+        muted
+        playsinline
+      >
+      </video>
+    </div>
+  </section>
+
+  <!-- Diseñadas para captar, convertir y crecer -->
+  <section class="py-12 lg:py-16 bg-white">
+    <div class="container mx-auto text-center mb-8">
+      <h2 class="font-nunito text-3xl md:text-4xl font-bold text-black mb-6">
+        Diseñadas para <span class="text-primary-purple-100"
+          >captar, convertir y crecer</span
+        >
+      </h2>
+    </div>
+    <div
+      class="container mx-auto flex flex-col-reverse md:flex-row lg:items-center gap-8"
+    >
+      <!-- Imagen -->
+      <div class="md:w-2/3 lg:w-2/5">
+        <img
+          src={diseno}
+          alt="Diseñadas para captar, convertir y crecer"
+          class="rounded-lg shadow-md w-full"
+        />
+      </div>
+      <!-- Textos -->
+      <div class="md:w-1/3 lg:w-3/5">
+        <ul class="space-y-8">
+          <li>
+            <button
+              class="font-nunito text-xl font-bold text-primary-purple-100 mb-2 w-full text-left flex md:hidden"
+              onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg.plus').classList.toggle('hidden'); this.querySelector('svg.minus').classList.toggle('hidden')"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 mr-2 transition-transform duration-300 plus"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M12 4v16m8-8H4"></path>
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 mr-2 transition-transform duration-300 hidden minus"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M20 12H4"></path>
+              </svg>
+              Optimización
+            </button>
+            <div class="hidden md:block">
+              <h3
+                class="hidden md:block font-nunito text-xl font-bold text-primary-purple-100 mb-2"
+              >
+                Optimización
+              </h3>
+              <p class="font-nunito text-gray-600">
+                Carga veloz y rendimiento optimizado para una experiencia sin
+                fricciones.
+              </p>
+              <div class="h-[.1px] mt-2 lg:mt-3 w-full bg-primary-purple-100">
+              </div>
+            </div>
+          </li>
+          <li>
+            <button
+              class="font-nunito text-xl font-bold text-primary-purple-100 mb-2 w-full text-left flex items-center md:hidden"
+              onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg.plus').classList.toggle('hidden'); this.querySelector('svg.minus').classList.toggle('hidden')"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 mr-2 transition-transform duration-300 plus"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M12 4v16m8-8H4"></path>
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 mr-2 transition-transform duration-300 hidden minus"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M20 12H4"></path>
+              </svg>
+              Estructura efectiva
+            </button>
+            <div class="hidden md:block">
+              <h3
+                class="hidden md:block font-nunito text-xl font-bold text-primary-purple-100 mb-2"
+              >
+                Estructura efectiva
+              </h3>
+              <p class="font-nunito text-gray-600">
+                Enfocadas en convertir visitantes en clientes, con una
+                navegación fluida y altamente interactiva.
+              </p>
+              <div class="h-[.1px] mt-2 lg:mt-3 w-full bg-primary-purple-100">
+              </div>
+            </div>
+          </li>
+          <li>
+            <button
+              class="font-nunito text-xl font-bold text-primary-purple-100 mb-2 w-full text-left flex items-center md:hidden"
+              onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg.plus').classList.toggle('hidden'); this.querySelector('svg.minus').classList.toggle('hidden')"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 mr-2 transition-transform duration-300 plus"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M12 4v16m8-8H4"></path>
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 mr-2 transition-transform duration-300 hidden minus"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M20 12H4"></path>
+              </svg>
+              Escalables
+            </button>
+            <div class="hidden md:block">
+              <h3
+                class="hidden md:block font-nunito text-xl font-bold text-primary-purple-100 mb-2"
+              >
+                Escalables
+              </h3>
+              <p class="font-nunito text-gray-600">
+                Diseñadas para crecer contigo en el tiempo, permitiéndote
+                integrar fácilmente una tienda, blog, sistema de reservas u
+                otras secciones sin complicaciones.
+              </p>
+              <div class="h-[.1px] mt-2 lg:mt-3 w-full bg-primary-purple-100">
+              </div>
+            </div>
+          </li>
+          <li>
+            <button
+              class="font-nunito text-xl font-bold text-primary-purple-100 mb-2 w-full text-left flex items-center md:hidden"
+              onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg.plus').classList.toggle('hidden'); this.querySelector('svg.minus').classList.toggle('hidden')"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 mr-2 transition-transform duration-300 plus"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M12 4v16m8-8H4"></path>
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 mr-2 transition-transform duration-300 hidden minus"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M20 12H4"></path>
+              </svg>
+              Navegación intuitiva
+            </button>
+            <div class="hidden md:block">
+              <h3
+                class="hidden md:block font-nunito text-xl font-bold text-primary-purple-100 mb-2"
+              >
+                Navegación intuitiva
+              </h3>
+              <p class="font-nunito text-gray-600">
+                Experiencia intuitiva con estructura clara, navegación fluida y
+                contenido fácil de entender.
+              </p>
+              <div class="h-[.1px] mt-2 lg:mt-3 w-full bg-primary-purple-100">
+              </div>
+            </div>
+          </li>
+          <li>
+            <button
+              class="font-nunito text-xl font-bold text-primary-purple-100 mb-2 w-full text-left flex items-center md:hidden"
+              onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg.plus').classList.toggle('hidden'); this.querySelector('svg.minus').classList.toggle('hidden')"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 mr-2 transition-transform duration-300 plus"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M12 4v16m8-8H4"></path>
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 mr-2 transition-transform duration-300 hidden minus"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M20 12H4"></path>
+              </svg>
+              Diseño adaptable
+            </button>
+            <div class="hidden md:block">
+              <h3
+                class="hidden md:block font-nunito text-xl font-bold text-primary-purple-100 mb-2"
+              >
+                Diseño adaptable
+              </h3>
+              <p class="font-nunito text-gray-600">
+                Diseños que se adaptan a cualquier dispositivo para una
+                experiencia óptima en computadora, tablet o celular.
+              </p>
+              <div class="h-[.1px] mt-2 lg:mt-3 w-full bg-primary-purple-100">
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Proceso de trabajo -->
+  <section class="py-12 lg:py-16 container mx-auto">
+    <h2
+      class="text-center font-nunito text-3xl md:text-4xl font-bold text-black mb-14"
+    >
+      Estamos para asesorarte <span class="text-primary-purple-100"
+        >en todo el</span
+      >
+      <br />
+      <span class="text-primary-purple-100">proceso</span>
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div class="flex flex-col items-center text-center relative">
+        <div class="flex items-center w-full mb-4 px-4">
+          <img src={proceso1} alt="Solicitar" class="h-10 w-10 mx-auto mb-2" />
+          <span class="hidden md:block flex-1 h-[2px] bg-gray-200 ml-2"></span>
+        </div>
+        <h3 class="font-nunito font-bold text-lg 3xl:text-xl text-black mb-2">
+          Punto de partida
+        </h3>
+        <p class="font-nunito text-gray-700 text-base">
+          Estamos listos para ayudarte a crear y gestionar todo lo que necesites
+          para crear tu web
+        </p>
+      </div>
+      <div class="flex flex-col items-center text-center relative">
+        <div class="flex items-center w-full mb-4 px-4">
+          <img src={proceso2} alt="Solicitar" class="h-10 w-10 mx-auto mb-2" />
+          <span class="hidden md:block flex-1 h-[2px] bg-gray-200 ml-2"></span>
+        </div>
+        <h3 class="font-nunito font-bold text-lg 3xl:text-xl text-black mb-2">
+          Feedback y modificaciones
+        </h3>
+        <p class="font-nunito text-gray-700 text-base">
+          Constantemente te mostramos el avance para que puedas corroborar que
+          el proyecto va según lo planeado y tus requerimientos.
+        </p>
+      </div>
+      <div class="flex flex-col items-center text-center relative">
+        <div class="flex items-center w-full mb-4 px-4">
+          <img src={proceso3} alt="Solicitar" class="h-10 w-10 mx-auto mb-2" />
+          <span class="hidden md:block flex-1 h-[2px] bg-gray-200 ml-2"></span>
+        </div>
+        <h3 class="font-nunito font-bold text-lg 3xl:text-xl text-black mb-2">
+          Pasos finales
+        </h3>
+        <p class="font-nunito text-gray-700 text-base">
+          Una vez lista la web, te pasamos un link en línea para que puedas
+          testear tu web antes de ser lanzada al público y así todo quede 100%
+          listo.
+        </p>
+      </div>
+      <div class="flex flex-col items-center text-center relative">
+        <div class="flex items-center w-full mb-4 px-4">
+          <img src={proceso4} alt="Solicitar" class="h-10 w-10 mx-auto mb-2" />
+          <span class="hidden md:block flex-1 h-[2px] bg-gray-200 ml-2"></span>
+        </div>
+        <h3 class="font-nunito font-bold text-lg 3xl:text-xl text-black mb-2">
+          Lanzamiento y publicación
+        </h3>
+        <p class="font-nunito text-gray-700 text-base">
+          ¡Tu web ya esta en línea!. Ya finalizado el trabajo nosotros nos
+          encargamos de monitorear tu web y verificar que este todo 100%
+          operativo siempre para tus usuarios.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Soluciones -->
+  <section class="py-12 lg:pb-20 lg:pt-16 container mx-auto">
+    <h2
+      class="text-center font-nunito text-3xl md:text-4xl font-bold text-black mb-12 lg:mb-16"
+    >
+      ¿Cuál de nuestras soluciones va mejor con <span
+        class="text-primary-purple-100">tu negocio?</span
+      >
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Card 1 -->
+      <div class="relative">
+        <div
+          class="absolute inset-0 z-0 rounded-lg bg-gradient-to-br from-primary-purple-100/40 to-primary-purple-100/10 backdrop-blur-md blur-sm"
+        >
+        </div>
+        <div
+          class="h-full border border-primary-purple-100
+          relative z-10 bg-white shadow-md rounded-lg p-6 text-center"
+        >
+          <div class="md:min-h-[380px] lg:min-h-[310px] xl:min-h-[270px]">
+            <img
+              src={Soluciones1}
+              alt="Landing Page"
+              class="h-[6rem] mx-auto mb-4"
+            />
+            <h3 class="font-nunito text-xl font-bold text-black mb-2">
+              Landing Page
+            </h3>
+            <p class="font-nunito text-gray-600 mb-4">
+              Página enfocada a la promoción de un objetivo, ya sea desde
+              completar un formulario, descargar contenido o lo que necesites
+              para tu proyecto o negocio.
+            </p>
+          </div>
+          <!-- // ahora con el mensaje a 51923416407 "Hola! Estoy interesado en cotizar una landing page para mi negocio 🚀. Podrían brindarme más información por favor" -->
+          <a
+            href="https://api.whatsapp.com/send?phone=51923416407&text=Hola!%20Estoy%20interesado%20en%20cotizar%20una%20landing%20page%20para%20mi%20negocio%20🚀.%20Podrían%20brindarme%20más%20información por favor."
+            target="_blank"
+          >
+            <button
+              class="bg-primary-purple-100 text-white font-bold py-2 px-4 rounded-2xl hover:cursor-pointer"
+              >Cotizar
+            </button>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="relative">
+        <div
+          class="absolute inset-0 z-0 rounded-lg bg-gradient-to-br from-primary-purple-100/40 to-primary-purple-100/10 backdrop-blur-md blur-sm"
+        >
+        </div>
+        <div
+          class="h-full border border-primary-purple-100
+          relative z-10 bg-white shadow-md rounded-lg p-6 text-center"
+        >
+          <div class="md:min-h-[380px] lg:min-h-[310px] xl:min-h-[270px]">
+            <img
+              src={Soluciones2}
+              alt="Tienda Virtual"
+              class="h-[6rem] mx-auto mb-4"
+            />
+            <h3 class="font-nunito text-xl font-bold text-black mb-2">
+              Tienda virtual
+            </h3>
+            <p class="font-nunito text-gray-600 mb-4">
+              Ponte en contacto con tus clientes potenciales y genera más ventas
+              con una web que te permita ofrecer tus productos en todo momento.
+            </p>
+          </div>
+          <!-- // ahora con el mensaje a 51923416407 "¡Hola! Quiero una tienda virtual 🛒 para vender mis productos. Podrían brindarme más información por favor." -->
+
+          <a
+            href="https://api.whatsapp.com/send?phone=51923416407&text=¡Hola!%20Quiero%20una%20tienda%20virtual%20🛒%20para%20vender%20mis%20productos.%20Podrían%20brindarme%20más%20información por favor."
+            target="_blank"
+          >
+            <button
+              class="bg-primary-purple-100 text-white font-bold py-2 px-4 rounded-2xl hover:cursor-pointer"
+              >Cotizar
+            </button>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="relative">
+        <div
+          class="absolute inset-0 z-0 rounded-lg bg-gradient-to-br from-primary-purple-100/40 to-primary-purple-100/10 backdrop-blur-md blur-sm"
+        >
+        </div>
+        <div
+          class="h-full border border-primary-purple-100
+           relative z-10 bg-white shadow-md rounded-lg p-6 text-center"
+        >
+          <div class="md:min-h-[380px] lg:min-h-[310px] xl:min-h-[270px]">
+            <img
+              src={Soluciones3}
+              alt="Catálogo Digital"
+              class="h-[6rem] mx-auto mb-4"
+            />
+            <h3 class="font-nunito text-xl font-bold text-black mb-2">
+              Catálogo digital
+            </h3>
+            <p class="font-nunito text-gray-600 mb-4">
+              Si eres de los que prefiere más las ventas por redes y estás
+              buscando promocionar una cantidad mínima de productos en pocos
+              pasos. ¡Te ofrecemos una solución práctica y muy eficiente!
+            </p>
+          </div>
+          <!-- // ahora con el mensaje a 51923416407 "¡Hola!, me interesa un catálogo digital 📘 para mostrar mis productos o servicios. Podrían brindarme más información por favor." -->
+          <a
+            href="https://api.whatsapp.com/send?phone=51923416407&text=¡Hola!,%20me%20interesa%20un%20catálogo%20digital%20📘%20para%20mostrar%20mis%20productos%20o%20servicios.%20Podrían%20brindarme%20más%20información por favor."
+            target="_blank"
+          >
+            <button
+              class="bg-primary-purple-100 text-white font-bold py-2 px-4 rounded-2xl hover:cursor-pointer"
+              >Cotizar</button
+            >
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <SolicitarCTABannerSection client:load />
+
+  <DescargarBrochureSection client:load />
+
+  <Footer client:load />
+</Layout>
