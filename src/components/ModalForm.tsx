@@ -40,39 +40,46 @@ const ModalForm = ({ isOpen, onClose }: IModalFormProps) => {
     });
 
 
-      const onSubmit = async (data: FormData) => {
-        console.log("Form data:", data);
+    const onSubmit = async (data: FormData) => {
+        // console.log("Form data:", data);
 
 
         try {
             setIsLoading(true);
+            // const response = await fetch(`/api/send-email`, {
+            //     method: "POST",
+            //     headers: {
+            //         "Content-Type": "application/json",
+            //     },
+            //     body: JSON.stringify(data),
+            // });
 
-            const response = await fetch(`/api/send-email`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(data),
-            });
+            // const result = await response.json();
 
-            const result = await response.json();
+            // if (!response.ok) {
+            //     alert(result.message);
+            //     setIsLoading(false);
+            //     onClose();
+            //     reset();
+            //     return;
+            // }
 
-            if (!response.ok) {
-                alert(result.message);
-                setIsLoading(false);
-                onClose();
-                reset();
-                return;
+            // swalAlertFire({
+            //     title:  "¡Gracias por contactarnos!",
+            //     html:  "Tu mensaje ha sido enviado correctamente. Nos pondremos en contacto contigo pronto.",
+            //     icon: "success",
+            //     confirmButtonText: "Cerrar",
+            //     buttonsStyling: false,
+            // });
+
+            // enviar todo por la api de whatsapp
+            const whatsappMessage = `Hola Ktalweb👋. Vi tu página web y me gustaría realizar una auditoría. ¿Me podrían ayudar, por favor? \n\n Empresa: ${data.enterprise} \n Enlace: ${data.link} \n Celular: ${data.cellphone} \n Correo: ${data.email} \n Mensaje: ${data.message}`;
+
+            const whatsappUrl = `https://api.whatsapp.com/send?phone=51923416407&text=${encodeURIComponent(whatsappMessage)}`;
+
+            if (typeof window !== 'undefined') {
+                window.open(whatsappUrl, '_blank');
             }
-
-            swalAlertFire({
-                title:  "¡Gracias por contactarnos!",
-                html:  "Tu mensaje ha sido enviado correctamente. Nos pondremos en contacto contigo pronto.",
-                icon: "success",
-                confirmButtonText: "Cerrar",
-                buttonsStyling: false,
-            });
-
 
         } catch (error) {
             console.error(error);
