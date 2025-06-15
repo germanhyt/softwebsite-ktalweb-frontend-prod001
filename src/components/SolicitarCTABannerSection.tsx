@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { VscArrowCircleRight } from 'react-icons/vsc'
 
 import k from '@/assets/images/k.webp?url'
+import ModalForm from './ModalForm'
 
 const SolicitarCTABannerSection = () => {
+
+    const [isModalOpen, setModalOpen] = useState(false)
+
     return (
         <>
             <section
@@ -23,6 +27,13 @@ const SolicitarCTABannerSection = () => {
                         </p>
                         <button
                             className="flex items-center gap-2 bg-primary-purple-200 text-white font-nunito font-semibold px-5 py-2 rounded-full transition bg-primary-purple-100 hover:cursor-pointer"
+                            onClick={() => {
+                                if (isModalOpen) {
+                                    setModalOpen(false);
+                                } else {
+                                    setModalOpen(true);
+                                }
+                            }}
                         >
                             Solicitar auditoría gratuita
 
@@ -38,6 +49,10 @@ const SolicitarCTABannerSection = () => {
                     </div>
                 </div>
             </section>
+
+
+            <ModalForm  isOpen={isModalOpen} onClose={() => setModalOpen(false)}  />
+
         </>
     )
 }
