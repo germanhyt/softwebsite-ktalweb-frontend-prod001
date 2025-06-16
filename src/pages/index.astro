@@ -52,26 +52,25 @@ const logos = [
       <h2
         class="text-center font-nunito text-3xl md:text-4xl font-bold text-black mb-8 lg:mb-12"
       >
-        Estos clientes estan invirtiendo en <span
-          class="text-primary-purple-100">potenciar</span
-        >
+        Estos clientes estan invirtiendo en
+        <span class="text-primary-purple-100">potenciar</span>
         <br />
         <span class="text-primary-purple-100">
-          su presencia digital con nosotros</span
-        >
+          su presencia digital con nosotros
+        </span>
       </h2>
     </div>
 
     <div class="3xl:container mx-auto overflow-hidden relative w-full">
       <div
-        class="carousel-track flex items-center gap-12 animate-carousel min-w-max"
+        class="carousel-track flex items-center gap-12 animate-carousel w-full"
       >
         {
           logos.map((logo, i) => (
             <img
               src={logo.src}
               alt={logo.alt}
-              class="h-14 inline-block"
+              class="h-14 inline-block w-fit"
               loading="lazy"
               width="auto"
               aria-hidden="true"
@@ -85,7 +84,7 @@ const logos = [
             <img
               src={logo.src}
               alt={logo.alt}
-              class="h-14 inline-block"
+              class="h-14 inline-block w-fit"
               loading="lazy"
               width="auto"
               aria-hidden="true"
@@ -130,7 +129,7 @@ const logos = [
   >
     <div class="md:w-2/5 max-w-lg 3xl:max-w-2xl text-start">
       <h2
-        class="font-nunito text-3xl md:text-4xl font-bold text-black mb-4 pr-8"
+        class="font-nunito text-center lg:text-start text-3xl md:text-4xl font-bold text-black mb-4 pr-8"
       >
         Creamos la web <span class="text-primary-purple-100">que </span>
         <br />
@@ -416,7 +415,9 @@ const logos = [
           <img src={proceso1} alt="Solicitar" class="h-10 w-10 mx-auto mb-2" />
           <span class="hidden md:block flex-1 h-[2px] bg-gray-200 ml-2"></span>
         </div>
-        <h3 class="font-nunito font-bold text-lg 3xl:text-xl text-black mb-2">
+        <h3
+          class="text-center lg:text-start font-nunito font-bold text-lg 3xl:text-xl text-black mb-2"
+        >
           Punto de partida
         </h3>
         <p class="font-nunito text-gray-700 text-base">
@@ -429,7 +430,9 @@ const logos = [
           <img src={proceso2} alt="Solicitar" class="h-10 w-10 mx-auto mb-2" />
           <span class="hidden md:block flex-1 h-[2px] bg-gray-200 ml-2"></span>
         </div>
-        <h3 class="font-nunito font-bold text-lg 3xl:text-xl text-black mb-2">
+        <h3
+          class="text-center lg:text-start font-nunito font-bold text-lg 3xl:text-xl text-black mb-2"
+        >
           Feedback y modificaciones
         </h3>
         <p class="font-nunito text-gray-700 text-base">
@@ -442,7 +445,9 @@ const logos = [
           <img src={proceso3} alt="Solicitar" class="h-10 w-10 mx-auto mb-2" />
           <span class="hidden md:block flex-1 h-[2px] bg-gray-200 ml-2"></span>
         </div>
-        <h3 class="font-nunito font-bold text-lg 3xl:text-xl text-black mb-2">
+        <h3
+          class="text-center lg:text-start font-nunito font-bold text-lg 3xl:text-xl text-black mb-2"
+        >
           Pasos finales
         </h3>
         <p class="font-nunito text-gray-700 text-base">
@@ -456,7 +461,9 @@ const logos = [
           <img src={proceso4} alt="Solicitar" class="h-10 w-10 mx-auto mb-2" />
           <span class="hidden md:block flex-1 h-[2px] bg-gray-200 ml-2"></span>
         </div>
-        <h3 class="font-nunito font-bold text-lg 3xl:text-xl text-black mb-2">
+        <h3
+          class="text-center lg:text-start font-nunito font-bold text-lg 3xl:text-xl text-black mb-2"
+        >
           Lanzamiento y publicación
         </h3>
         <p class="font-nunito text-gray-700 text-base">
