@@ -160,8 +160,9 @@ const Header = () => {
             <div className='flex justify-center mt-4'>
               <a
                 // href="https://api.whatsapp.com/send?phone=51923416407&text=Hola%20Ktalweb,%20me%20gustaría%20saber%20más%20sobre%20sus%20servicios."
-                // ahora con el mensaje "Hola 👋. Vi tu página web y me gustaría saber más sobre sus servicios. ¿Me podrían ayudar, por favor?"
-                href="https://api.whatsapp.com/send?phone=51923416407&text=Hola%20👋.%20Vi%20tu%20página%20web%20y%20me%20gustaría%20saber%20más%20sobre%20sus%20servicios.%20¿Me%20podrían%20ayudar,%C2%A0por%C2%A0favor?"
+                // href="https://api.whatsapp.com/send?phone=51923416407&text=Hola%20👋.%20Vi%20tu%20página%20web%20y%20me%20gustaría%20saber%20más%20sobre%20sus%20servicios.%20¿Me%20podrían%20ayudar,%C2%A0por%C2%A0favor?"
+                // ahora con el mensaje "Hola ktalweb👋. Vi tu página web y me gustaría saber más sobre sus servicios. ¿Me podrían ayudar, por favor?"
+                href="https://api.whatsapp.com/send?phone=51923416407&text=Hola%20ktalweb👋.%20Vi%20tu%20página%20web%20y%20me%20gustaría%20saber%20más%20sobre%20sus%20servicios.%20¿Me%20podrían%20ayudar,%C2%A0por%C2%A0favor?"
                 target='_blank'
                 className="px-6 py-2 text-primary-purple-100 font-semibold rounded-full hover:bg-primary-purple-100 hover:text-white border border-primary-purple-100"
                 aria-label="Contact Us"

@@ -45,7 +45,7 @@ const HeroBanner = () => {
                     Creamos páginas webs que potencian tu presencia digital y reflejan lo que te hace único.
                 </p>
                 <a
-                    href="#contact"
+                    href="https://api.whatsapp.com/send?phone=51923416407&text=Hola%20ktalweb👋.%20Vi%20tu%20página%20web%20y%20me%20gustaría%20saber%20más%20sobre%20sus%20servicios.%20¿Me%20podrían%20ayudar,%C2%A0por%C2%A0favor?"
                     className="flex items-center gap-2  mt-8 px-6 py-2 bg-primary-purple-100  rounded-full transition duration-300"
                 >
                     <span className='font-nunito text-white text-lg font-medium'>
