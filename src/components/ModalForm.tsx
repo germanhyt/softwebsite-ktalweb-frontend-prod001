@@ -5,7 +5,6 @@ import Button from './Button';
 import { yupResolver } from '@hookform/resolvers/yup';
 import type FormData from '@/core/domain/FormData';
 import { useState } from 'react';
-import { swalAlertFire } from '@/core/helpers/SwalHelper';
 
 
 interface IModalFormProps {
