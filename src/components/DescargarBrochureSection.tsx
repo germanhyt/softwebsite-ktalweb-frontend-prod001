@@ -8,7 +8,7 @@ const DescargarBrochureSection = () => {
         <>
             <section className="pt-12 lg:pt-16 pb-24 container mx-auto bg-white">
                 <h2
-                    className="text-center font-nunito text-3xl md:text-4xl font-bold text-black mb-8"
+                    className="text-center font-nunito text-[1.5rem] md:text-3xl font-medium text-black mb-8"
                 >
                     Descarga nuestro brochure y{" "}
 

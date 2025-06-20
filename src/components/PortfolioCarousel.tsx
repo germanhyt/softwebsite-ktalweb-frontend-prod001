@@ -32,20 +32,20 @@ const PortfolioCarousel: React.FC<Props> = ({ cases }) => {
             {/* Botones y logos */}
             <div className="flex items-center justify-center mb-6 gap-4">
                 <button
-                    className="w-10 h-10 flex items-center justify-center rounded-full bg-white/80 border border-primary-purple-100 shadow hover:bg-primary-purple-100 hover:text-white transition text-primary-purple-100 text-2xl"
+                    className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-white/80 border border-primary-purple-100 shadow hover:bg-primary-purple-100 hover:text-white transition text-primary-purple-100 text-2xl"
                     aria-label="Anterior"
                     onClick={goPrev}
                 >
                     <IoIosArrowBack />
                 </button>
                 {current.logo && (
-                    <img src={current.logo} alt={current.logoAlt || current.title} className="h-10 w-auto" />
+                    <img src={current.logo} alt={current.logoAlt || current.title} className="h-12 max-w-[12rem] object-contain sm:w-auto" />
                 )}
                 {current.extraLogos && current.extraLogos.map((l, i) => (
                     <img key={i} src={l.src} alt={l.alt} className="h-10 w-auto ml-2" />
                 ))}
                 <button
-                    className="w-10 h-10 flex items-center justify-center rounded-full bg-white/80 border border-primary-purple-100 shadow hover:bg-primary-purple-100 hover:text-white transition text-primary-purple-100 text-2xl"
+                    className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-white/80 border border-primary-purple-100 shadow hover:bg-primary-purple-100 hover:text-white transition text-primary-purple-100 text-2xl"
                     aria-label="Siguiente"
                     onClick={goNext}
                 >
