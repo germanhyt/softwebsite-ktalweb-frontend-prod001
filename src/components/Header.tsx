@@ -43,15 +43,15 @@ const Header = () => {
               alt="Logo de Ktalweb"
             />
           </a>
-
+            
           {/* Navigation -- sm screen */}
           <nav
-            className="hidden md:flex items-center space-x-4 bg-tertiary-white-200 px-6 py-2 rounded-3xl"
+            className="hidden md:flex items-center space-x-4 bg-[#E5E5E5] px-6 py-2 rounded-3xl"
             aria-label="Main Navigation"
           >
             <a
               href="/"
-              className={`text-gray-700 font-semibold ${selected === '/' ? 'bg-white py-1 px-4 rounded-2xl' : ''}`}
+              className={`text-gray-700 font-medium font-nunito ${selected === '/' ? 'bg-white py-1 px-4 rounded-2xl' : ''}`}
               onClick={(e) => {
                 e.preventDefault();
                 navigate('/');
@@ -61,7 +61,7 @@ const Header = () => {
             </a>
             <a
               href="/portfolio"
-              className={`text-gray-700 font-semibold ${selected === '/portfolio' ? 'bg-white py-1 px-4 rounded-2xl' : ''}`}
+              className={`text-gray-700 font-medium font-nunito ${selected === '/portfolio' ? 'bg-white py-1 px-4 rounded-2xl' : ''}`}
               onClick={(e) => {
                 e.preventDefault();
                 navigate('/portfolio');
@@ -115,7 +115,7 @@ const Header = () => {
             // api de whats con +51 923 416 407
             href="https://api.whatsapp.com/send?phone=51923416407&text=Hola%20Ktalweb,%20me%20gustaría%20saber%20más%20sobre%20sus%20servicios."
             target='_blank'
-            className="hidden md:flex  px-6 py-2 text-primary-purple-100 font-semibold rounded-full hover:bg-primary-purple-100 hover:text-white border border-primary-purple-100"
+            className="hidden md:flex font-nunito px-6 py-2 text-primary-purple-100 font-medium rounded-full hover:bg-primary-purple-100 hover:text-white border border-primary-purple-100"
             aria-label="Contact Us"
           >
             Contáctanos
@@ -136,7 +136,7 @@ const Header = () => {
             <nav className="flex flex-col items-center py-4 mt-10">
               <a
                 href="/"
-                className={`text-xl text-primary-purple-100 font-semibold mt-2 ${selected === '/' ? 'bg-white py-1 px-4 rounded-2xl' : ''}`}
+                className={`text-xl font-nunito text-primary-purple-100 font-medium mt-2 ${selected === '/' ? 'bg-white py-1 px-4 rounded-2xl' : ''}`}
                 onClick={(e) => {
                   e.preventDefault();
                   navigate('/');
@@ -147,7 +147,7 @@ const Header = () => {
 
               <a
                 href="/portfolio"
-                className={`text-xl text-primary-purple-100 font-semibold mt-2 ${selected === '/portfolio' ? 'bg-white py-1 px-4 rounded-2xl' : ''}`}
+                className={`text-xl font-nunito text-primary-purple-100 font-medium mt-2 ${selected === '/portfolio' ? 'bg-white py-1 px-4 rounded-2xl' : ''}`}
                 onClick={(e) => {
                   e.preventDefault();
                   navigate('/portfolio');
@@ -164,7 +164,7 @@ const Header = () => {
                 // ahora con el mensaje "Hola ktalweb👋. Vi tu página web y me gustaría saber más sobre sus servicios. ¿Me podrían ayudar, por favor?"
                 href="https://api.whatsapp.com/send?phone=51923416407&text=Hola%20ktalweb👋.%20Vi%20tu%20página%20web%20y%20me%20gustaría%20saber%20más%20sobre%20sus%20servicios.%20¿Me%20podrían%20ayudar,%C2%A0por%C2%A0favor?"
                 target='_blank'
-                className="px-6 py-2 text-primary-purple-100 font-semibold rounded-full hover:bg-primary-purple-100 hover:text-white border border-primary-purple-100"
+                className="font-nunito px-6 py-2 text-primary-purple-100 font-medium rounded-full hover:bg-primary-purple-100 hover:text-white border border-primary-purple-100"
                 aria-label="Contact Us"
               >
                 Contáctanos

@@ -55,9 +55,9 @@ const PortfolioCarousel: React.FC<Props> = ({ cases }) => {
             {/* Card principal */}
             <div className="bg-white rounded-xl shadow p-6 md:p-10 w-full max-w-5xl 2xl:max-w-6xl flex flex-col md:flex-row gap-8 items-center">
                 <div className="flex-1">
-                    <p className="text-gray-700 mb-4">{current.description}</p>
-                    <h2 className="font-bold text-lg text-black mb-2">¿Cómo lo logramos?</h2>
-                    <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                    <p className="text-gray-700 mb-4 font-nunito">{current.description}</p>
+                    <h2 className="font-bold text-lg text-black mb-2 font-nunito">¿Cómo lo logramos?</h2>
+                    <ul className="list-disc pl-5 space-y-2 text-gray-700 font-nunito">
                         {current.how.map((item, idx) => (
                             <li key={idx}>{item}</li>
                         ))}

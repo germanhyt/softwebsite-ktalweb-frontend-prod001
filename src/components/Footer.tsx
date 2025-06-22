@@ -64,7 +64,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div className="text-center text-black text-sm mt-2">
+            <div className="font-nunito text-center text-black text-sm mt-2">
                 Copyright © {new Date().getFullYear()} Ktalweb Peru.
             </div>
         </footer>
