@@ -2,6 +2,14 @@ export const defaultSEO = {
     title: 'Ktalweb - Comienza a digitalizar tu negocio',
     description: 'Ktalweb es la solución para contruir tu página web profesional, rápida y optimizada para SEO. Ofrecemos diseño web personalizado, tiendas virtuales y landing pages que convierten. ¡Digitaliza tu negocio hoy mismo!',
     keywords: [
+        "ktalweb",
+        "ktalweb.pe",
+        "ktalweb.com.pe",
+        "ktalweb Lima",
+        "ktalweb Perú",
+        "Diseño web profesional",
+        "Desarrollo web a medida",
+
         // Diseño y desarrollo general
         "Diseño de landing page profesional",
         "Diseño web responsive para negocios",
@@ -64,13 +72,13 @@ export const defaultSEO = {
     author: 'Ktalweb',
     // ...otras configuraciones SEO...
     ogType: 'website',
-    ogImage: 'https://ktalweb.pe/logo.webp',
-    ogUrl: 'https://innovabcp2025.pe',
+    ogImage: 'https://ktalweb.com.pe/logo.webp',
+    ogUrl: 'https://ktalweb.com.pe',
     twitterCard: 'summary_large_image',
     twitterSite: '@ktalweb',
     twitterCreator: '@ktalweb',
-    twitterImage: 'https://ktalweb.pe/logo.webp',
+    twitterImage: 'https://ktalweb.com.pe/logo.webp',
 
-    canonicalUrl: 'https://ktalweb.pe',
+    canonicalUrl: 'https://ktalweb.com.pe',
     robots: 'index, follow',
 };
