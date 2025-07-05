@@ -1,0 +1,228 @@
+---
+import logoZukarZen from "@/assets/images/logo_zukarzen.webp?url";
+import logoLaboratoria from "@/assets/images/logo_laboratoria.webp?url";
+import logoBCP from "@/assets/images/logo_bcp.webp?url";
+import logoOffroad from "@/assets/images/logo_offroadperu.webp?url";
+import logoLVEnergy from "@/assets/images/logo_lvenergy.webp?url";
+import logoMcKinsey from "@/assets/images/logo_mckinsey.webp?url";
+
+const logos = [
+  { src: logoZukarZen, alt: "Zukar Zen", id: 1 },
+  { src: logoLaboratoria, alt: "Laboratoria", id: 2 },
+  { src: logoBCP, alt: "BCP", id: 3 },
+  { src: logoOffroad, alt: "Off Road Peru", id: 4 },
+  { src: logoLVEnergy, alt: "L&V Energy", id: 5 },
+  { src: logoMcKinsey, alt: "McKinsey & Company", id: 6 },
+];
+---
+
+<!-- Empresas que confían en nosotros -->
+<section
+  class="py-12 lg:py-16 bg-white"
+  aria-label="Empresas que confían en nosotros"
+>
+  <div class="container mx-auto">
+    <h2
+      class="text-center font-nunito text-3xl md:text-4xl font-medium text-black mb-8 lg:mb-12 animate-fade-in"
+    >
+      Estos clientes están invirtiendo en
+      <span class="text-primary-purple-100">potenciar</span>
+      <br />
+      <span class="text-primary-purple-100">
+        su presencia digital con nosotros
+      </span>
+    </h2>
+  </div>
+
+  <div class="3xl:container mx-auto overflow-hidden relative w-full">
+    <div
+      class="carousel-track flex items-center gap-12 animate-carousel min-w-max"
+    >
+      {
+        logos.map((logo, i) => (
+          <div class="logo-item" data-index={i}>
+            <img
+              src={logo.src}
+              alt={logo.alt}
+              class="h-14 inline-block w-fit transition-transform duration-200 hover:scale-105"
+              loading="lazy"
+              width="auto"
+              aria-hidden="true"
+            />
+          </div>
+        ))
+      }
+
+      {/* Mapear los logos duplicados para el efecto infinito */}
+      {
+        logos.map((logo, i) => (
+          <div class="logo-item" data-index={i + logos.length}>
+            <img
+              src={logo.src}
+              alt={logo.alt}
+              class="h-14 inline-block w-fit transition-transform duration-200 hover:scale-105"
+              loading="lazy"
+              width="auto"
+              aria-hidden="true"
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  /* Animación de entrada del título - Optimizada */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  /* Animación del carrusel optimizada */
+  @keyframes carousel {
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0.36%);
+    }
+  }
+
+  .animate-carousel {
+    animation: carousel 10s linear infinite;
+    animation-delay: 1s;
+    /* Optimizaciones de rendimiento */
+    will-change: transform;
+    transform: translateZ(0); /* Force hardware acceleration */
+  }
+
+  /* Animación secuencial optimizada */
+  @keyframes logoAppear {
+    from {
+      opacity: 0;
+      transform: translateY(20px) scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .logo-item {
+    opacity: 0;
+    animation: logoAppear 0.4s ease-out forwards;
+    /* Optimizaciones de rendimiento */
+    will-change: transform, opacity;
+    transform: translateZ(0);
+  }
+
+  /* Delays secuenciales optimizados */
+  .logo-item:nth-child(1) { animation-delay: 0.2s; }
+  .logo-item:nth-child(2) { animation-delay: 0.3s; }
+  .logo-item:nth-child(3) { animation-delay: 0.4s; }
+  .logo-item:nth-child(4) { animation-delay: 0.5s; }
+  .logo-item:nth-child(5) { animation-delay: 0.6s; }
+  .logo-item:nth-child(6) { animation-delay: 0.7s; }
+  .logo-item:nth-child(7) { animation-delay: 0.8s; }
+  .logo-item:nth-child(8) { animation-delay: 0.9s; }
+  .logo-item:nth-child(9) { animation-delay: 1.0s; }
+  .logo-item:nth-child(10) { animation-delay: 1.1s; }
+  .logo-item:nth-child(11) { animation-delay: 1.2s; }
+  .logo-item:nth-child(12) { animation-delay: 1.3s; }
+
+  /* Optimización para móviles y rendimiento */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-carousel {
+      animation: none;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .logo-item {
+      animation: none;
+      opacity: 1;
+    }
+    
+    .animate-fade-in {
+      animation: none;
+      opacity: 1;
+    }
+  }
+
+  /* Optimización para dispositivos de bajo rendimiento */
+  @media (max-width: 768px) {
+    .logo-item {
+      animation-duration: 0.3s; /* Animaciones más rápidas en móvil */
+    }
+    
+    .animate-carousel {
+      animation-duration: 8s; /* Carrusel más lento en móvil */
+    }
+  }
+
+  /* Efectos hover optimizados */
+  .logo-item img:hover {
+    transform: scale(1.05);
+  }
+
+  /* Transiciones optimizadas */
+  .logo-item img {
+    transition: transform 0.2s ease-out;
+  }
+</style>
+
+<script>
+  // JavaScript optimizado para rendimiento
+  document.addEventListener("DOMContentLoaded", function () {
+    // Verificar si el dispositivo tiene buen rendimiento
+    const isLowPerformance = navigator.hardwareConcurrency <= 4 || 
+                           /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    // Solo usar Intersection Observer si es necesario
+    if (!isLowPerformance) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              (entry.target as HTMLElement).style.animationPlayState = "running";
+            }
+          });
+        },
+        {
+          threshold: 0.1,
+          rootMargin: "50px"
+        }
+      );
+
+      // Observar solo los logos visibles
+      const logoItems = document.querySelectorAll(".logo-item");
+      logoItems.forEach((item) => {
+        observer.observe(item);
+      });
+    }
+
+    // Control optimizado del carrusel
+    const carousel = document.querySelector(".animate-carousel") as HTMLElement;
+    if (carousel) {
+      // Pausar inicialmente
+      carousel.style.animationPlayState = "paused";
+      
+      // Reanudar después de un tiempo optimizado
+      const resumeDelay = isLowPerformance ? 2000 : 1200;
+      setTimeout(() => {
+        carousel.style.animationPlayState = "running";
+      }, resumeDelay);
+    }
+  });
+</script>
