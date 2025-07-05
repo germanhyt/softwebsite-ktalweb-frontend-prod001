@@ -4,104 +4,177 @@ import proceso2 from "@/assets/images/proceso_2.webp?url";
 import proceso3 from "@/assets/images/proceso_3.webp?url";
 import proceso4 from "@/assets/images/proceso_4.webp?url";
 
-const items = [
+const steps = [
   {
-    id: 1,
+    img: proceso1,
     title: "Punto de partida",
-    description:
-      "Estamos listos para ayudarte a crear y gestionar todo lo que necesites para crear tu web.",
+    desc: "Estamos listos para ayudarte a crear y gestionar todo lo que necesites para crear tu web.",
   },
   {
-    id: 2,
+    img: proceso2,
     title: "Feedback y modificaciones",
-    description:
-      "Te mostramos avances constantes para asegurar que todo vaya según lo planeado.",
+    desc: "Te mostramos avances constantes para asegurar que todo vaya según lo planeado.",
   },
   {
-    id: 3,
+    img: proceso3,
     title: "Pasos finales",
-    description:
-      "Antes del lanzamiento, podrás testear tu web en línea para asegurarte de que todo esté 100% listo.",
+    desc: "Antes del lanzamiento, podrás testear tu web en línea para asegurarte de que todo esté 100% listo.",
   },
   {
-    id: 4,
+    img: proceso4,
     title: "Lanzamiento y publicación",
-    description:
-      "Lanzamos tu web y la monitoreamos para que siempre esté 100% operativa.",
+    desc: "Lanzamos tu web y la monitoreamos para que siempre esté 100% operativa.",
   },
 ];
 ---
 
-<!-- Proceso de trabajo -->
-<section class="py-12 lg:py-16 container mx-auto">
-  <h2
-    class="text-center font-nunito text-3xl md:text-4xl font-medium text-black mb-14"
-  >
-    Estamos para asesorarte <span class="text-primary-purple-100"
-      >en todo el</span
+<section class="py-10">
+  <h2 class="text-center text-2xl md:text-3xl font-nunito font-medium mb-8">
+    Estamos para asesorarte <span class="degradado-c3 font-bold"
+      >en todo el proceso</span
     >
-    <br />
-    <span class="text-primary-purple-100">proceso</span>
   </h2>
-  <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-    <div class="flex flex-col relative">
-      <div class="flex items-center w-full mb-4 px-4">
-        <img src={proceso1} alt="Solicitar" class="h-10 w-10 mx-auto mb-2" />
-        <span class="hidden md:block flex-1 h-[2px] bg-gray-200 ml-2"></span>
-      </div>
-      <h3
-        class="text-center lg:text-start font-nunito font-bold text-lg 3xl:text-xl text-black mb-2"
-      >
-        Punto de partida
-      </h3>
-      <p class="font-nunito text-gray-700 text-base">
-        Estamos listos para ayudarte a crear y gestionar todo lo que necesites
-        para crear tu web.
-      </p>
+  <div class="flex flex-col items-center">
+    <div class="flex justify-center gap-8 mb-8">
+      {
+        steps.map((step, idx) => (
+          <button
+            class={`workprocess-icon-btn flex flex-col items-center justify-center transition-all duration-300`}
+            data-idx={idx}
+            aria-label={step.title}
+            tabindex="0"
+          >
+            <span class="workprocess-icon-circle">
+              <img src={step.img} alt="" class="w-12 h-12 object-contain" />
+            </span>
+          </button>
+        ))
+      }
     </div>
-    <div class="flex flex-col relative">
-      <div class="flex items-center w-full mb-4 px-4">
-        <img src={proceso2} alt="Solicitar" class="h-10 w-10 mx-auto mb-2" />
-        <span class="hidden md:block flex-1 h-[2px] bg-gray-200 ml-2"></span>
-      </div>
-      <h3
-        class="text-center lg:text-start font-nunito font-bold text-lg 3xl:text-xl text-black mb-2"
-      >
-        Feedback y modificaciones
-      </h3>
-      <p class="font-nunito text-gray-700 text-base">
-        Te mostramos avances constantes para asegurar que todo vaya según lo
-        planeado.
-      </p>
-    </div>
-    <div class="flex flex-col relative">
-      <div class="flex items-center w-full mb-4 px-4">
-        <img src={proceso3} alt="Solicitar" class="h-10 w-10 mx-auto mb-2" />
-        <span class="hidden md:block flex-1 h-[2px] bg-gray-200 ml-2"></span>
-      </div>
-      <h3
-        class="text-center lg:text-start font-nunito font-bold text-lg 3xl:text-xl text-black mb-2"
-      >
-        Pasos finales
-      </h3>
-      <p class="font-nunito text-gray-700 text-base">
-        Antes del lanzamiento, podrás testear tu web en línea para asegurarte de
-        que todo esté 100% listo.
-      </p>
-    </div>
-    <div class="flex flex-col relative">
-      <div class="flex items-center w-full mb-4 px-4">
-        <img src={proceso4} alt="Solicitar" class="h-10 w-10 mx-auto mb-2" />
-        <span class="hidden md:block flex-1 h-[2px] bg-gray-200 ml-2"></span>
-      </div>
-      <h3
-        class="text-center lg:text-start font-nunito font-bold text-lg 3xl:text-xl text-black mb-2"
-      >
-        Lanzamiento y publicación
-      </h3>
-      <p class="font-nunito text-gray-700 text-base">
-        Lanzamos tu web y la monitoreamos para que siempre esté 100% operativa.
-      </p>
+    <div id="workprocess-content" class="flex justify-center w-full">
+      {
+        steps.map((step, idx) => (
+          <div
+            class="workprocess-content-panel mx-auto bg-[#f8f6ff] rounded-4xl px-6 py-8 max-w-md w-full text-center transition-all duration-500 absolute"
+            data-idx={idx}
+            style="left: 50%; transform: translateX(-50%);"
+          >
+            <h3 class="text-primary-purple-100 font-bold text-xl mb-2 font-nunito tracking-wide">
+              {step.title}
+            </h3>
+            <p class="text-black font-nunito">{step.desc}</p>
+          </div>
+        ))
+      }
     </div>
   </div>
 </section>
+
+<style>
+  .workprocess-icon-btn {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0;
+    position: relative;
+  }
+  .workprocess-icon-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background: #ede7fa;
+    transition:
+      box-shadow 0.3s,
+      background 0.3s;
+    box-shadow: 0 2px 8px 0 rgba(123, 63, 242, 0.08);
+    padding: 10px;
+  }
+  .workprocess-icon-btn.active .workprocess-icon-circle,
+  .workprocess-icon-circle.active {
+    background: #d1c4f7;
+    box-shadow: 0 4px 16px 0 rgba(123, 63, 242, 0.15);
+  }
+
+  #workprocess-content {
+    position: relative;
+    min-height: 180px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .workprocess-content-panel {
+    display: none;
+    opacity: 0;
+    transform: translate(-50%, 20px) scale(0.98);
+    transition:
+      opacity 0.4s,
+      transform 0.4s;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: 1;
+  }
+  .workprocess-content-panel.active {
+    display: block;
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+    z-index: 2;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const icons = document.querySelectorAll(".workprocess-icon-btn");
+    const panels = document.querySelectorAll(".workprocess-content-panel");
+    let active = 0;
+    let timer: any = null;
+    const INTERVAL = 4000; // 4 segundos
+
+    function activate(idx: number) {
+      icons.forEach((btn, i) => {
+        btn.classList.toggle("active", i === idx);
+        const circle = btn.querySelector(".workprocess-icon-circle");
+        if (circle) {
+          circle.classList.toggle("active", i === idx);
+        }
+      });
+      panels.forEach((panel, i) => {
+        panel.classList.toggle("active", i === idx);
+      });
+      active = idx;
+    }
+
+    function next() {
+      let nextIdx = (active + 1) % icons.length;
+      activate(nextIdx);
+    }
+
+    function startAuto() {
+      if (timer) clearInterval(timer);
+      timer = setInterval(next, INTERVAL);
+    }
+
+    // Inicial
+    activate(0);
+    startAuto();
+
+    icons.forEach((btn, idx) => {
+      btn.addEventListener("click", () => {
+        activate(idx);
+        startAuto(); // reinicia el temporizador al hacer click
+      });
+      btn.addEventListener("keydown", (e: any) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          activate(idx);
+          startAuto();
+        }
+      });
+    });
+  });
+</script>

@@ -1,0 +1,92 @@
+---
+import Soluciones1 from "@/assets/images/soluciones_1.webp?url";
+import Soluciones2 from "@/assets/images/soluciones_2.webp?url";
+import Soluciones3 from "@/assets/images/soluciones_3.webp?url";
+
+const solutions = [
+  {
+    icon: Soluciones1,
+    title: "Landing Page",
+    desc: "Página enfocada a la promoción de un objetivo, ya sea desde completar un formulario, descargar contenido o lo que necesites para tu proyecto o negocio.",
+    link: "https://api.whatsapp.com/send?phone=51923416407&text=Hola!%20Estoy%20interesado%20en%20cotizar%20una%20landing%20page%20para%20mi%20negocio%20🚀.%20Podrían%20brindarme%20más%20información por favor.",
+  },
+  {
+    icon: Soluciones2,
+    title: "Tienda virtual",
+    desc: "Ponte en contacto con tus clientes potenciales y genera más ventas con una web que te permita ofrecer tus productos en todo momento.",
+    link: "https://api.whatsapp.com/send?phone=51923416407&text=¡Hola!%20Quiero%20una%20tienda%20virtual%20🛒%20para%20vender%20mis%20productos.%20Podrían%20brindarme%20más%20información por favor.",
+  },
+  {
+    icon: Soluciones3,
+    title: "Catálogo digital",
+    desc: "La solución perfecta para los que requieren mostrar una cantidad mínima de productos y recién están emprendiendo con su e commerce.",
+    link: "https://api.whatsapp.com/send?phone=51923416407&text=¡Hola!,%20me%20interesa%20un%20catálogo%20digital%20📘%20para%20mostrar%20mis%20productos%20o%20servicios.%20Podrían%20brindarme%20más%20información por favor.",
+  },
+];
+---
+
+<!-- Soluciones -->
+<section class="py-12 lg:pb-20 lg:pt-16 container mx-auto">
+  <h2
+    class="text-center font-nunito text-3xl md:text-4xl font-medium text-black mb-12 lg:mb-16"
+  >
+    ¿Cuál de nuestras soluciones va mejor con <span
+      class="degradado-c3 font-semibold">tu negocio?</span
+    >
+  </h2>
+  <div class="flex flex-col lg:flex-row gap-6 justify-center items-stretch">
+    {
+      solutions.map((sol) => (
+        <div class="solution-card group flex-1 bg-white rounded-2xl shadow-md p-7 flex flex-col items-start cursor-pointer">
+          <div class="rounded-full bg-[#ede7fa] p-4 mb-4 flex items-center justify-center">
+            <img src={sol.icon} alt="" class="w-10 h-10 object-contain" />
+          </div>
+          <h3 class="font-nunito font-bold text-lg mb-2">{sol.title}</h3>
+          <p class="font-nunito text-black text-sm mb-6">{sol.desc}</p>
+          <a target="_blank" href={sol.link} class="ml-auto mt-auto">
+            <button class="bg-primary-purple-100 text-white font-nunito rounded-full px-6 py-2 text-sm font-semibold shadow transition-colors cursor-pointer ">
+              Cotizar ahora
+            </button>
+          </a>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style >
+  .bg-primary-purple-100 {
+    background: #7b3ff2;
+  }
+  .hover\:bg-primary-purple-200:hover {
+    background: #5f8cff;
+  }
+  .font-nunito {
+    font-family: "Nunito", sans-serif;
+  }
+  .solution-card {
+    border: 1.5px solid #f0eafd;
+    min-width: 260px;
+    min-height: 340px;
+    box-sizing: border-box;
+    transition:
+      box-shadow 0.3s,
+      transform 0.3s;
+  }
+  .solution-card:hover {
+    box-shadow: 0 8px 32px 0 rgba(123, 63, 242, 0.1);
+    transform: scale(1.05);
+    z-index: 2;
+  }
+  .solution-card img {
+    display: block;
+  }
+  @media (max-width: 900px) {
+    .solution-card {
+      min-width: 220px;
+    }
+    .flex-col.md\:flex-row {
+      flex-direction: column !important;
+    }
+  }
+</style>
