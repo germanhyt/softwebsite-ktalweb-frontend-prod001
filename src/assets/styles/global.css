@@ -2,9 +2,19 @@
 
 @font-face {
   font-family: "Nunito";
-  src: url("https://fonts.gstatic.com/s/nunito/v16/XRXV3I6Li01BKofINeaB.woff2") format("woff2");
+  src: url("https://fonts.gstatic.com/s/nunito/v16/XRXV3I6Li01BKofINeaB.woff2")
+    format("woff2");
 }
 
 /* existing imports */
 @import "tailwindcss";
 @config "../../../tailwind.config.ts";
+
+/* Style components */
+
+.degradado-c3 {
+  background: linear-gradient(90deg, #5919c1 0%, #7577ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
