@@ -33,7 +33,7 @@ const Header = () => {
               aria-label="Main Navigation"
             >
               <a href="#soluciones" className=" font-medium font-nunito hover:text-primary-purple-100 transition-colors" onClick={e => { e.preventDefault(); document.getElementById('soluciones')?.scrollIntoView({ behavior: 'smooth' }); }}>Soluciones</a>
-              <a href="#bochure" className=" font-medium font-nunito hover:text-primary-purple-100 transition-colors" onClick={e => { e.preventDefault(); document.getElementById('bochure')?.scrollIntoView({ behavior: 'smooth' }); }}>Descargar Brochure</a>
+              <a href="#bochure" className=" font-medium font-nunito hover:text-primary-purple-100 transition-colors" onClick={e => { e.preventDefault(); document.getElementById('bochure')?.scrollIntoView({ behavior: 'smooth' }); }}>Brochure</a>
               <a href="#casos" className=" font-medium font-nunito hover:text-primary-purple-100 transition-colors" onClick={e => { e.preventDefault(); document.getElementById('casos')?.scrollIntoView({ behavior: 'smooth' }); }}>Casos de éxito</a>
               {/* <a href="#clientes" className=" font-medium font-nunito hover:text-primary-purple-100 transition-colors" onClick={e => { e.preventDefault(); document.getElementById('clientes')?.scrollIntoView({ behavior: 'smooth' }); }}>Soluciones</a>
               <a href="#caracteristicas" className=" font-medium font-nunito hover:text-primary-purple-100 transition-colors" onClick={e => { e.preventDefault(); document.getElementById('caracteristicas')?.scrollIntoView({ behavior: 'smooth' }); }}>Características</a>
@@ -88,7 +88,7 @@ const Header = () => {
       {showMenu && (
         <div className="mt-[4rem] fixed top-0 left-0 w-full h-full bg-white z-50 flex gap-4 flex-col items-center pt-24 animate-fade-in">
           <a href="#soluciones" className="text-xl font-nunito text-primary-purple-100 font-medium mt-2" onClick={e => { e.preventDefault(); document.getElementById('soluciones')?.scrollIntoView({ behavior: 'smooth' }); setShowMenu(false); }}>Soluciones</a>
-          <a href="#bochure" className="text-xl font-nunito text-primary-purple-100 font-medium mt-2" onClick={e => { e.preventDefault(); document.getElementById('bochure')?.scrollIntoView({ behavior: 'smooth' }); setShowMenu(false); }}>Descargar Brochure</a>
+          <a href="#bochure" className="text-xl font-nunito text-primary-purple-100 font-medium mt-2" onClick={e => { e.preventDefault(); document.getElementById('bochure')?.scrollIntoView({ behavior: 'smooth' }); setShowMenu(false); }}>Brochure</a>
           <a href="#casos" className="text-xl font-nunito text-primary-purple-100 font-medium mt-2" onClick={e => { e.preventDefault(); document.getElementById('casos')?.scrollIntoView({ behavior: 'smooth' }); setShowMenu(false); }}>Casos de éxito</a>
           {/* <a href="#clientes" className="text-xl font-nunito text-primary-purple-100 font-medium mt-2" onClick={e => { e.preventDefault(); document.getElementById('clientes')?.scrollIntoView({ behavior: 'smooth' }); setShowMenu(false); }}>Soluciones</a>
           <a href="#caracteristicas" className="text-xl font-nunito text-primary-purple-100 font-medium mt-2" onClick={e => { e.preventDefault(); document.getElementById('caracteristicas')?.scrollIntoView({ behavior: 'smooth' }); setShowMenu(false); }}>Características</a>
