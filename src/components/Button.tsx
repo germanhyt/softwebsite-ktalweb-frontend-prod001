@@ -14,9 +14,9 @@ const Button = ({ text, Icon, styles, textSizes, typeButton, isLoading }: Button
       disabled={isLoading}
       className={`${styles
         ? styles
-        : "flex gap-2 items-center justify-center bg-black text-white rounded-3xl py-1 px-4"
+        : "flex gap-2 items-center justify-center bg-black text-white rounded-3xl py-1 px-4 "
         }
-      sm:hover:bg-[#A2A2A2] border sm:hover:border-black    
+      sm:hover:bg-[#A2A2A2] hover:scale-105 transition-all duration-300 
       `}
     >
       <span

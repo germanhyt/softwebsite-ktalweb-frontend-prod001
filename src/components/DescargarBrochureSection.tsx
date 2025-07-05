@@ -6,7 +6,7 @@ import { MdOutlineFileDownload } from "react-icons/md";
 const DescargarBrochureSection = () => {
     return (
         <>
-            <section className="pt-12 lg:pt-16 pb-24 container mx-auto bg-white">
+            <section className="py-[6rem]  container mx-auto bg-white">
                 <h2
                     className="text-center font-nunito text-[1.5rem] md:text-3xl font-medium text-black mb-8"
                 >

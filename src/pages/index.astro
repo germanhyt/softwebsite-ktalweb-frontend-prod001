@@ -135,13 +135,19 @@ const cases = [
     <Workprocess />
   </section>
 
-  <Solutions />
+  <section id="soluciones">
+    <Solutions />
+  </section>
 
   <SolicitarCTABannerSection client:load />
 
-  <PortfolioCarousel client:load cases={cases} />
+  <section id="casos">
+    <PortfolioCarousel client:load cases={cases} />
+  </section>
 
-  <DescargarBrochureSection client:load />
+  <section id="bochure">
+    <DescargarBrochureSection client:load />
+  </section>
 
   <Footer client:load />
 </Layout>

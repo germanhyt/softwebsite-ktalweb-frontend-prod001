@@ -38,8 +38,6 @@ const HeroBanner = () => {
                         ¡Comienza hoy a <br /> digitalizar tu negocio!
                         <br className='flex' />
                         <div className='relative inline-block mt-3'>
-
-
                             <div
                                 className="z-0 absolute inset-0 bg-gradient-to-r from-[#5919C1] to-[#3B206E] rounded-xl"
                                 style={{ filter: "blur(16px)" }}
@@ -58,7 +56,7 @@ const HeroBanner = () => {
                         className="flex items-center gap-2  mt-8 px-6 py-2 bg-primary-purple-100  rounded-full transition duration-300"
                     >
                         <span className='font-nunito text-white text-lg font-medium'>
-                            Cotizar ahora
+                            Conoce nuestras soluciones
                         </span>
                         <VscArrowCircleRight className='text-4xl' />
                     </a>

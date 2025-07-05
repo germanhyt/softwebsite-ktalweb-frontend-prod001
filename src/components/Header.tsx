@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Logo from '../assets/logo.webp?url';
-import { motion } from 'framer-motion';
 
 
 const Header = () => {
@@ -28,14 +27,17 @@ const Header = () => {
             />
           </a>
           {/* Navigation -- sm screen */}
-          <div className='flex items-center gap-8'>
+          <div className='flex items-center gap-4'>
             <nav
               className="hidden md:flex items-center space-x-8"
               aria-label="Main Navigation"
             >
-              <a href="#clientes" className=" font-medium font-nunito hover:text-primary-purple-100 transition-colors" onClick={e => { e.preventDefault(); document.getElementById('clientes')?.scrollIntoView({ behavior: 'smooth' }); }}>Soluciones</a>
+              <a href="#soluciones" className=" font-medium font-nunito hover:text-primary-purple-100 transition-colors" onClick={e => { e.preventDefault(); document.getElementById('soluciones')?.scrollIntoView({ behavior: 'smooth' }); }}>Soluciones</a>
+              <a href="#bochure" className=" font-medium font-nunito hover:text-primary-purple-100 transition-colors" onClick={e => { e.preventDefault(); document.getElementById('bochure')?.scrollIntoView({ behavior: 'smooth' }); }}>Descargar Brochure</a>
+              <a href="#casos" className=" font-medium font-nunito hover:text-primary-purple-100 transition-colors" onClick={e => { e.preventDefault(); document.getElementById('casos')?.scrollIntoView({ behavior: 'smooth' }); }}>Casos de éxito</a>
+              {/* <a href="#clientes" className=" font-medium font-nunito hover:text-primary-purple-100 transition-colors" onClick={e => { e.preventDefault(); document.getElementById('clientes')?.scrollIntoView({ behavior: 'smooth' }); }}>Soluciones</a>
               <a href="#caracteristicas" className=" font-medium font-nunito hover:text-primary-purple-100 transition-colors" onClick={e => { e.preventDefault(); document.getElementById('caracteristicas')?.scrollIntoView({ behavior: 'smooth' }); }}>Características</a>
-              <a href="#proceso" className=" font-medium font-nunito hover:text-primary-purple-100 transition-colors" onClick={e => { e.preventDefault(); document.getElementById('proceso')?.scrollIntoView({ behavior: 'smooth' }); }}>Proceso</a>
+              <a href="#proceso" className=" font-medium font-nunito hover:text-primary-purple-100 transition-colors" onClick={e => { e.preventDefault(); document.getElementById('proceso')?.scrollIntoView({ behavior: 'smooth' }); }}>Proceso</a> */}
             </nav>
             {/* CTA Button */}
             <a
@@ -85,9 +87,12 @@ const Header = () => {
       {/* Mobile Menu */}
       {showMenu && (
         <div className="mt-[4rem] fixed top-0 left-0 w-full h-full bg-white z-50 flex flex-col items-center pt-24 animate-fade-in">
-          <a href="#clientes" className="text-xl font-nunito text-primary-purple-100 font-medium mt-2" onClick={e => { e.preventDefault(); document.getElementById('clientes')?.scrollIntoView({ behavior: 'smooth' }); setShowMenu(false); }}>Soluciones</a>
+          <a href="#soluciones" className="text-xl font-nunito text-primary-purple-100 font-medium mt-2" onClick={e => { e.preventDefault(); document.getElementById('soluciones')?.scrollIntoView({ behavior: 'smooth' }); setShowMenu(false); }}>Soluciones</a>
+          <a href="#bochure" className="text-xl font-nunito text-primary-purple-100 font-medium mt-2" onClick={e => { e.preventDefault(); document.getElementById('bochure')?.scrollIntoView({ behavior: 'smooth' }); setShowMenu(false); }}>Descargar Brochure</a>
+          <a href="#casos" className="text-xl font-nunito text-primary-purple-100 font-medium mt-2" onClick={e => { e.preventDefault(); document.getElementById('casos')?.scrollIntoView({ behavior: 'smooth' }); setShowMenu(false); }}>Casos de éxito</a>
+          {/* <a href="#clientes" className="text-xl font-nunito text-primary-purple-100 font-medium mt-2" onClick={e => { e.preventDefault(); document.getElementById('clientes')?.scrollIntoView({ behavior: 'smooth' }); setShowMenu(false); }}>Soluciones</a>
           <a href="#caracteristicas" className="text-xl font-nunito text-primary-purple-100 font-medium mt-2" onClick={e => { e.preventDefault(); document.getElementById('caracteristicas')?.scrollIntoView({ behavior: 'smooth' }); setShowMenu(false); }}>Características</a>
-          <a href="#proceso" className="text-xl font-nunito text-primary-purple-100 font-medium mt-2" onClick={e => { e.preventDefault(); document.getElementById('proceso')?.scrollIntoView({ behavior: 'smooth' }); setShowMenu(false); }}>Proceso</a>
+          <a href="#proceso" className="text-xl font-nunito text-primary-purple-100 font-medium mt-2" onClick={e => { e.preventDefault(); document.getElementById('proceso')?.scrollIntoView({ behavior: 'smooth' }); setShowMenu(false); }}>Proceso</a> */}
           <a
             href="https://api.whatsapp.com/send?phone=51923416407&text=Hola%20Ktalweb,%20me%20gustaría%20cotizar%20una%20web."
             target="_blank"

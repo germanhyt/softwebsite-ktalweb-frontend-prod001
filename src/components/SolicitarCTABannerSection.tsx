@@ -11,7 +11,7 @@ const SolicitarCTABannerSection = () => {
     return (
         <>
             <section
-                className="px-5 sm:container mx-auto">
+                className="pt-[6rem] px-5 sm:container mx-auto">
                 <div className='lg:pl-10 lg:py-0 mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 rounded-xl overflow-hidden'
                     style={{
                         background: 'linear-gradient(90deg, #18003E 40%, #5919C1 90%)',
