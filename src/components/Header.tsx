@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <>
       <header className="bg-white shadow-md fixed top-0 left-0 w-full z-50 transition-all">
-        <div className="min-h-[4rem] container mx-auto flex items-center justify-between py-4">
+        <div className="min-h-[4rem] px-5 sm:container mx-auto flex items-center justify-between py-4">
           {/* Logo */}
           <a
             href="#"
