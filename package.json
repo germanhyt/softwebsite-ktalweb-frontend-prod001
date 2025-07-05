@@ -24,6 +24,7 @@
     "typescript": "^5.8.3"
   },
   "devDependencies": {
+    "@astrojs/partytown": "^2.1.4",
     "@astrojs/vercel": "^8.1.5",
     "@formspree/react": "^3.0.0",
     "@hookform/resolvers": "^5.1.1",

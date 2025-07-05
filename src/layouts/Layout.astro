@@ -47,10 +47,38 @@ const {
 
     <link rel="canonical" href={canonicalUrl} />
     <link rel="apple-touch-icon" href="/favicon.png" />
+
+    <!-- Google tag (gtag.js) -->
+    <!-- G-44PWZC0X4P -->
+    <!-- Google tag (gtag.js) -->
+    <script
+      type="text/partytown"
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-44PWZC0X4P "></script>
+    <script type="text/partytown">
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-44PWZC0X4P ");
+    </script>
+
+    <!-- GTM-PF87C8RQ -->
+    <script
+      type="text/partytown"
+      src="https://www.googletagmanager.com/gtag/js?id=GTM-PF87C8RQ"></script>
+    <script type="text/partytown">
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "GTM-PF87C8RQ");
+    </script>
   </head>
-  <body>
-    <slot />
-  </body>
 </html>
 
 <style>
