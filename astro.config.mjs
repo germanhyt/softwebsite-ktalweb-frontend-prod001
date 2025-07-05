@@ -7,7 +7,6 @@ import react from "@astrojs/react";
 
 import sitemap from "@astrojs/sitemap";
 
-import partytown from "@astrojs/partytown";
 
 // https://astro.build/config
 export default defineConfig({
@@ -19,7 +18,6 @@ export default defineConfig({
   },
 
   integrations: [
-    partytown(),
     react(),
     sitemap({
       // filter: (page) => !page.includes("/admin/"), // Excluir
