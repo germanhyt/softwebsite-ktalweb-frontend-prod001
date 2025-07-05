@@ -1,0 +1,107 @@
+---
+import proceso1 from "@/assets/images/proceso_1.webp?url";
+import proceso2 from "@/assets/images/proceso_2.webp?url";
+import proceso3 from "@/assets/images/proceso_3.webp?url";
+import proceso4 from "@/assets/images/proceso_4.webp?url";
+
+const items = [
+  {
+    id: 1,
+    title: "Punto de partida",
+    description:
+      "Estamos listos para ayudarte a crear y gestionar todo lo que necesites para crear tu web.",
+  },
+  {
+    id: 2,
+    title: "Feedback y modificaciones",
+    description:
+      "Te mostramos avances constantes para asegurar que todo vaya según lo planeado.",
+  },
+  {
+    id: 3,
+    title: "Pasos finales",
+    description:
+      "Antes del lanzamiento, podrás testear tu web en línea para asegurarte de que todo esté 100% listo.",
+  },
+  {
+    id: 4,
+    title: "Lanzamiento y publicación",
+    description:
+      "Lanzamos tu web y la monitoreamos para que siempre esté 100% operativa.",
+  },
+];
+---
+
+<!-- Proceso de trabajo -->
+<section class="py-12 lg:py-16 container mx-auto">
+  <h2
+    class="text-center font-nunito text-3xl md:text-4xl font-medium text-black mb-14"
+  >
+    Estamos para asesorarte <span class="text-primary-purple-100"
+      >en todo el</span
+    >
+    <br />
+    <span class="text-primary-purple-100">proceso</span>
+  </h2>
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <div class="flex flex-col relative">
+      <div class="flex items-center w-full mb-4 px-4">
+        <img src={proceso1} alt="Solicitar" class="h-10 w-10 mx-auto mb-2" />
+        <span class="hidden md:block flex-1 h-[2px] bg-gray-200 ml-2"></span>
+      </div>
+      <h3
+        class="text-center lg:text-start font-nunito font-bold text-lg 3xl:text-xl text-black mb-2"
+      >
+        Punto de partida
+      </h3>
+      <p class="font-nunito text-gray-700 text-base">
+        Estamos listos para ayudarte a crear y gestionar todo lo que necesites
+        para crear tu web.
+      </p>
+    </div>
+    <div class="flex flex-col relative">
+      <div class="flex items-center w-full mb-4 px-4">
+        <img src={proceso2} alt="Solicitar" class="h-10 w-10 mx-auto mb-2" />
+        <span class="hidden md:block flex-1 h-[2px] bg-gray-200 ml-2"></span>
+      </div>
+      <h3
+        class="text-center lg:text-start font-nunito font-bold text-lg 3xl:text-xl text-black mb-2"
+      >
+        Feedback y modificaciones
+      </h3>
+      <p class="font-nunito text-gray-700 text-base">
+        Te mostramos avances constantes para asegurar que todo vaya según lo
+        planeado.
+      </p>
+    </div>
+    <div class="flex flex-col relative">
+      <div class="flex items-center w-full mb-4 px-4">
+        <img src={proceso3} alt="Solicitar" class="h-10 w-10 mx-auto mb-2" />
+        <span class="hidden md:block flex-1 h-[2px] bg-gray-200 ml-2"></span>
+      </div>
+      <h3
+        class="text-center lg:text-start font-nunito font-bold text-lg 3xl:text-xl text-black mb-2"
+      >
+        Pasos finales
+      </h3>
+      <p class="font-nunito text-gray-700 text-base">
+        Antes del lanzamiento, podrás testear tu web en línea para asegurarte de
+        que todo esté 100% listo.
+      </p>
+    </div>
+    <div class="flex flex-col relative">
+      <div class="flex items-center w-full mb-4 px-4">
+        <img src={proceso4} alt="Solicitar" class="h-10 w-10 mx-auto mb-2" />
+        <span class="hidden md:block flex-1 h-[2px] bg-gray-200 ml-2"></span>
+      </div>
+      <h3
+        class="text-center lg:text-start font-nunito font-bold text-lg 3xl:text-xl text-black mb-2"
+      >
+        Lanzamiento y publicación
+      </h3>
+      <p class="font-nunito text-gray-700 text-base">
+        Lanzamos tu web y la monitoreamos para que siempre esté 100% operativa.
+      </p>
+    </div>
+  </div>
+</section>
