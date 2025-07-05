@@ -11,14 +11,14 @@ const SolicitarCTABannerSection = () => {
     return (
         <>
             <section
-                className="container mx-auto">
+                className="px-5 sm:container mx-auto">
                 <div className='lg:pl-10 lg:py-0 mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 rounded-xl overflow-hidden'
                     style={{
                         background: 'linear-gradient(90deg, #18003E 40%, #5919C1 90%)',
                         color: '#FFFFFF',
                     }}
                 >
-                    <div className="py-12 lg:pb-10 lg:w-[40%] max-w-lg 3xl:max-w-2xl text-start">
+                    <div className="py-12 lg:pb-10 lg:w-[40%] max-w-lg 3xl:max-w-2xl text-start px-5 md:px-0">
                         <h2 className="font-nunito text-2xl md:text-3xl xl:text-4xl font-bold mb-2">
                             ¿No estás satisfecho con los resultados de tu web actual?
                         </h2>

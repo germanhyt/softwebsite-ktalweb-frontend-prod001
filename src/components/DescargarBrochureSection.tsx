@@ -12,9 +12,9 @@ const DescargarBrochureSection = () => {
                 >
                     Descarga nuestro brochure y{" "}
 
-                    <span className='text-primary-purple-100'>conoce más sobre</span>
+                    <span className='degradado-c3 font-semibold'>conoce más sobre</span>
                     <br />
-                    <span className='text-primary-purple-100'>nuestros servicios</span>
+                    <span className='degradado-c3 font-semibold'>nuestros servicios</span>
                 </h2>
                 <div className="flex justify-center">
                     <a
