@@ -63,7 +63,7 @@ const PortfolioCarousel: React.FC<Props> = ({ cases }) => {
                 </button>
             </div>
             {/* Card principal */}
-            <div className="flex flex-col gap-10 bg-white rounded-xl shadow p-6 md:p-10 w-full max-w-5xl 2xl:max-w-6xl ">
+            <div className="flex flex-col gap-2 sm:gap-10 bg-white rounded-xl shadow p-6 md:p-10 w-full max-w-5xl 2xl:max-w-6xl ">
                 <div className="flex flex-col md:flex-row gap-8 items-center">
                     <div className="flex-1">
                         <p className="text-gray-700 mb-4 font-nunito">{current.description}</p>
@@ -82,7 +82,7 @@ const PortfolioCarousel: React.FC<Props> = ({ cases }) => {
                                 alt={current.title + " mockup " + (idx + 1)}
                                 className={
                                     idx === 0
-                                        ? "rounded-lg shadow w-full max-w-sm mb-16  pr-12 lg:pr-auto "
+                                        ? "rounded-lg shadow w-full max-w-sm mb-4 sm:mb-16  pr-12 lg:pr-auto "
                                         : "absolute top-16 sm:top-28 right-0 3xl:right-10 z-10 rounded-lg shadow w-24 sm:w-32 md:w-36"
                                 }
                             />

@@ -86,7 +86,7 @@ const Header = () => {
       </header>
       {/* Mobile Menu */}
       {showMenu && (
-        <div className="mt-[4rem] fixed top-0 left-0 w-full h-full bg-white z-50 flex flex-col items-center pt-24 animate-fade-in">
+        <div className="mt-[4rem] fixed top-0 left-0 w-full h-full bg-white z-50 flex gap-4 flex-col items-center pt-24 animate-fade-in">
           <a href="#soluciones" className="text-xl font-nunito text-primary-purple-100 font-medium mt-2" onClick={e => { e.preventDefault(); document.getElementById('soluciones')?.scrollIntoView({ behavior: 'smooth' }); setShowMenu(false); }}>Soluciones</a>
           <a href="#bochure" className="text-xl font-nunito text-primary-purple-100 font-medium mt-2" onClick={e => { e.preventDefault(); document.getElementById('bochure')?.scrollIntoView({ behavior: 'smooth' }); setShowMenu(false); }}>Descargar Brochure</a>
           <a href="#casos" className="text-xl font-nunito text-primary-purple-100 font-medium mt-2" onClick={e => { e.preventDefault(); document.getElementById('casos')?.scrollIntoView({ behavior: 'smooth' }); setShowMenu(false); }}>Casos de éxito</a>
