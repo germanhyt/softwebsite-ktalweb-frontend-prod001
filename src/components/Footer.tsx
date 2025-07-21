@@ -35,8 +35,9 @@ const Footer = () => {
                     <div className=''>
                         <div className="font-bold text-black mb-1 font-nunito">Explora</div>
                         <nav className="flex flex-col gap-1 text-sm">
-                            <a href="/" className="hover:underline text-black font-nunito">Inicio</a>
-                            <a href="/portfolio" className="hover:underline text-black font-nunito">Casos de éxito</a>
+                            <a href="#soluciones" className=" font-medium font-nunito hover:text-primary-purple-100 transition-colors" onClick={e => { e.preventDefault(); document.getElementById('soluciones')?.scrollIntoView({ behavior: 'smooth' }); }}>Soluciones</a>
+                            <a href="#casos" className=" font-medium font-nunito hover:text-primary-purple-100 transition-colors" onClick={e => { e.preventDefault(); document.getElementById('casos')?.scrollIntoView({ behavior: 'smooth' }); }}>Casos de éxito</a>
+                            <a href="#bochure" className=" font-medium font-nunito hover:text-primary-purple-100 transition-colors" onClick={e => { e.preventDefault(); document.getElementById('bochure')?.scrollIntoView({ behavior: 'smooth' }); }}>Brochure</a>
                         </nav>
                     </div>
                 </div>
