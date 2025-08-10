@@ -41,12 +41,12 @@ const Header = () => {
             </nav>
             {/* CTA Button */}
             <a
-              href="https://api.whatsapp.com/send?phone=51923416407&text=Hola%20Ktalweb,%20me%20gustaría%20cotizar%20una%20web."
+              href="https://api.whatsapp.com/send?phone=51923416407&text=Hola%20Ktalweb,%20me%20requiero%20más%20información."  
               target="_blank"
               className="ml-4 font-nunito px-6 py-2 text-white font-bold rounded-full bg-primary-purple-100 hover:bg-primary-purple-200 shadow transition-colors text-base md:flex hidden"
               aria-label="Cotizar ahora"
             >
-              Cotizar ahora
+              Contáctanos
             </a>
           </div>
           {/* Hamburger */}
@@ -94,13 +94,13 @@ const Header = () => {
           <a href="#caracteristicas" className="text-xl font-nunito text-primary-purple-100 font-medium mt-2" onClick={e => { e.preventDefault(); document.getElementById('caracteristicas')?.scrollIntoView({ behavior: 'smooth' }); setShowMenu(false); }}>Características</a>
           <a href="#proceso" className="text-xl font-nunito text-primary-purple-100 font-medium mt-2" onClick={e => { e.preventDefault(); document.getElementById('proceso')?.scrollIntoView({ behavior: 'smooth' }); setShowMenu(false); }}>Proceso</a> */}
           <a
-            href="https://api.whatsapp.com/send?phone=51923416407&text=Hola%20Ktalweb,%20me%20gustaría%20cotizar%20una%20web."
+            href="https://api.whatsapp.com/send?phone=51923416407&text=Hola%20Ktalweb,%20me%20gustaría%20más%20información."
             target="_blank"
             className="mt-6 font-nunito px-6 py-2 text-white font-bold rounded-full bg-primary-purple-100 hover:bg-primary-purple-200 shadow transition-colors text-base"
             aria-label="Cotizar ahora"
             onClick={() => setShowMenu(false)}
           >
-            Cotizar ahora
+            Contáctanos
           </a>
         </div>
       )}

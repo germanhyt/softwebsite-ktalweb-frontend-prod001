@@ -55,9 +55,11 @@ const HeroBanner = () => {
                         target='_blank'
                         className="flex items-center gap-2  mt-8 px-6 py-2 bg-primary-purple-100  rounded-full transition duration-300"
                     >
-                        <span className='font-nunito text-white text-lg font-medium'>
-                            Conoce nuestras soluciones
-                        </span>
+                        <a href="#soluciones">
+                            <span className='font-nunito text-white text-lg font-medium'>
+                                Nuestras soluciones
+                            </span>
+                        </a>
                         <VscArrowCircleRight className='text-4xl' />
                     </a>
                 </div>
