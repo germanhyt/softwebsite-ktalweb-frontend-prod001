@@ -1,19 +1,10 @@
 ---
 import Header from "@/components/Header";
 import Layout from "../layouts/Layout.astro";
+import PrimeVideoCarousel from "@/components/PrimeVideoCarousel";
+import PortfolioCarousel from "@/components/PortfolioCarousel";
 
 import "../assets/styles/global.css";
-import HeroBanner from "@/components/HeroBanner";
-import SolicitarCTABannerSection from "@/components/SolicitarCTABannerSection";
-import DescargarBrochureSection from "@/components/DescargarBrochureSection";
-import Footer from "@/components/Footer";
-
-import ClientsList from "@/components/ClientsList.astro";
-import VideoSection from "@/components/VideoSection.astro";
-import CaptarConvertirCrecer from "@/components/CaptarConvertirCrecer.astro";
-import Workprocess from "@/components/Workprocess.astro";
-import Solutions from "@/components/Solutions.astro";
-import PortfolioCarousel from "@/components/PortfolioCarousel";
 
 import logoOffroadperu from "@/assets/images/logo_offroadperu.webp?url";
 import logoLaboratoriaBCP from "@/assets/images/logo_laboratoria_bcp.webp?url";
@@ -31,7 +22,6 @@ import portfolioZukarzen1 from "@/assets/images/portfolio_zukarzen_1.webp?url";
 import portfolioZukarzen2 from "@/assets/images/portfolio_zukarzen_2.webp?url";
 import portfolioLaboratoriaMackinsey1 from "@/assets/images/portfolio_labmack_1.webp?url";
 import portfolioLaboratoriaMackinsey2 from "@/assets/images/portfolio_labmack_2.webp?url";
-import PrimeVideoCarousel from "@/components/PrimeVideoCarousel";
 
 const cases = [
   {
@@ -72,7 +62,7 @@ const cases = [
     how: [
       "Creamos una estructura de navegación sencilla que permite a las empresas encontrar fácilmente los programas según sus necesidades (por nivel, modalidad o solicitud).",
       "Agregamos secciones específicas para mostrar los beneficios y fortalezas de cada curso: metodología práctica, instructores certificados y casos de éxito.",
-      "Añadimos un área de “Certificados validados” con los logotipos de las instituciones para dar confianza en la capacitación, retroalimentar e incentivar la inscripción.",
+      "Añadimos un área de 'Certificados validados' con los logotipos de las instituciones para dar confianza en la capacitación, retroalimentar e incentivar la inscripción.",
       "Implementamos formularios de inscripción y solicitud de información optimizados para facilitar el contacto y la conversión.",
       "Se priorizó un diseño limpio y ordenado, enfocado en mejorar la experiencia del usuario final.",
     ],
@@ -82,7 +72,7 @@ const cases = [
   {
     logo: logoZukarzen,
     logoAlt: "Zukarzen",
-    title: "ZukarzenL",
+    title: "Zukarzen",
     description: `Zukarzen es una pastelería saludable con sede en Lima, Perú, especializada en la elaboración de postres artesanales sin azúcar, sin gluten y sin lactosa. Su objetivo es ofrecer alternativas deliciosas y saludables para quienes buscan cuidar su alimentación sin renunciar al placer de un buen postre. El cliente necesitaba una página web que reflejara la identidad de Zukarzen como una pastelería saludable y profesional, y que comunicara sus productos de forma clara y atractiva.`,
     how: [
       "Se priorizó una navegación intuitiva que permitiera a los usuarios explorar fácilmente las categorías de productos, como tortas, cheesecakes, pies y opciones keto-friendly.",
@@ -115,41 +105,31 @@ const cases = [
 
 <Layout>
   <Header client:load />
+  
+  <main class="min-h-screen bg-gray-50">
+    <!-- Prime Video Style Carousel -->
+    <section class="py-16">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Prime Video Style Carousel</h1>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Nuevo carousel con animaciones similares a Prime Video. Haz hover sobre los elementos para ver la expansión y el efecto de empuje.
+        </p>
+      </div>
+      <PrimeVideoCarousel client:load cases={cases} />
+    </section>
 
-  <HeroBanner client:load />
-  <!-- 
-  <ClientsList />
+    <!-- Divider -->
+    <div class="border-t border-gray-200 my-16"></div>
 
-  <VideoSection /> -->
-
-  <section id="clientes">
-    <ClientsList />
-  </section>
-
-  <VideoSection />
-
-  <section id="caracteristicas">
-    <CaptarConvertirCrecer />
-  </section>
-
-  <section id="proceso">
-    <Workprocess />
-  </section>
-
-  <section id="soluciones">
-    <Solutions />
-  </section>
-
-  <SolicitarCTABannerSection client:load />
-
-  <section id="casos">
-    <!-- <PortfolioCarousel client:load cases={cases} /> -->
-    <PrimeVideoCarousel client:load cases={cases} />
-  </section>
-
-  <section id="bochure">
-    <DescargarBrochureSection client:load />
-  </section>
-
-  <Footer client:load />
+    <!-- Original Carousel -->
+    <section class="py-16">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Carousel Original</h1>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Carousel original para comparación.
+        </p>
+      </div>
+      <PortfolioCarousel client:load cases={cases} />
+    </section>
+  </main>
 </Layout>
