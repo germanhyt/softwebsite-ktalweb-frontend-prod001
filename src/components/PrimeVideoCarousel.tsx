@@ -50,11 +50,11 @@ const PrimeVideoCarousel: React.FC<Props> = ({ cases }) => {
     }, []);
 
     const goPrev = () => {
-        setCurrentIndex((prev) => (prev === 0 ? cases.length - visibleItems : prev - 1));
+        setCurrentIndex((prev) => (prev === 0 ? cases.length - 1 : prev - 1));
     };
 
     const goNext = () => {
-        setCurrentIndex((prev) => (prev >= cases.length - visibleItems ? 0 : prev + 1));
+        setCurrentIndex((prev) => (prev === cases.length - 1 ? 0 : prev + 1));
     };
 
     const handleMouseEnter = (index: number) => {
@@ -67,7 +67,17 @@ const PrimeVideoCarousel: React.FC<Props> = ({ cases }) => {
 
     const getItemStyle = (index: number) => {
         const isHovered = hoveredIndex === index;
-        const isVisible = index >= currentIndex && index < currentIndex + visibleItems;
+
+        // Lógica circular para determinar visibilidad
+        let isVisible = false;
+        if (currentIndex + visibleItems <= cases.length) {
+            // Caso normal: no hay wraparound
+            isVisible = index >= currentIndex && index < currentIndex + visibleItems;
+        } else {
+            // Caso circular: hay wraparound
+            const wraparoundCount = (currentIndex + visibleItems) - cases.length;
+            isVisible = index >= currentIndex || index < wraparoundCount;
+        }
 
         if (!isVisible) {
             return {
@@ -94,8 +104,15 @@ const PrimeVideoCarousel: React.FC<Props> = ({ cases }) => {
 
         const { base: baseWidth, expanded: expandedWidth, gap } = getWidths();
 
-        // Calcular posición base
-        const relativeIndex = index - currentIndex;
+        // Calcular posición base con lógica circular
+        let relativeIndex;
+        if (index >= currentIndex) {
+            // Elemento está después del índice actual
+            relativeIndex = index - currentIndex;
+        } else {
+            // Elemento está antes del índice actual (wraparound)
+            relativeIndex = (cases.length - currentIndex) + index;
+        }
         const baseTranslateX = relativeIndex * (baseWidth + gap);
 
         // Si este elemento está siendo hovereado, expandirlo
@@ -109,17 +126,27 @@ const PrimeVideoCarousel: React.FC<Props> = ({ cases }) => {
         }
 
         // Si hay un elemento hovereado a la izquierda, empujar este elemento hacia la derecha
-        if (hoveredIndex !== null && hoveredIndex < index) {
-            const hoveredRelativeIndex = hoveredIndex - currentIndex;
-            const pushDistance = (expandedWidth - baseWidth);
-            const adjustedTranslateX = baseTranslateX + pushDistance;
+        if (hoveredIndex !== null && hoveredIndex !== index) {
+            // Calcular la posición relativa del elemento hovereado
+            let hoveredRelativeIndex;
+            if (hoveredIndex >= currentIndex) {
+                hoveredRelativeIndex = hoveredIndex - currentIndex;
+            } else {
+                hoveredRelativeIndex = (cases.length - currentIndex) + hoveredIndex;
+            }
 
-            return {
-                transform: `translateX(${adjustedTranslateX}px)`,
-                width: `${baseWidth}px`,
-                zIndex: 2,
-                transition: 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-            };
+            // Si el elemento hovereado está a la izquierda de este elemento
+            if (hoveredRelativeIndex < relativeIndex) {
+                const pushDistance = (expandedWidth - baseWidth);
+                const adjustedTranslateX = baseTranslateX + pushDistance;
+
+                return {
+                    transform: `translateX(${adjustedTranslateX}px)`,
+                    width: `${baseWidth}px`,
+                    zIndex: 2,
+                    transition: 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                };
+            }
         }
 
         // Estado normal
@@ -165,8 +192,18 @@ const PrimeVideoCarousel: React.FC<Props> = ({ cases }) => {
                     <div className="relative w-full h-full">
                         {cases.map((caseItem, index) => {
                             const isHovered = hoveredIndex === index;
-                            const isVisible = index >= currentIndex && index < currentIndex + visibleItems;
                             const isMobile = typeof window !== 'undefined' && window.innerWidth < 720;
+
+                            // Lógica circular para determinar visibilidad
+                            let isVisible = false;
+                            if (currentIndex + visibleItems <= cases.length) {
+                                // Caso normal: no hay wraparound
+                                isVisible = index >= currentIndex && index < currentIndex + visibleItems;
+                            } else {
+                                // Caso circular: hay wraparound
+                                const wraparoundCount = (currentIndex + visibleItems) - cases.length;
+                                isVisible = index >= currentIndex || index < wraparoundCount;
+                            }
 
                             if (!isVisible) return null;
 
