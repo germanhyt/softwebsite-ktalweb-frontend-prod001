@@ -344,44 +344,58 @@ const PrimeVideoCarousel: React.FC<Props> = ({ cases }) => {
                                                     </div>
                                                 </div>
 
-                                                {/* Contenido informativo que aparece en hover (parte derecha) */}
-                                                {isHovered && (
-                                                    <div className="absolute top-0 z-[9999] right-0 h-full w-[45%] bg-white/95 backdrop-blur-sm p-8 animate-fadeIn border-l border-gray-200 ml-4">
-                                                        <div className="h-full flex flex-col">
-                                                            <p className="text-gray-700 mb-6 font-nunito text-sm line-clamp-4">
-                                                                {caseItem.description}
-                                                            </p>
+                                                {/* Contenido informativo que aparece en hover */}
+                                                {isHovered && (() => {
+                                                    // Calcular si este es el último elemento visible
+                                                    let relativeIndex;
+                                                    if (index >= currentIndex) {
+                                                        relativeIndex = index - currentIndex;
+                                                    } else {
+                                                        relativeIndex = (cases.length - currentIndex) + index;
+                                                    }
+                                                    const isLastVisible = relativeIndex === visibleItems - 1;
 
-                                                            {/* Lista de características */}
-                                                            <div className="mb-6">
-                                                                <h4 className="font-semibold text-sm text-black mb-3 font-nunito">
-                                                                    ¿Cómo lo logramos?
-                                                                </h4>
-                                                                <ul className="text-xs text-gray-600 space-y-2">
-                                                                    {caseItem.how.slice(0, 4).map((item, idx) => (
-                                                                        <li key={idx} className="flex items-start">
-                                                                            <span className="text-primary-purple-100 mr-2 mt-1">•</span>
-                                                                            <span className="line-clamp-2">{item}</span>
-                                                                        </li>
-                                                                    ))}
-                                                                </ul>
+                                                    return (
+                                                        <div className={`absolute top-0 z-[9999] h-full w-[48%] bg-white/95 backdrop-blur-sm p-8 animate-fadeIn border-gray-200 ml-3 ${isLastVisible
+                                                            ? 'left-0 border-r'
+                                                            : 'right-0 border-l'
+                                                            }`}>
+                                                            <div className="h-full flex flex-col">
+                                                                <p className="text-gray-700 mb-6 font-nunito text-sm line-clamp-4">
+                                                                    {caseItem.description}
+                                                                </p>
+
+                                                                {/* Lista de características */}
+                                                                <div className="mb-6">
+                                                                    <h4 className="font-semibold text-sm text-black mb-3 font-nunito">
+                                                                        ¿Cómo lo logramos?
+                                                                    </h4>
+                                                                    <ul className="text-xs text-gray-600 space-y-2">
+                                                                        {caseItem.how.slice(0, 4).map((item, idx) => (
+                                                                            <li key={idx} className="flex items-start">
+                                                                                <span className="text-primary-purple-100 mr-2 mt-1">•</span>
+                                                                                <span className="line-clamp-2">{item}</span>
+                                                                            </li>
+                                                                        ))}
+                                                                    </ul>
+                                                                </div>
+
+                                                                {/* Botón de acción */}
+                                                                <a
+                                                                    href={caseItem.web}
+                                                                    className="inline-flex items-center justify-center gap-2 border-2 border-primary-purple-100 text-primary-purple-100 font-nunito font-semibold px-4 py-2 rounded-full transition hover:bg-primary-purple-100 hover:text-white text-sm"
+                                                                    target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                >
+                                                                    Ver página web
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                                                    </svg>
+                                                                </a>
                                                             </div>
-
-                                                            {/* Botón de acción */}
-                                                            <a
-                                                                href={caseItem.web}
-                                                                className="inline-flex items-center justify-center gap-2 border-2 border-primary-purple-100 text-primary-purple-100 font-nunito font-semibold px-4 py-2 rounded-full transition hover:bg-primary-purple-100 hover:text-white text-sm"
-                                                                target="_blank"
-                                                                rel="noopener noreferrer"
-                                                            >
-                                                                Ver página web
-                                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                                                </svg>
-                                                            </a>
                                                         </div>
-                                                    </div>
-                                                )}
+                                                    );
+                                                })()}
                                             </>
                                         )}
                                     </div>
