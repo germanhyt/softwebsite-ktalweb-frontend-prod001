@@ -20,7 +20,7 @@ const DescargarBrochureSection = () => {
             const a = document.createElement('a')
             a.href = url
             // Set a filename for the downloaded file
-            a.download = 'brochure_ktalweb.pdf'
+            a.download = '_brochure_ktalweb.pdf'
             document.body.appendChild(a)
             a.click()
             a.remove()
