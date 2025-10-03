@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
 import { MdOutlineFileDownload } from "react-icons/md";
+import { swalAlertFire } from "@/core/helpers/SwalHelper";
 
 
 const BROCHURE_PATH = '/brochure_ktalweb.pdf'
@@ -20,14 +21,28 @@ const DescargarBrochureSection = () => {
             const a = document.createElement('a')
             a.href = url
             // Set a filename for the downloaded file
-            a.download = '_brochure_ktalweb.pdf'
+            a.download = 'brochure_ktalweb.pdf'
             document.body.appendChild(a)
             a.click()
             a.remove()
             window.URL.revokeObjectURL(url)
-        } catch (err) {
+        } catch (err: any) {
             // eslint-disable-next-line no-console
             console.error('Error descargando brochure:', err)
+
+            const message = err && err.message ? err.message : String(err)
+            try {
+                swalAlertFire({
+                    html: `No se pudo descargar el brochure. Detalle: ${message}`,
+                    icon: 'error',
+                    confirmButtonText: 'Cerrar',
+                })
+            } catch (swalErr) {
+                // fallback to alert if SweetAlert fails
+                // eslint-disable-next-line no-alert
+                alert(`No se pudo descargar el brochure. Detalle: ${message}`)
+            }
+
             // As a last resort, navigate to the file so browser can handle it
             window.location.href = BROCHURE_PATH
         } finally {
@@ -55,10 +70,12 @@ const DescargarBrochureSection = () => {
                     {/* <a
                         href={BROCHURE_PATH}
                         download
+                        target="_blank"
+                        rel="noopener noreferrer"
                         type="application/pdf"
                         className="flex items-center gap-2 border-2 border-primary-purple-100 text-primary-purple-100 font-nunito font-semibold px-5 py-2 rounded-full transition hover:bg-primary-purple-100 hover:text-white mr-4"
                     >
-                        Descargar brochure
+                        Abrir / Descargar en nueva pestaña
                         <MdOutlineFileDownload className="text-2xl" />
                     </a> */}
 
