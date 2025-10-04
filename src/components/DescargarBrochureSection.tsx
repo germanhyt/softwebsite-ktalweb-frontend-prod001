@@ -7,24 +7,49 @@ const DescargarBrochureSection = () => {
 
     const handleDownloadPDF = async () => {
         try {
-            // Crear un enlace temporal para descargar el archivo
+            // Usar el endpoint API para descargar el PDF
+            const response = await fetch('/api/download-brochure');
+            
+            if (!response.ok) {
+                throw new Error(`Error ${response.status}: ${response.statusText}`);
+            }
+            
+            // Obtener el blob del PDF
+            const blob = await response.blob();
+            
+            // Crear URL temporal para el blob
+            const url = window.URL.createObjectURL(blob);
+            
+            // Crear enlace temporal para descargar
             const link = document.createElement('a');
-            link.href = '/brochure_ktalweb.pdf';
+            link.href = url;
             link.download = 'brochure_ktalweb.pdf';
-            link.target = '_blank';
-
+            
             // Añadir al DOM temporalmente
             document.body.appendChild(link);
-
+            
             // Hacer click para iniciar la descarga
             link.click();
-
-            // Remover del DOM
+            
+            // Limpiar
             document.body.removeChild(link);
+            window.URL.revokeObjectURL(url);
         } catch (error) {
             console.error('Error al descargar el PDF:', error);
-            // Fallback: abrir en nueva pestaña
-            window.open('/brochure_ktalweb.pdf', '_blank');
+            // Fallback: intentar descarga directa
+            try {
+                const link = document.createElement('a');
+                link.href = '/brochure_ktalweb.pdf';
+                link.download = 'brochure_ktalweb.pdf';
+                link.target = '_blank';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            } catch (fallbackError) {
+                console.error('Error en fallback:', fallbackError);
+                // Último recurso: abrir en nueva pestaña
+                window.open('/brochure_ktalweb.pdf', '_blank');
+            }
         }
     };
 
