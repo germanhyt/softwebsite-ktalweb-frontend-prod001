@@ -23,8 +23,6 @@ export const GET: APIRoute = async ({ request }) => {
       'Cache-Control': 'public, max-age=31536000', // Cache por 1 año
     });
 
-
-    
     return new Response(pdfBuffer, {
       status: 200,
       headers,
