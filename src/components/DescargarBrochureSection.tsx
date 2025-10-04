@@ -18,7 +18,7 @@ const DescargarBrochureSection = () => {
                 </h2>
                 <div className="flex justify-center">
                     <a
-                        href="/brochure_ktalweb.pdf"
+                        href="/api/download-brochure"
                         download="brochure_ktalweb.pdf"
                         type="application/pdf"
                         className="flex items-center gap-2 border-2 border-primary-purple-100 text-primary-purple-100 font-nunito font-semibold px-5 py-2 rounded-full transition hover:bg-primary-purple-100 hover:text-white"
