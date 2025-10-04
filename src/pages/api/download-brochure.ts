@@ -5,7 +5,7 @@ import path from 'path';
 export const GET: APIRoute = async ({ request }) => {
   try {
     // Leer el archivo PDF directamente desde el sistema de archivos
-    const pdfPath = path.join(process.cwd(), 'public', 'brochure_ktalweb.pdf');
+    const pdfPath = path.join(process.cwd(), 'src', 'assets', 'brochure_ktalweb.pdf');
     
     // Verificar que el archivo existe
     if (!fs.existsSync(pdfPath)) {
