@@ -11,7 +11,7 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   base: "/",
   site: "https://ktalweb.com.pe",
-
+  
   vite: {
     plugins: [tailwindcss()],
     assetsInclude: ['**/*.pdf'],

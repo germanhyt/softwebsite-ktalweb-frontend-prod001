@@ -72,12 +72,12 @@ export const defaultSEO = {
     author: 'Ktalweb',
     // ...otras configuraciones SEO...
     ogType: 'website',
-    ogImage: 'https://ktalweb.com.pe/logo.webp',
+    ogImage: 'https://ktalweb.com.pe/ktalweb.webp',
     ogUrl: 'https://ktalweb.com.pe',
     twitterCard: 'summary_large_image',
     twitterSite: '@ktalweb',
     twitterCreator: '@ktalweb',
-    twitterImage: 'https://ktalweb.com.pe/logo.webp',
+    twitterImage: 'https://ktalweb.com.pe/ktalweb.webp',
 
     canonicalUrl: 'https://ktalweb.com.pe',
     robots: 'index, follow',

@@ -174,7 +174,7 @@ const PrimeVideoCarousel: React.FC<Props> = ({ cases }) => {
             </div> */}
 
             {/* Carousel Container con botones laterales */}
-            <div className="relative w-full max-w-[72rem] flex items-center">
+            <div className="relative w-full max-w-[72rem] flex items-center ">
                 {/* Botón izquierdo */}
                 <button
                     className="absolute left-10 lg:left-0 z-20 w-12 h-12 flex items-center justify-center rounded-full bg-white/90 border border-primary-purple-100 shadow-lg hover:bg-primary-purple-100 hover:text-white transition text-primary-purple-100 text-xl -translate-x-6"
@@ -187,7 +187,7 @@ const PrimeVideoCarousel: React.FC<Props> = ({ cases }) => {
                 {/* Contenedor del carousel */}
                 <div
                     ref={containerRef}
-                    className="relative w-full h-[40rem] xs:h-[40rem] sm:h-[50rem] md:h-[36rem] lg:h-[30rem] overflow-hidden mx-20"
+                    className="relative w-full h-[44rem] sm:h-[50rem] md:h-[32rem] lg:h-[30rem] overflow-hidden mx-10 lg:mx-20"
                 >
                     <div className="relative w-full h-full">
                         {cases.map((caseItem, index) => {
@@ -263,19 +263,19 @@ const PrimeVideoCarousel: React.FC<Props> = ({ cases }) => {
                                                 </div>
 
                                                 {/* Información en la parte inferior */}
-                                                <div className="p-4 border-t border-gray-100">
+                                                <div className="px-4 pb-6 border-t border-gray-100">
 
                                                     {/* Descripción */}
-                                                    <p className="text-gray-700 mb-4 font-nunito text-sm line-clamp-3 text-center">
+                                                    <p className="text-gray-700 mb-4 font-nunito text-base line-clamp-3 text-center">
                                                         {caseItem.description}
                                                     </p>
 
                                                     {/* Lista de características */}
                                                     <div className="mb-4">
-                                                        <h4 className="font-semibold text-sm text-black mb-2 font-nunito text-center">
+                                                        <h4 className="font-semibold text-base text-black mb-2 font-nunito text-center">
                                                             ¿Cómo lo logramos?
                                                         </h4>
-                                                        <ul className="text-xs text-gray-600 space-y-1">
+                                                        <ul className="text-base text-gray-600 space-y-1">
                                                             {caseItem.how.slice(0, 3).map((item, idx) => (
                                                                 <li key={idx} className="flex items-start">
                                                                     <span className="text-primary-purple-100 mr-2 mt-1">•</span>
