@@ -8,12 +8,12 @@ const Header = () => {
 
   return (
     <>
-      <header className="bg-white shadow-md fixed top-0 left-0 w-full z-50 transition-all">
+      <header className="bg-white shadow-md fixed top-0 left-0 w-full z-50 transition-all header-enter">
         <div className="min-h-[4rem] px-5 sm:container mx-auto flex items-center justify-between py-4">
           {/* Logo */}
           <a
             href="#"
-            className="text-2xl font-bold text-blue-600"
+            className="text-2xl font-bold text-blue-600 nav-logo-enter"
             aria-label="Ktalweb Home"
             onClick={(e) => {
               e.preventDefault();
@@ -29,7 +29,7 @@ const Header = () => {
           {/* Navigation -- sm screen */}
           <div className='flex items-center gap-4'>
             <nav
-              className="hidden md:flex items-center space-x-8"
+              className="hidden md:flex items-center space-x-8 nav-links-enter"
               aria-label="Main Navigation"
             >
               <a href="#soluciones" className=" font-medium font-nunito hover:text-primary-purple-100 transition-colors" onClick={e => { e.preventDefault(); document.getElementById('soluciones')?.scrollIntoView({ behavior: 'smooth' }); }}>Soluciones</a>
@@ -43,7 +43,7 @@ const Header = () => {
             <a
               href="https://api.whatsapp.com/send?phone=51923416407&text=Hola%20Ktalweb,%20me%20requiero%20más%20información."  
               target="_blank"
-              className="ml-4 font-nunito px-6 py-2 text-white font-bold rounded-full bg-primary-purple-100 hover:bg-primary-purple-200 shadow transition-colors text-base md:flex hidden"
+              className="ml-4 font-nunito px-6 py-2 text-white font-bold rounded-full bg-primary-purple-100 hover:bg-primary-purple-200 shadow transition-colors text-base md:flex hidden nav-cta-enter"
               aria-label="Cotizar ahora"
             >
               Contáctanos
@@ -104,7 +104,7 @@ const Header = () => {
           </a>
         </div>
       )}
-      <style>{`html { scroll-behavior: smooth; } .bg-primary-purple-100 { background: #7b3ff2; } .hover\:bg-primary-purple-200:hover { background: #5f8cff; } .font-nunito { font-family: 'Nunito', sans-serif; } .animate-fade-in { animation: fadeIn 0.4s ease; } @keyframes fadeIn { from { opacity: 0; transform: translateY(-20px);} to { opacity: 1; transform: translateY(0);} }`}</style>
+      <style>{`html { scroll-behavior: smooth; } .bg-primary-purple-100 { background: #7b3ff2; } .hover\:bg-primary-purple-200:hover { background: #5f8cff; } .font-nunito { font-family: 'Nunito', sans-serif; } .animate-fade-in { animation: fadeIn 0.4s ease; } .header-enter { animation: headerReveal 0.7s cubic-bezier(0.22, 1, 0.36, 1); } .nav-logo-enter { animation: navItemReveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both; } .nav-links-enter { animation: navItemReveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.14s both; } .nav-cta-enter { animation: navItemReveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both; } @keyframes fadeIn { from { opacity: 0; transform: translateY(-20px);} to { opacity: 1; transform: translateY(0);} } @keyframes headerReveal { from { opacity: 0; transform: translateY(-14px); } to { opacity: 1; transform: translateY(0); } } @keyframes navItemReveal { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } } @media (prefers-reduced-motion: reduce) { .header-enter, .nav-logo-enter, .nav-links-enter, .nav-cta-enter, .animate-fade-in { animation: none !important; } }`}</style>
     </>
   );
 };

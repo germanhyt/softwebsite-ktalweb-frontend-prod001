@@ -16,37 +16,34 @@ type Props = {
     cases: Case[];
 };
 
+type Viewport = "mobile" | "tablet" | "desktop";
+
 const PrimeVideoCarousel: React.FC<Props> = ({ cases }) => {
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
     const [currentIndex, setCurrentIndex] = useState(0);
     const containerRef = useRef<HTMLDivElement>(null);
     const [visibleItems, setVisibleItems] = useState(3);
+    const [viewport, setViewport] = useState<Viewport>("desktop");
 
     // Calcular cuántos elementos son visibles según el ancho de pantalla
     useEffect(() => {
-        const updateVisibleItems = () => {
-            if (typeof window === 'undefined') {
-                setVisibleItems(3); // Default for SSR
-                return;
-            }
-
+        const updateResponsiveState = () => {
             if (window.innerWidth < 640) {
+                setViewport("mobile");
                 setVisibleItems(1);
             } else if (window.innerWidth < 1024) {
+                setViewport("tablet");
                 setVisibleItems(2);
-            } else if (window.innerWidth < 1280) {
-                setVisibleItems(3);
             } else {
+                setViewport("desktop");
                 setVisibleItems(3);
             }
         };
 
-        updateVisibleItems();
+        updateResponsiveState();
 
-        if (typeof window !== 'undefined') {
-            window.addEventListener('resize', updateVisibleItems);
-            return () => window.removeEventListener('resize', updateVisibleItems);
-        }
+        window.addEventListener('resize', updateResponsiveState);
+        return () => window.removeEventListener('resize', updateResponsiveState);
     }, []);
 
     const goPrev = () => {
@@ -89,13 +86,9 @@ const PrimeVideoCarousel: React.FC<Props> = ({ cases }) => {
 
         // Responsive widths - with fallback for SSR
         const getWidths = () => {
-            if (typeof window === 'undefined') {
-                return { base: 320, expanded: 420, gap: 20 }; // Default for SSR
-            }
-
-            if (window.innerWidth < 640) {
+            if (viewport === "mobile") {
                 return { base: 280, expanded: 320, gap: 12 };
-            } else if (window.innerWidth < 1024) {
+            } else if (viewport === "tablet") {
                 return { base: 300, expanded: 520, gap: 16 };
             } else {
                 return { base: 320, expanded: 650, gap: 20 };
@@ -192,7 +185,7 @@ const PrimeVideoCarousel: React.FC<Props> = ({ cases }) => {
                     <div className="relative w-full h-full">
                         {cases.map((caseItem, index) => {
                             const isHovered = hoveredIndex === index;
-                            const isMobile = typeof window !== 'undefined' && window.innerWidth < 720;
+                            const isMobile = viewport === "mobile";
 
                             // Lógica circular para determinar visibilidad
                             let isVisible = false;

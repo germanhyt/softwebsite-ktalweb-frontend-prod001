@@ -6,6 +6,7 @@ import logoOffroad from "@/assets/images/logo_offroadperu.webp?url";
 import logoLVEnergy from "@/assets/images/logo_lvenergy.webp?url";
 import logoMcKinsey from "@/assets/images/logo_mckinsey.webp?url";
 import logoBiotraining from "@/assets/images/logo_biotraining.webp?url";
+import logoHazLaTarea from "@/assets/images/logo_haz_la_tarea.png?url";
 
 const logos = [
   { src: logoZukarZen, alt: "Zukar Zen", id: 1 },
@@ -15,6 +16,7 @@ const logos = [
   { src: logoLVEnergy, alt: "L&V Energy", id: 5 },
   { src: logoMcKinsey, alt: "McKinsey & Company", id: 6 },
   { src: logoBiotraining, alt: "Biotraining", id: 7 },
+  { src: logoHazLaTarea, alt: "Haz La Tarea", id: 8 },
 ];
 ---
 
@@ -94,19 +96,22 @@ const logos = [
   /* Animación del carrusel optimizada */
   @keyframes carousel {
     0% {
-      transform: translateX(-50%);
+      transform: translateX(0);
     }
     100% {
-      transform: translateX(0.36%);
+      transform: translateX(-50%);
     }
   }
 
   .animate-carousel {
-    animation: carousel 10s linear infinite;
-    animation-delay: 1s;
+    animation: carousel 12s linear infinite;
     /* Optimizaciones de rendimiento */
     will-change: transform;
     transform: translateZ(0); /* Force hardware acceleration */
+  }
+
+  .animate-carousel:hover {
+    animation-play-state: paused;
   }
 
   /* Animación secuencial optimizada */
@@ -193,7 +198,7 @@ const logos = [
     }
 
     .animate-carousel {
-      animation-duration: 8s; /* Carrusel más lento en móvil */
+      animation-duration: 20s;
     }
   }
 
@@ -208,51 +213,3 @@ const logos = [
   }
 </style>
 
-<script>
-  // JavaScript optimizado para rendimiento
-  document.addEventListener("DOMContentLoaded", function () {
-    // Verificar si el dispositivo tiene buen rendimiento
-    const isLowPerformance =
-      navigator.hardwareConcurrency <= 4 ||
-      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-        navigator.userAgent
-      );
-
-    // Solo usar Intersection Observer si es necesario
-    if (!isLowPerformance) {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              (entry.target as HTMLElement).style.animationPlayState =
-                "running";
-            }
-          });
-        },
-        {
-          threshold: 0.1,
-          rootMargin: "50px",
-        }
-      );
-
-      // Observar solo los logos visibles
-      const logoItems = document.querySelectorAll(".logo-item");
-      logoItems.forEach((item) => {
-        observer.observe(item);
-      });
-    }
-
-    // Control optimizado del carrusel
-    const carousel = document.querySelector(".animate-carousel") as HTMLElement;
-    if (carousel) {
-      // Pausar inicialmente
-      carousel.style.animationPlayState = "paused";
-
-      // Reanudar después de un tiempo optimizado
-      const resumeDelay = isLowPerformance ? 2000 : 1200;
-      setTimeout(() => {
-        carousel.style.animationPlayState = "running";
-      }, resumeDelay);
-    }
-  });
-</script>
