@@ -6,16 +6,39 @@ function envOrUndefined(v: string | undefined): string | undefined {
   return t.length > 0 ? t : undefined;
 }
 
-const DEEPSEEK_URL =
-  envOrUndefined(import.meta.env.DEEPSEEK_API_URL) ??
-  "https://api.deepseek.com/chat/completions";
-const DEEPSEEK_MODEL = envOrUndefined(import.meta.env.DEEPSEEK_MODEL) ?? "deepseek-chat";
+/**
+ * Vercel inyecta secretos en `process.env` al ejecutar la función.
+ * `import.meta.env.*` a veces queda `undefined` en el bundle si la variable
+ * no existía durante `astro build` (solo estaba en runtime).
+ */
+function runtimeEnv(
+  key: "DEEPSEEK_API_KEY" | "DEEPSEEK_API_URL" | "DEEPSEEK_MODEL" | "CHAT_UPSTREAM_MS"
+): string | undefined {
+  const fromProcess =
+    typeof process !== "undefined" && typeof process.env[key] === "string"
+      ? process.env[key]
+      : undefined;
+  const fromProcessTrimmed = envOrUndefined(fromProcess);
+  if (fromProcessTrimmed) return fromProcessTrimmed;
+  const fromMeta = import.meta.env[key];
+  return envOrUndefined(typeof fromMeta === "string" ? fromMeta : undefined);
+}
 
-/** Por debajo del límite típico de Vercel Hobby (~10s) para devolver JSON en lugar de FUNCTION_INVOCATION_FAILED. */
-const UPSTREAM_FETCH_MS = Math.min(
-  Math.max(Number(import.meta.env.CHAT_UPSTREAM_MS) || 8500, 3000),
-  55_000
-);
+function getDeepSeekUrl(): string {
+  return runtimeEnv("DEEPSEEK_API_URL") ?? "https://api.deepseek.com/chat/completions";
+}
+
+function getDeepSeekModel(): string {
+  return runtimeEnv("DEEPSEEK_MODEL") ?? "deepseek-chat";
+}
+
+/** Por debajo del límite típico de Vercel Hobby (~10s). */
+function getUpstreamFetchMs(): number {
+  return Math.min(
+    Math.max(Number(runtimeEnv("CHAT_UPSTREAM_MS")) || 8500, 3000),
+    55_000
+  );
+}
 
 const MAX_MESSAGE_LENGTH = 2000;
 const MAX_MESSAGES_IN_REQUEST = 24;
@@ -68,12 +91,12 @@ export const POST: APIRoute = async ({ request }) => {
 };
 
 async function handleChatPost(request: Request): Promise<Response> {
-  const apiKey = envOrUndefined(import.meta.env.DEEPSEEK_API_KEY);
+  const apiKey = runtimeEnv("DEEPSEEK_API_KEY");
   if (!apiKey) {
     return new Response(
       JSON.stringify({
         error:
-          "Falta DEEPSEEK_API_KEY. Crea un archivo .env en la raíz del proyecto con tu clave.",
+          "Falta DEEPSEEK_API_KEY. En local usa .env; en Vercel: Settings → Environment Variables (Production) y vuelve a desplegar.",
       }),
       { status: 503, headers: { "Content-Type": "application/json" } }
     );
@@ -140,7 +163,7 @@ async function handleChatPost(request: Request): Promise<Response> {
   }
 
   const payload = {
-    model: DEEPSEEK_MODEL,
+    model: getDeepSeekModel(),
     messages: [
       { role: "system" as const, content: buildSystemPrompt() },
       ...trimMessages(messages).map((m) => ({ role: m.role, content: m.content })),
@@ -150,11 +173,12 @@ async function handleChatPost(request: Request): Promise<Response> {
   };
 
   const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), UPSTREAM_FETCH_MS);
+  const upstreamMs = getUpstreamFetchMs();
+  const timeoutId = setTimeout(() => controller.abort(), upstreamMs);
 
   let res: Response;
   try {
-    res = await fetch(DEEPSEEK_URL, {
+    res = await fetch(getDeepSeekUrl(), {
       method: "POST",
       signal: controller.signal,
       headers: {

@@ -70,16 +70,30 @@ ${BUSINESS_CONTEXT}
 `.trim();
 }
 
+const __vite_import_meta_env__ = {"ASSETS_PREFIX": undefined, "BASE_URL": "/", "DEV": false, "MODE": "production", "PROD": true, "SITE": "https://ktalweb.com.pe", "SSR": true};
 function envOrUndefined(v) {
   const t = typeof v === "string" ? v.trim() : "";
   return t.length > 0 ? t : void 0;
 }
-const DEEPSEEK_URL = envOrUndefined(undefined                                ) ?? "https://api.deepseek.com/chat/completions";
-const DEEPSEEK_MODEL = envOrUndefined(undefined                              ) ?? "deepseek-chat";
-const UPSTREAM_FETCH_MS = Math.min(
-  Math.max(Number(undefined                                ) || 8500, 3e3),
-  55e3
-);
+function runtimeEnv(key) {
+  const fromProcess = typeof process !== "undefined" && typeof process.env[key] === "string" ? process.env[key] : void 0;
+  const fromProcessTrimmed = envOrUndefined(fromProcess);
+  if (fromProcessTrimmed) return fromProcessTrimmed;
+  const fromMeta = Object.assign(__vite_import_meta_env__, { DEEPSEEK_API_KEY: "sk-d45c5480f4844777861f98373a37514c", OS: process.env.OS, _: process.env._ })[key];
+  return envOrUndefined(typeof fromMeta === "string" ? fromMeta : void 0);
+}
+function getDeepSeekUrl() {
+  return runtimeEnv("DEEPSEEK_API_URL") ?? "https://api.deepseek.com/chat/completions";
+}
+function getDeepSeekModel() {
+  return runtimeEnv("DEEPSEEK_MODEL") ?? "deepseek-chat";
+}
+function getUpstreamFetchMs() {
+  return Math.min(
+    Math.max(Number(runtimeEnv("CHAT_UPSTREAM_MS")) || 8500, 3e3),
+    55e3
+  );
+}
 const MAX_MESSAGE_LENGTH = 2e3;
 const MAX_MESSAGES_IN_REQUEST = 24;
 const MAX_MESSAGES_TO_MODEL = 14;
@@ -121,11 +135,11 @@ const POST = async ({ request }) => {
   }
 };
 async function handleChatPost(request) {
-  const apiKey = envOrUndefined("sk-d45c5480f4844777861f98373a37514c");
+  const apiKey = runtimeEnv("DEEPSEEK_API_KEY");
   if (!apiKey) {
     return new Response(
       JSON.stringify({
-        error: "Falta DEEPSEEK_API_KEY. Crea un archivo .env en la raíz del proyecto con tu clave."
+        error: "Falta DEEPSEEK_API_KEY. En local usa .env; en Vercel: Settings → Environment Variables (Production) y vuelve a desplegar."
       }),
       { status: 503, headers: { "Content-Type": "application/json" } }
     );
@@ -180,7 +194,7 @@ async function handleChatPost(request) {
     });
   }
   const payload = {
-    model: DEEPSEEK_MODEL,
+    model: getDeepSeekModel(),
     messages: [
       { role: "system", content: buildSystemPrompt() },
       ...trimMessages(messages).map((m) => ({ role: m.role, content: m.content }))
@@ -189,10 +203,11 @@ async function handleChatPost(request) {
     max_tokens: 700
   };
   const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), UPSTREAM_FETCH_MS);
+  const upstreamMs = getUpstreamFetchMs();
+  const timeoutId = setTimeout(() => controller.abort(), upstreamMs);
   let res;
   try {
-    res = await fetch(DEEPSEEK_URL, {
+    res = await fetch(getDeepSeekUrl(), {
       method: "POST",
       signal: controller.signal,
       headers: {
