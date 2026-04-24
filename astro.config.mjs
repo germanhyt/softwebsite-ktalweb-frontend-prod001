@@ -10,6 +10,7 @@ import sitemap from "@astrojs/sitemap";
 import vercel from "@astrojs/vercel";
 
 // https://astro.build/config
+// Vercel: no pongas "Output Directory" = dist en el panel; Astro usa Build Output API (.vercel/output).
 export default defineConfig({
   base: "/",
   site: "https://ktalweb.com.pe",
