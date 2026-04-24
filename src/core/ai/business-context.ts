@@ -1,4 +1,4 @@
-import { CONTACT_EMAIL, SITE_URL, WHATSAPP_PHONE_E164 } from "@/core/site-contact";
+import { CONTACT_EMAIL, SITE_URL, WHATSAPP_PHONE_E164 } from "../site-contact";
 
 /**
  * Conocimiento estructurado de la landing (sin RAG).

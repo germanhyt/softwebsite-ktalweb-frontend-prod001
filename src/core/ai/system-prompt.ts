@@ -1,4 +1,4 @@
-import { BUSINESS_CONTEXT } from "@/core/ai/business-context";
+import { BUSINESS_CONTEXT } from "./business-context";
 
 export function buildSystemPrompt(): string {
   return `
