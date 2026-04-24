@@ -15,7 +15,10 @@ export default defineConfig({
   site: "https://ktalweb.com.pe",
   // Rutas /api/* en serverless; las páginas marcan prerender = true
   output: "server",
-  adapter: vercel(),
+  adapter: vercel({
+    // Límite real depende del plan Vercel (Hobby ~10s). Ajusta en el panel si aplica.
+    maxDuration: 60,
+  }),
   
   vite: {
     plugins: [tailwindcss()],

@@ -1,9 +1,21 @@
 import type { APIRoute } from "astro";
 import { buildSystemPrompt } from "@/core/ai/system-prompt";
 
+function envOrUndefined(v: string | undefined): string | undefined {
+  const t = typeof v === "string" ? v.trim() : "";
+  return t.length > 0 ? t : undefined;
+}
+
 const DEEPSEEK_URL =
-  import.meta.env.DEEPSEEK_API_URL ?? "https://api.deepseek.com/chat/completions";
-const DEEPSEEK_MODEL = import.meta.env.DEEPSEEK_MODEL ?? "deepseek-chat";
+  envOrUndefined(import.meta.env.DEEPSEEK_API_URL) ??
+  "https://api.deepseek.com/chat/completions";
+const DEEPSEEK_MODEL = envOrUndefined(import.meta.env.DEEPSEEK_MODEL) ?? "deepseek-chat";
+
+/** Por debajo del límite típico de Vercel Hobby (~10s) para devolver JSON en lugar de FUNCTION_INVOCATION_FAILED. */
+const UPSTREAM_FETCH_MS = Math.min(
+  Math.max(Number(import.meta.env.CHAT_UPSTREAM_MS) || 8500, 3000),
+  55_000
+);
 
 const MAX_MESSAGE_LENGTH = 2000;
 const MAX_MESSAGES_IN_REQUEST = 24;
@@ -42,7 +54,21 @@ function trimMessages(messages: IncomingMessage[]): IncomingMessage[] {
 }
 
 export const POST: APIRoute = async ({ request }) => {
-  const apiKey = import.meta.env.DEEPSEEK_API_KEY;
+  try {
+    return await handleChatPost(request);
+  } catch (err) {
+    console.error("[api/chat] error no controlado:", err);
+    return new Response(
+      JSON.stringify({
+        error: "Error interno del servidor. Revisa los logs en Vercel o inténtalo más tarde.",
+      }),
+      { status: 500, headers: { "Content-Type": "application/json" } }
+    );
+  }
+};
+
+async function handleChatPost(request: Request): Promise<Response> {
+  const apiKey = envOrUndefined(import.meta.env.DEEPSEEK_API_KEY);
   if (!apiKey) {
     return new Response(
       JSON.stringify({
@@ -123,10 +149,14 @@ export const POST: APIRoute = async ({ request }) => {
     max_tokens: 700,
   };
 
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), UPSTREAM_FETCH_MS);
+
   let res: Response;
   try {
     res = await fetch(DEEPSEEK_URL, {
       method: "POST",
+      signal: controller.signal,
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${apiKey}`,
@@ -134,11 +164,22 @@ export const POST: APIRoute = async ({ request }) => {
       body: JSON.stringify(payload),
     });
   } catch (e) {
+    const name = e instanceof Error ? e.name : "";
+    const isAbort = name === "AbortError";
     console.error("DeepSeek fetch error:", e);
-    return new Response(JSON.stringify({ error: "No se pudo contactar al servicio de IA" }), {
-      status: 502,
-      headers: { "Content-Type": "application/json" },
-    });
+    return new Response(
+      JSON.stringify({
+        error: isAbort
+          ? "El servicio de IA tardó demasiado. Vuelve a intentar o escribe por WhatsApp."
+          : "No se pudo contactar al servicio de IA",
+      }),
+      {
+        status: 502,
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+  } finally {
+    clearTimeout(timeoutId);
   }
 
   if (!res.ok) {
@@ -172,7 +213,7 @@ export const POST: APIRoute = async ({ request }) => {
     status: 200,
     headers: { "Content-Type": "application/json" },
   });
-};
+}
 
 function extractAssistantContent(data: unknown): string | null {
   if (!data || typeof data !== "object") return null;
@@ -182,6 +223,26 @@ function extractAssistantContent(data: unknown): string | null {
   if (!first || typeof first !== "object") return null;
   const message = (first as { message?: unknown }).message;
   if (!message || typeof message !== "object") return null;
-  const content = (message as { content?: unknown }).content;
-  return typeof content === "string" ? content : null;
+  return normalizeMessageContent((message as { content?: unknown }).content);
+}
+
+/** Algunas APIs devuelven `content` como string o como lista de fragmentos. */
+function normalizeMessageContent(content: unknown): string | null {
+  if (typeof content === "string") return content;
+  if (content == null) return null;
+  if (Array.isArray(content)) {
+    const parts: string[] = [];
+    for (const part of content) {
+      if (typeof part === "string") {
+        parts.push(part);
+        continue;
+      }
+      if (!part || typeof part !== "object") continue;
+      const o = part as Record<string, unknown>;
+      if (typeof o.text === "string") parts.push(o.text);
+      else if (typeof o.content === "string") parts.push(o.content);
+    }
+    return parts.length > 0 ? parts.join("") : null;
+  }
+  return null;
 }

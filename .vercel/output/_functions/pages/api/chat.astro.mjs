@@ -70,8 +70,16 @@ ${BUSINESS_CONTEXT}
 `.trim();
 }
 
-const DEEPSEEK_URL = "https://api.deepseek.com/chat/completions";
-const DEEPSEEK_MODEL = "deepseek-chat";
+function envOrUndefined(v) {
+  const t = typeof v === "string" ? v.trim() : "";
+  return t.length > 0 ? t : void 0;
+}
+const DEEPSEEK_URL = envOrUndefined(undefined                                ) ?? "https://api.deepseek.com/chat/completions";
+const DEEPSEEK_MODEL = envOrUndefined(undefined                              ) ?? "deepseek-chat";
+const UPSTREAM_FETCH_MS = Math.min(
+  Math.max(Number(undefined                                ) || 8500, 3e3),
+  55e3
+);
 const MAX_MESSAGE_LENGTH = 2e3;
 const MAX_MESSAGES_IN_REQUEST = 24;
 const MAX_MESSAGES_TO_MODEL = 14;
@@ -100,7 +108,28 @@ function trimMessages(messages) {
   return messages.slice(start);
 }
 const POST = async ({ request }) => {
-  const apiKey = "sk-d45c5480f4844777861f98373a37514c";
+  try {
+    return await handleChatPost(request);
+  } catch (err) {
+    console.error("[api/chat] error no controlado:", err);
+    return new Response(
+      JSON.stringify({
+        error: "Error interno del servidor. Revisa los logs en Vercel o inténtalo más tarde."
+      }),
+      { status: 500, headers: { "Content-Type": "application/json" } }
+    );
+  }
+};
+async function handleChatPost(request) {
+  const apiKey = envOrUndefined("sk-d45c5480f4844777861f98373a37514c");
+  if (!apiKey) {
+    return new Response(
+      JSON.stringify({
+        error: "Falta DEEPSEEK_API_KEY. Crea un archivo .env en la raíz del proyecto con tu clave."
+      }),
+      { status: 503, headers: { "Content-Type": "application/json" } }
+    );
+  }
   if (!allowRateLimit(clientIp(request))) {
     return new Response(JSON.stringify({ error: "Demasiadas solicitudes. Intenta en un minuto." }), {
       status: 429,
@@ -159,10 +188,13 @@ const POST = async ({ request }) => {
     temperature: 0.6,
     max_tokens: 700
   };
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), UPSTREAM_FETCH_MS);
   let res;
   try {
     res = await fetch(DEEPSEEK_URL, {
       method: "POST",
+      signal: controller.signal,
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${apiKey}`
@@ -170,11 +202,20 @@ const POST = async ({ request }) => {
       body: JSON.stringify(payload)
     });
   } catch (e) {
+    const name = e instanceof Error ? e.name : "";
+    const isAbort = name === "AbortError";
     console.error("DeepSeek fetch error:", e);
-    return new Response(JSON.stringify({ error: "No se pudo contactar al servicio de IA" }), {
-      status: 502,
-      headers: { "Content-Type": "application/json" }
-    });
+    return new Response(
+      JSON.stringify({
+        error: isAbort ? "El servicio de IA tardó demasiado. Vuelve a intentar o escribe por WhatsApp." : "No se pudo contactar al servicio de IA"
+      }),
+      {
+        status: 502,
+        headers: { "Content-Type": "application/json" }
+      }
+    );
+  } finally {
+    clearTimeout(timeoutId);
   }
   if (!res.ok) {
     const errText = await res.text().catch(() => "");
@@ -204,7 +245,7 @@ const POST = async ({ request }) => {
     status: 200,
     headers: { "Content-Type": "application/json" }
   });
-};
+}
 function extractAssistantContent(data) {
   if (!data || typeof data !== "object") return null;
   const choices = data.choices;
@@ -213,8 +254,26 @@ function extractAssistantContent(data) {
   if (!first || typeof first !== "object") return null;
   const message = first.message;
   if (!message || typeof message !== "object") return null;
-  const content = message.content;
-  return typeof content === "string" ? content : null;
+  return normalizeMessageContent(message.content);
+}
+function normalizeMessageContent(content) {
+  if (typeof content === "string") return content;
+  if (content == null) return null;
+  if (Array.isArray(content)) {
+    const parts = [];
+    for (const part of content) {
+      if (typeof part === "string") {
+        parts.push(part);
+        continue;
+      }
+      if (!part || typeof part !== "object") continue;
+      const o = part;
+      if (typeof o.text === "string") parts.push(o.text);
+      else if (typeof o.content === "string") parts.push(o.content);
+    }
+    return parts.length > 0 ? parts.join("") : null;
+  }
+  return null;
 }
 
 const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
