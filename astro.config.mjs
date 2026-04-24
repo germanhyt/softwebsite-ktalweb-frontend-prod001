@@ -17,6 +17,8 @@ export default defineConfig({
   // Rutas /api/* en serverless; las páginas marcan prerender = true
   output: "server",
   adapter: vercel({
+    // Evita empaquetados incompletos del serverless (entry.mjs faltante en /var/task) reportados con SSR en Vercel.
+    imageService: true,
     // Límite real depende del plan Vercel (Hobby ~10s). Ajusta en el panel si aplica.
     maxDuration: 60,
   }),

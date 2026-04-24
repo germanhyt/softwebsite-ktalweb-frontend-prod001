@@ -79,7 +79,7 @@ function runtimeEnv(key) {
   const fromProcess = typeof process !== "undefined" && typeof process.env[key] === "string" ? process.env[key] : void 0;
   const fromProcessTrimmed = envOrUndefined(fromProcess);
   if (fromProcessTrimmed) return fromProcessTrimmed;
-  const fromMeta = Object.assign(__vite_import_meta_env__, { DEEPSEEK_API_KEY: "sk-d45c5480f4844777861f98373a37514c", OS: process.env.OS, _: process.env._ })[key];
+  const fromMeta = Object.assign(__vite_import_meta_env__, { DEEPSEEK_API_KEY: "sk-d45c5480f4844777861f98373a37514c", OS: process.env.OS })[key];
   return envOrUndefined(typeof fromMeta === "string" ? fromMeta : void 0);
 }
 function getDeepSeekUrl() {
