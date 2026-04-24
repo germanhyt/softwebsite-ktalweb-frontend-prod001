@@ -154,6 +154,9 @@ export default function ChatWidget() {
     }
   };
 
+
+  
+
   const handleSend = async (text?: string) => {
     const raw = (text ?? input).trim();
     if (!raw || loading) return;
