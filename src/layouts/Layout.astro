@@ -1,4 +1,5 @@
 ---
+import ChatWidget from "@/components/ChatWidget";
 import { defaultSEO } from "@/../seoConfig.ts";
 
 const {
@@ -89,6 +90,7 @@ const {
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
     <slot />
+    <ChatWidget client:load />
   </body>
 </html>
 

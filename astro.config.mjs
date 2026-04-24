@@ -7,10 +7,15 @@ import react from "@astrojs/react";
 
 import sitemap from "@astrojs/sitemap";
 
+import vercel from "@astrojs/vercel";
+
 // https://astro.build/config
 export default defineConfig({
   base: "/",
   site: "https://ktalweb.com.pe",
+  // Rutas /api/* en serverless; las páginas marcan prerender = true
+  output: "server",
+  adapter: vercel(),
   
   vite: {
     plugins: [tailwindcss()],
