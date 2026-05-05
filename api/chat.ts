@@ -24,7 +24,7 @@ const BUSINESS_CONTEXT = `
 
 ## Proceso (resumen)
 - Discovery y alineacion de objetivos.
-- Propuesta y alcance acordado.
+- Propuesta y alcance acordado.w
 - Diseno y desarrollo iterativo.
 - Pruebas y publicacion.
 - (Segun proyecto) acompanamiento post-lanzamiento; no prometer plazos ni precios cerrados sin validacion humana.
