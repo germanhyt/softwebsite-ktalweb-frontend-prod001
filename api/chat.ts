@@ -24,7 +24,7 @@ const BUSINESS_CONTEXT = `
 
 ## Proceso (resumen)
 - Discovery y alineacion de objetivos.
-- Propuesta y alcance acordado.w
+- Propuesta y alcance acordado.
 - Diseno y desarrollo iterativo.
 - Pruebas y publicacion.
 - (Segun proyecto) acompanamiento post-lanzamiento; no prometer plazos ni precios cerrados sin validacion humana.
@@ -88,23 +88,33 @@ function envOrUndefined(v: string | undefined): string | undefined {
   return trimmed.length > 0 ? trimmed : undefined;
 }
 
-function runtimeEnv(
-  key: "DEEPSEEK_API_KEY" | "DEEPSEEK_API_URL" | "DEEPSEEK_MODEL" | "CHAT_UPSTREAM_MS"
-): string | undefined {
+function runtimeEnv(key: string): string | undefined {
   return envOrUndefined(process.env[key]);
 }
 
-function getDeepSeekUrl(): string {
-  return runtimeEnv("DEEPSEEK_API_URL") ?? "https://api.deepseek.com/chat/completions";
+function getApiKey(): string | undefined {
+  return runtimeEnv("NVIDIA_API_KEY") ?? runtimeEnv("DEEPSEEK_API_KEY");
 }
 
-function getDeepSeekModel(): string {
-  return runtimeEnv("DEEPSEEK_MODEL") ?? "deepseek-chat";
+function getApiUrl(): string {
+  return (
+    runtimeEnv("NVIDIA_API_URL") ??
+    runtimeEnv("DEEPSEEK_API_URL") ??
+    "https://integrate.api.nvidia.com/v1/chat/completions"
+  );
+}
+
+function getModel(): string {
+  return (
+    runtimeEnv("NVIDIA_MODEL") ??
+    runtimeEnv("DEEPSEEK_MODEL") ??
+    "z-ai/glm-5.2"
+  );
 }
 
 function getUpstreamFetchMs(): number {
   return Math.min(
-    Math.max(Number(runtimeEnv("CHAT_UPSTREAM_MS")) || 8500, 3000),
+    Math.max(Number(runtimeEnv("CHAT_UPSTREAM_MS")) || 20000, 3000),
     55_000
   );
 }
@@ -195,13 +205,13 @@ export default async function handler(req: any, res: any) {
 async function handleChatPost(
   req: any
 ): Promise<{ status: number; body: Record<string, unknown> }> {
-  const apiKey = runtimeEnv("DEEPSEEK_API_KEY");
+  const apiKey = getApiKey();
   if (!apiKey) {
     return {
       status: 503,
       body: {
         error:
-          "Falta DEEPSEEK_API_KEY. En local usa .env; en Vercel: Settings -> Environment Variables (Production) y vuelve a desplegar.",
+          "Falta NVIDIA_API_KEY. En local usa .env; en Vercel: Settings -> Environment Variables (Production) y vuelve a desplegar.",
       },
     };
   }
@@ -267,7 +277,7 @@ async function handleChatPost(
   }
 
   const payload = {
-    model: getDeepSeekModel(),
+    model: getModel(),
     messages: [
       { role: "system" as const, content: buildSystemPrompt() },
       ...trimMessages(messages).map((message) => ({
@@ -284,7 +294,7 @@ async function handleChatPost(
 
   let upstreamResponse: Response;
   try {
-    upstreamResponse = await fetch(getDeepSeekUrl(), {
+    upstreamResponse = await fetch(getApiUrl(), {
       method: "POST",
       signal: controller.signal,
       headers: {
@@ -296,7 +306,7 @@ async function handleChatPost(
   } catch (error) {
     const name = error instanceof Error ? error.name : "";
     const isAbort = name === "AbortError";
-    console.error("DeepSeek fetch error:", error);
+    console.error("NVIDIA/LLM fetch error:", error);
     return {
       status: 502,
       body: {
@@ -311,7 +321,7 @@ async function handleChatPost(
 
   if (!upstreamResponse.ok) {
     const errorText = await upstreamResponse.text().catch(() => "");
-    console.error("DeepSeek API error:", upstreamResponse.status, errorText);
+    console.error("NVIDIA/LLM API error:", upstreamResponse.status, errorText);
     return {
       status: 502,
       body: { error: "Respuesta no válida del proveedor de IA" },
