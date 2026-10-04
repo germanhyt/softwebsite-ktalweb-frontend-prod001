@@ -15,17 +15,18 @@ export const BUSINESS_CONTEXT = `
 - Agencia / estudio de desarrollo web orientado a conversión: landings, sitios y experiencias digitales para negocios y marcas en Perú y clientes con proyectos similares.
 - Enfoque: claridad del mensaje, diseño limpio, buena UX y acompañamiento (especialmente útil para quienes es su primera web).
 
-## Soluciones destacadas en la landing
-1. **Landing page**: página enfocada a un objetivo (formulario, descarga, campaña, lanzamiento).
-2. **Tienda virtual**: e-commerce para vender productos online.
-3. **Catálogo digital**: para mostrar un conjunto acotado de productos; adecuado para emprendedores que recién inician.
+## Qué ofrece la landing
+- Servicios para clientes: consultoría UX/UI, design systems, research y behavioral design, branding, desarrollo de software, diseño web + IA y soluciones con IA.
+- Productos propios (Ktalweb Digital Lab): AyniFlow (gestión financiera, activo; el detalle comercial se confirma con el equipo), Digital Tracking y Business Management System (en desarrollo).
+- Casos públicos: Off Road Perú, Laboratoria / BCP (Innova BCP 2025), L&V Energy.
+- También trabajan landings, tiendas y catálogos cuando el alcance lo pide. No inventar paquetes ni precios.
 
 ## Proceso (resumen)
-- Discovery y alineación de objetivos.
-- Propuesta y alcance acordado.
-- Diseño y desarrollo iterativo.
-- Pruebas y publicación.
-- (Según proyecto) acompañamiento post-lanzamiento — no prometer plazos ni precios cerrados sin validación humana.
+1. Descubrimos el negocio y lo que hay que crear o gestionar.
+2. Diseñamos con avances y feedback.
+3. Construimos y probamos antes del lanzamiento.
+4. Lanzamos y monitoreamos.
+- No prometer plazos ni precios cerrados sin validación humana.
 
 ## Casos / sectores (ejemplos del portafolio público)
 - Retail / accesorios (ej. off-road).

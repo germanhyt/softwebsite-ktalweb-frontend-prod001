@@ -1,0 +1,408 @@
+---
+import SiteNav from "@/components/redesign/SiteNav";
+import ServicesPanel from "@/components/redesign/ServicesPanel";
+import ContactForm from "@/components/redesign/ContactForm";
+import PageMotion from "@/components/redesign/PageMotion";
+import {
+  aboutAnswers,
+  aiChips,
+  processSteps,
+  softwareChips,
+} from "@/data/redesign-home";
+import { CONTACT_EMAIL, whatsappHref } from "@/core/site-contact";
+
+import offroad from "@/assets/images/portfolio_offroad_1.webp?url";
+import laboratoriaBcp from "@/assets/images/portfolio_labbcp_1.webp?url";
+import energy from "@/assets/images/portfolio_lyvenergy_1.webp?url";
+import zukarzen from "@/assets/images/portfolio_zukarzen_1.webp?url";
+import laboratoriaMack from "@/assets/images/portfolio_labmack_1.webp?url";
+import logoOffroad from "@/assets/images/logo_offroadperu.webp?url";
+import logoLaboratoriaBcp from "@/assets/images/logo_laboratoria_bcp.webp?url";
+import logoEnergy from "@/assets/images/logo_lvenergy.webp?url";
+import logoZukarzen from "@/assets/images/logo_zukarzen.webp?url";
+import logoLaboratoria from "@/assets/images/logo_laboratoria.webp?url";
+import logoBcp from "@/assets/images/logo_bcp.webp?url";
+import logoMckinsey from "@/assets/images/logo_mckinsey.webp?url";
+import logoBiotraining from "@/assets/images/logo_biotraining.webp?url";
+import logoHazLaTarea from "@/assets/images/logo_haz_la_tarea.png?url";
+import logoDiverty from "@/assets/images/logo_diverty.png?url";
+import brochure from "@/assets/brochure_ktalweb.pdf?url";
+
+const whatsapp = whatsappHref(
+  "Hola Ktalweb, quiero conversar sobre un proyecto digital."
+);
+const ayni = whatsappHref(
+  "Hola Ktalweb, quiero conocer AyniFlow."
+);
+
+const cases = [
+  {
+    title: "Off Road Perú",
+    image: offroad,
+    alt: "Sitio de Off Road Perú",
+    logo: logoOffroad,
+    logoAlt: "Off Road Perú",
+    description:
+      "Offroad Perú ofrece equipos y accesorios para vehículos todoterreno, overland y racing. El sitio muestra ese catálogo de forma clara y fácil de recorrer.",
+    href: "https://offroadperu.com.pe",
+  },
+  {
+    title: "Laboratoria / BCP",
+    image: laboratoriaBcp,
+    alt: "Sitio de Innova BCP con Laboratoria",
+    logo: logoLaboratoriaBcp,
+    logoAlt: "Laboratoria y BCP",
+    description:
+      "Innova BCP 2025 promueve ideas para desafíos reales del sector financiero. La web convoca talento al hackathon.",
+    href: "https://innovabcp2025.com",
+  },
+  {
+    title: "L&V Energy",
+    image: energy,
+    alt: "Sitio de cursos de L&V Energy",
+    logo: logoEnergy,
+    logoAlt: "L&V Energy",
+    description:
+      "L&V Energy trabaja soluciones energéticas sostenibles. El sitio presenta sus cursos, beneficios, certificados e inscripción.",
+    href: "https://www.lyvenergy.com",
+  },
+  {
+    title: "Zukarzen",
+    image: zukarzen,
+    alt: "Sitio de Zukarzen",
+    logo: logoZukarzen,
+    logoAlt: "Zukarzen",
+    description:
+      "Zukarzen es una pastelería saludable en Lima, con postres artesanales sin azúcar, sin gluten y sin lactosa.",
+    href: "https://zukarzen.com",
+  },
+  {
+    title: "Laboratoria",
+    image: laboratoriaMack,
+    alt: "Estudio de Laboratoria sobre brecha de género",
+    logo: logoLaboratoria,
+    logoAlt: "Laboratoria",
+    description:
+      "Laboratoria impulsa el talento femenino en tecnología. Esta web presenta su estudio, con piezas descargables y cambio de idioma.",
+    href: "http://laboratoria-brechadegenero.la",
+  },
+];
+
+const logos = [
+  { src: logoZukarzen, alt: "Zukar Zen" },
+  { src: logoLaboratoria, alt: "Laboratoria" },
+  { src: logoBcp, alt: "BCP" },
+  { src: logoOffroad, alt: "Off Road Perú" },
+  { src: logoEnergy, alt: "L&V Energy" },
+  { src: logoMckinsey, alt: "McKinsey & Company" },
+  { src: logoBiotraining, alt: "Biotraining" },
+  { src: logoHazLaTarea, alt: "Haz La Tarea" },
+  { src: logoDiverty, alt: "Diverty" },
+];
+---
+
+<div class="site" id="inicio">
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <SiteNav client:load />
+
+  <main id="contenido">
+    <section class="band-ink hero" aria-labelledby="hero-title">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-floats" aria-hidden="true">
+        <img class="float-art float-data" src="/redesign/float-data.svg" alt="" width="76" height="56" />
+        <img class="float-art float-ux" src="/redesign/float-ux.svg" alt="" width="130" height="86" />
+        <img class="float-art float-ai" src="/redesign/float-ai.svg" alt="" width="100" height="70" />
+      </div>
+      <div class="band-inner">
+        <h1 id="hero-title" class="hero-lines">
+          <span class="display hero-outline" data-enter>Diseñamos</span>
+          <span class="display hero-paper" data-enter>y construimos</span>
+          <span class="display hero-violet" data-enter>soluciones digitales.</span>
+        </h1>
+        <div class="hero-bottom">
+          <p class="body-l" data-enter>
+            Convertimos necesidades de negocio en soluciones digitales: UX/UI, software, IA y productos propios.
+          </p>
+          <div class="hero-actions" data-enter>
+            <a class="btn btn-solid" href="#proyectos">Ver proyectos</a>
+            <a class="btn btn-ghost" href={whatsapp} target="_blank" rel="noopener noreferrer">
+              Escribir por WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band-paper manifesto" aria-labelledby="manifiesto-title">
+      <div class="band-inner" data-reveal>
+        <p class="label" id="manifiesto-title">Qué significa digitalizar</p>
+        <p class="lead">
+          Digitalizar no es tener una página. Es entender qué necesita tu negocio y <em>construir la herramienta</em> que lo resuelve: una experiencia, un sistema, un flujo con IA.
+        </p>
+      </div>
+    </section>
+
+    <section class="band-paper" id="servicios" aria-labelledby="servicios-title">
+      <div class="band-inner">
+        <div class="section-head" data-reveal>
+          <p class="label">Servicios · lo que hacemos para nuestros clientes</p>
+          <h2 class="h2" id="servicios-title">Qué hacemos</h2>
+        </div>
+        <div data-reveal>
+          <ServicesPanel client:visible />
+        </div>
+      </div>
+    </section>
+
+    <section class="band-ink" id="productos" aria-labelledby="productos-title">
+      <div class="band-inner">
+        <div class="split-head" data-reveal>
+          <div>
+            <p class="label label-lilac">Ktalweb Digital Lab · productos propios</p>
+            <h2 class="h2" id="productos-title">Productos<br />digitales</h2>
+          </div>
+          <p class="body-l">
+            Soluciones que Ktalweb desarrolla como producto: estructuradas, y hechas para evolucionar, adaptarse y escalar.
+          </p>
+        </div>
+
+        <div class="products">
+          <article class="product" data-reveal>
+            <div>
+              <p class="badge">Producto activo</p>
+              <p class="product-kicker">Producto 01 · Gestión financiera</p>
+              <h3 class="h3">AyniFlow</h3>
+              <p class="product-copy">
+                Plataforma modular de gestión financiera desarrollada por Ktalweb.
+              </p>
+              <div class="product-actions">
+                <a class="btn btn-solid" href={ayni} target="_blank" rel="noopener noreferrer">Ver AyniFlow</a>
+              </div>
+            </div>
+            <div class="mock" aria-hidden="true">
+              <span class="mock-bar"></span>
+              <span class="mock-dot"></span>
+              <span class="mock-line" style="top: 4.2rem; width: 42%"></span>
+              <span class="mock-line" style="top: 5.4rem; width: 28%"></span>
+              <span class="mock-block" style="top: 7rem; left: 1.2rem; width: 30%; height: 5.5rem"></span>
+              <span class="mock-block" style="top: 7rem; left: 35%; width: 28%; height: 5.5rem"></span>
+              <span class="mock-block" style="top: 7rem; left: 66%; width: 28%; height: 5.5rem"></span>
+              <p class="mock-note">Vista conceptual · reemplazar por captura real</p>
+            </div>
+          </article>
+
+          <article class="product" data-reveal>
+            <div>
+              <p class="badge badge-line">En desarrollo</p>
+              <p class="product-kicker">Producto 02 · Trazabilidad</p>
+              <h3 class="h3">Digital Tracking</h3>
+              <p class="product-copy">
+                Sistema de trackeo digital para que las empresas den seguimiento y trazabilidad a su información y procesos.
+              </p>
+              <div class="product-actions">
+                <button class="btn btn-ghost" type="button" disabled>Próximamente</button>
+              </div>
+            </div>
+            <div class="mock" aria-hidden="true">
+              <span class="mock-line" style="top: 2rem; width: 36%"></span>
+              <span class="mock-line" style="top: 3.4rem; width: 70%"></span>
+              <span class="mock-line" style="top: 4.8rem; width: 54%"></span>
+              <span class="mock-block" style="top: 7rem; left: 1.2rem; width: 88%; height: 6rem"></span>
+              <p class="mock-note">Vista conceptual · reemplazar por captura real</p>
+            </div>
+          </article>
+
+          <article class="product" data-reveal>
+            <div>
+              <p class="badge badge-line">En desarrollo</p>
+              <p class="product-kicker">Producto 03 · Gestión empresarial</p>
+              <h3 class="h3">Business Management System</h3>
+              <p class="product-copy">
+                Construimos sistemas de gestión adaptados a las necesidades específicas de cada negocio.
+              </p>
+              <div class="product-actions">
+                <button class="btn btn-ghost" type="button" disabled>Próximamente</button>
+              </div>
+            </div>
+            <div class="mock" aria-hidden="true">
+              <span class="mock-bar"></span>
+              <span class="mock-line" style="top: 4rem; left: 1.2rem; width: 22%; height: 7rem"></span>
+              <span class="mock-block" style="top: 4rem; left: 28%; width: 64%; height: 3rem"></span>
+              <span class="mock-block" style="top: 8rem; left: 28%; width: 30%; height: 3rem"></span>
+              <p class="mock-note">Vista conceptual · reemplazar por captura real</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band-mist" id="proyectos" aria-labelledby="proyectos-title">
+      <div class="band-inner">
+        <div class="section-head" data-reveal>
+          <p class="label">Proyectos · trabajos realizados para clientes</p>
+          <h2 class="h2" id="proyectos-title">Casos de éxito</h2>
+        </div>
+        <div class="products">
+          {cases.map((item) => (
+            <article class="case" data-reveal>
+              <div class="case-shot">
+                <img src={item.image} alt={item.alt} width="1200" height="720" data-case-media />
+              </div>
+              <div class="case-brand">
+                <img class="case-logo" src={item.logo} alt={item.logoAlt} width="160" height="48" />
+              </div>
+              <h3 class="display">{item.title}</h3>
+              <p class="case-copy">{item.description}</p>
+              <a class="case-link" href={item.href} target="_blank" rel="noopener noreferrer">
+                Ver sitio
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="band-ink" id="capacidades" aria-labelledby="capacidades-title">
+      <div class="band-inner">
+        <div class="section-head" data-reveal>
+          <p class="label label-lilac">Capacidades · diseño + tecnología + IA</p>
+          <h2 class="h2" id="capacidades-title">Software<br />e inteligencia artificial</h2>
+        </div>
+        <div class="caps">
+          <article class="cap" data-reveal>
+            <h3 class="title">Software a la medida</h3>
+            <p class="cap-copy">
+              Soluciones digitales adaptadas a lo que cada empresa necesita, diseñadas y construidas por el mismo equipo.
+            </p>
+            <div class="chips">
+              {softwareChips.map((chip) => <span class="chip">{chip}</span>)}
+            </div>
+          </article>
+          <article class="cap" data-reveal>
+            <h3 class="title">IA con propósito</h3>
+            <p class="cap-copy">Qué se puede hacer con IA en un negocio real, en seis frentes concretos.</p>
+            <div class="chips">
+              {aiChips.map((chip) => <span class="chip">{chip}</span>)}
+            </div>
+          </article>
+          <article class="cap" data-reveal>
+            <h3 class="title">Todo conectado</h3>
+            <p class="cap-copy">
+              Interfaz, lógica, datos e IA diseñados como un solo sistema, no como piezas sueltas.
+            </p>
+            <div class="system" aria-hidden="true">
+              <div class="module module-main">Módulo principal</div>
+              <div class="module">Módulo</div>
+              <div class="module">Módulo</div>
+              <div class="module">Módulo</div>
+              <div class="module">Módulo</div>
+            </div>
+            <p class="system-note">Datos → módulos → IA → decisión (vista conceptual)</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band-paper" id="proceso" aria-labelledby="proceso-title">
+      <div class="band-inner">
+        <div class="section-head" data-reveal>
+          <p class="label">Proceso</p>
+          <h2 class="h2" id="proceso-title">Cómo trabajamos</h2>
+        </div>
+        <div class="steps">
+          {processSteps.map((step) => (
+            <article class="step" data-reveal>
+              <span class="step-index">{step.index}</span>
+              <h3 class="title">{step.title}</h3>
+              <p>{step.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="band-paper logo-band" aria-labelledby="clientes-title">
+      <div class="band-inner logo-label" data-reveal>
+        <p class="label" id="clientes-title">
+          Empresas y organizaciones ya han confiado en nosotros
+        </p>
+      </div>
+      <div class="logo-rail">
+        <div class="logo-track">
+          {logos.map((logo) => (
+            <img src={logo.src} alt={logo.alt} width="140" height="48" />
+          ))}
+          {logos.map((logo) => (
+            <img src={logo.src} alt="" width="140" height="48" aria-hidden="true" />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="band-ink" aria-labelledby="testimonio-title">
+      <div class="band-inner" data-reveal>
+        <p class="quote-mark" aria-hidden="true">“</p>
+        <blockquote>
+          <p class="quote" id="testimonio-title">
+            Los chicos son unos capos, me encantó cómo quedó mi web. Me asesoran, me dieron alternativas y construimos juntos.
+          </p>
+        </blockquote>
+        <p class="quote-by">Naddia Schiaffino · reseña en Google</p>
+      </div>
+    </section>
+
+    <section class="band-paper" id="nosotros" aria-labelledby="nosotros-title">
+      <div class="band-inner">
+        <p class="label" data-reveal>Nosotros</p>
+        <div class="about-grid">
+          <h2 class="h2" id="nosotros-title" data-reveal>
+            Somos Ktalweb<span class="bang">!</span>
+          </h2>
+          <div data-reveal>
+            <p class="title">
+              Un equipo de Lima que diseña y construye soluciones digitales, y ahora también sus propios productos.
+            </p>
+            <div style="margin-top: 2rem">
+              {aboutAnswers.map((item) => (
+                <div class="about-block">
+                  <h3 class="about-q">{item.question}</h3>
+                  <p class="about-answer">{item.answer}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band-ink" id="contacto" aria-labelledby="contacto-title">
+      <div class="band-inner" data-reveal>
+        <p class="label label-lilac">Contacto</p>
+        <h2 class="display" id="contacto-title">¿Qué podemos construir juntos?</h2>
+        <div class="contact-actions">
+          <a class="btn btn-solid" href={whatsapp} target="_blank" rel="noopener noreferrer">
+            Hablar por WhatsApp
+          </a>
+          <a class="btn btn-ghost" href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+        </div>
+        <ContactForm client:visible />
+      </div>
+    </section>
+  </main>
+
+  <footer class="band-ink site-footer">
+    <div class="footer-inner">
+      <a class="wordmark" href="#inicio">ktalweb<span class="bang">!</span></a>
+      <p class="footer-meta">Lima, Perú</p>
+      <nav class="footer-links" aria-label="Pie">
+        <a href="https://www.instagram.com/ktalweb.pe" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://www.tiktok.com/@ktalweb.pe" target="_blank" rel="noopener noreferrer">TikTok</a>
+        <a href="https://www.facebook.com/profile.php?id=61574115239227" target="_blank" rel="noopener noreferrer">Facebook</a>
+        <a href={brochure} download="brochure_ktalweb.pdf">Brochure</a>
+      </nav>
+      <p class="footer-meta">© {new Date().getFullYear()} Ktalweb Perú</p>
+    </div>
+  </footer>
+
+  <PageMotion client:load />
+</div>
