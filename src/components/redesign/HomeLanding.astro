@@ -13,14 +13,24 @@ import { CONTACT_EMAIL, whatsappHref } from "@/core/site-contact";
 
 import offroad from "@/assets/images/portfolio_offroad_1.webp?url";
 import laboratoriaBcp from "@/assets/images/portfolio_labbcp_1.webp?url";
-import energy from "@/assets/images/portfolio_lyvenergy_1.webp?url";
 import zukarzen from "@/assets/images/portfolio_zukarzen_1.webp?url";
 import laboratoriaMack from "@/assets/images/portfolio_labmack_1.webp?url";
+import loreal from "@/assets/images/portfolio_loreal.webp?url";
+import utp from "@/assets/images/portfolio_utp.webp?url";
+import colsubsidio from "@/assets/images/portfolio_colsubsidio.webp?url";
+import biotraining from "@/assets/images/portfolio_biotraining.webp?url";
+import hazLaTarea from "@/assets/images/portfolio_hazlatarea.webp?url";
+import stephanie from "@/assets/images/portfolio_stephanie.webp?url";
+import ayniflowShot from "@/assets/images/portfolio_ayniflow.webp?url";
 import logoOffroad from "@/assets/images/logo_offroadperu.webp?url";
 import logoLaboratoriaBcp from "@/assets/images/logo_laboratoria_bcp.webp?url";
 import logoEnergy from "@/assets/images/logo_lvenergy.webp?url";
 import logoZukarzen from "@/assets/images/logo_zukarzen.webp?url";
 import logoLaboratoria from "@/assets/images/logo_laboratoria.webp?url";
+import logoLoreal from "@/assets/images/logo_labo_loreal_ink.webp?url";
+import logoUtp from "@/assets/images/logo_utp.webp?url";
+import logoColsubsidio from "@/assets/images/logo_colsubsidio.webp?url";
+import logoStephanie from "@/assets/images/logo_stephanie.webp?url";
 import logoBcp from "@/assets/images/logo_bcp.webp?url";
 import logoMckinsey from "@/assets/images/logo_mckinsey.webp?url";
 import logoBiotraining from "@/assets/images/logo_biotraining.webp?url";
@@ -31,9 +41,7 @@ import brochure from "@/assets/brochure_ktalweb.pdf?url";
 const whatsapp = whatsappHref(
   "Hola Ktalweb, quiero conversar sobre un proyecto digital."
 );
-const ayni = whatsappHref(
-  "Hola Ktalweb, quiero conocer AyniFlow."
-);
+const ayniUrl = "https://ayniflow.germ4nhyt.site";
 
 const cases = [
   {
@@ -57,16 +65,6 @@ const cases = [
     href: "https://innovabcp2025.com",
   },
   {
-    title: "L&V Energy",
-    image: energy,
-    alt: "Sitio de cursos de L&V Energy",
-    logo: logoEnergy,
-    logoAlt: "L&V Energy",
-    description:
-      "L&V Energy trabaja soluciones energéticas sostenibles. El sitio presenta sus cursos, beneficios, certificados e inscripción.",
-    href: "https://www.lyvenergy.com",
-  },
-  {
     title: "Zukarzen",
     image: zukarzen,
     alt: "Sitio de Zukarzen",
@@ -85,6 +83,66 @@ const cases = [
     description:
       "Laboratoria impulsa el talento femenino en tecnología. Esta web presenta su estudio, con piezas descargables y cambio de idioma.",
     href: "http://laboratoria-brechadegenero.la",
+  },
+  {
+    title: "Laboratoria / L'Oréal",
+    image: loreal,
+    alt: "Landing Beauty in Tech de Laboratoria y L'Oréal",
+    logo: logoLoreal,
+    logoAlt: "L'Oréal",
+    description:
+      "Beauty in Tech es el programa de Laboratoria y L'Oréal para fortalecer el perfil profesional y la empleabilidad, con una convocatoria clara para postular.",
+    href: "https://activatucarrera-laboratoria-loreal.com",
+  },
+  {
+    title: "Laboratoria / UTP",
+    image: utp,
+    alt: "Landing Activa tu carrera de Laboratoria y UTP",
+    logo: logoUtp,
+    logoAlt: "UTP",
+    description:
+      "Activa tu carrera reúne a Laboratoria y UTP para preparar a estudiantes en su búsqueda de empleo, con beneficios, requisitos y postulación en un solo recorrido.",
+    href: "https://www.laboratoria-activatucarrera-utp.pe",
+  },
+  {
+    title: "Laboratoria / Colsubsidio",
+    image: colsubsidio,
+    alt: "Landing de Laboratoria y Colsubsidio",
+    logo: logoColsubsidio,
+    logoAlt: "Colsubsidio",
+    description:
+      "Colsubsidio y Laboratoria presentan un programa para volver al mercado laboral con más herramientas digitales y una estrategia de búsqueda.",
+    href: "https://softlanding-laboratoria-colsubsidio.vercel.app",
+  },
+  {
+    title: "Biotraining",
+    image: biotraining,
+    alt: "Sitio de Biotraining Academy",
+    logo: logoBiotraining,
+    logoAlt: "Biotraining",
+    description:
+      "Biotraining Academy forma en biotecnología. El sitio presenta la oferta de cursos, el equipo docente y la certificación.",
+    href: "https://www.biotraining.pe",
+  },
+  {
+    title: "Haz La Tarea",
+    image: hazLaTarea,
+    alt: "Sitio de Haz La Tarea",
+    logo: logoHazLaTarea,
+    logoAlt: "Haz La Tarea",
+    description:
+      "Haz La Tarea acompaña emprendimientos con una metodología clara. La web explica el problema, el método y cómo se trabaja con cada negocio.",
+    href: "https://www.hazlatarea.la",
+  },
+  {
+    title: "Stephanie Hoyle",
+    image: stephanie,
+    alt: "Sitio de Stephanie Hoyle",
+    logo: logoStephanie,
+    logoAlt: "Stephanie Hoyle",
+    description:
+      "Marca personal de growth strategy. El sitio presenta el enfoque, las formas de trabajo y una agenda para conversar con negocios en crecimiento.",
+    href: "https://www.stephaniehoyle.com",
   },
 ];
 
@@ -170,66 +228,22 @@ const logos = [
           <article class="product" data-reveal>
             <div>
               <p class="badge">Producto activo</p>
-              <p class="product-kicker">Producto 01 · Gestión financiera</p>
+              <p class="product-kicker">Gestión financiera</p>
               <h3 class="h3">AyniFlow</h3>
               <p class="product-copy">
                 Plataforma modular de gestión financiera desarrollada por Ktalweb.
               </p>
               <div class="product-actions">
-                <a class="btn btn-solid" href={ayni} target="_blank" rel="noopener noreferrer">Ver AyniFlow</a>
+                <a class="btn btn-solid" href={ayniUrl} target="_blank" rel="noopener noreferrer">Ver AyniFlow</a>
               </div>
             </div>
-            <div class="mock" aria-hidden="true">
-              <span class="mock-bar"></span>
-              <span class="mock-dot"></span>
-              <span class="mock-line" style="top: 4.2rem; width: 42%"></span>
-              <span class="mock-line" style="top: 5.4rem; width: 28%"></span>
-              <span class="mock-block" style="top: 7rem; left: 1.2rem; width: 30%; height: 5.5rem"></span>
-              <span class="mock-block" style="top: 7rem; left: 35%; width: 28%; height: 5.5rem"></span>
-              <span class="mock-block" style="top: 7rem; left: 66%; width: 28%; height: 5.5rem"></span>
-              <p class="mock-note">Vista conceptual · reemplazar por captura real</p>
-            </div>
-          </article>
-
-          <article class="product" data-reveal>
-            <div>
-              <p class="badge badge-line">En desarrollo</p>
-              <p class="product-kicker">Producto 02 · Trazabilidad</p>
-              <h3 class="h3">Digital Tracking</h3>
-              <p class="product-copy">
-                Sistema de trackeo digital para que las empresas den seguimiento y trazabilidad a su información y procesos.
-              </p>
-              <div class="product-actions">
-                <button class="btn btn-ghost" type="button" disabled>Próximamente</button>
-              </div>
-            </div>
-            <div class="mock" aria-hidden="true">
-              <span class="mock-line" style="top: 2rem; width: 36%"></span>
-              <span class="mock-line" style="top: 3.4rem; width: 70%"></span>
-              <span class="mock-line" style="top: 4.8rem; width: 54%"></span>
-              <span class="mock-block" style="top: 7rem; left: 1.2rem; width: 88%; height: 6rem"></span>
-              <p class="mock-note">Vista conceptual · reemplazar por captura real</p>
-            </div>
-          </article>
-
-          <article class="product" data-reveal>
-            <div>
-              <p class="badge badge-line">En desarrollo</p>
-              <p class="product-kicker">Producto 03 · Gestión empresarial</p>
-              <h3 class="h3">Business Management System</h3>
-              <p class="product-copy">
-                Construimos sistemas de gestión adaptados a las necesidades específicas de cada negocio.
-              </p>
-              <div class="product-actions">
-                <button class="btn btn-ghost" type="button" disabled>Próximamente</button>
-              </div>
-            </div>
-            <div class="mock" aria-hidden="true">
-              <span class="mock-bar"></span>
-              <span class="mock-line" style="top: 4rem; left: 1.2rem; width: 22%; height: 7rem"></span>
-              <span class="mock-block" style="top: 4rem; left: 28%; width: 64%; height: 3rem"></span>
-              <span class="mock-block" style="top: 8rem; left: 28%; width: 30%; height: 3rem"></span>
-              <p class="mock-note">Vista conceptual · reemplazar por captura real</p>
+            <div class="product-shot">
+              <img
+                src={ayniflowShot}
+                alt="Pantalla de inicio de sesión de AyniFlow"
+                width="1440"
+                height="900"
+              />
             </div>
           </article>
         </div>
@@ -323,8 +337,8 @@ const logos = [
 
     <section class="band-paper logo-band" aria-labelledby="clientes-title">
       <div class="band-inner logo-label" data-reveal>
-        <p class="label" id="clientes-title">
-          Empresas y organizaciones ya han confiado en nosotros
+        <p class="logo-title" id="clientes-title">
+          Empresas y organizaciones <em>ya han confiado</em> en nosotros
         </p>
       </div>
       <div class="logo-rail">

@@ -17,8 +17,8 @@ export const BUSINESS_CONTEXT = `
 
 ## Qué ofrece la landing
 - Servicios para clientes: consultoría UX/UI, design systems, research y behavioral design, branding, desarrollo de software, diseño web + IA y soluciones con IA.
-- Productos propios (Ktalweb Digital Lab): AyniFlow (gestión financiera, activo; el detalle comercial se confirma con el equipo), Digital Tracking y Business Management System (en desarrollo).
-- Casos públicos: Off Road Perú, Laboratoria / BCP (Innova BCP 2025), L&V Energy.
+- Producto propio (Ktalweb Digital Lab): AyniFlow, plataforma modular de gestión financiera, en https://ayniflow.germ4nhyt.site. El detalle comercial se confirma con el equipo.
+- Casos públicos: Off Road Perú, Laboratoria / BCP (Innova BCP 2025), Zukarzen, estudio de brecha de género de Laboratoria, Laboratoria / L'Oréal (Beauty in Tech), Laboratoria / UTP, Laboratoria / Colsubsidio, Biotraining, Haz La Tarea y Stephanie Hoyle.
 - También trabajan landings, tiendas y catálogos cuando el alcance lo pide. No inventar paquetes ni precios.
 
 ## Proceso (resumen)
@@ -31,9 +31,10 @@ export const BUSINESS_CONTEXT = `
 ## Casos / sectores (ejemplos del portafolio público)
 - Retail / accesorios (ej. off-road).
 - Iniciativas corporativas / hackathons (ej. BCP).
-- Educación / cursos (ej. energía).
+- Programas de empleabilidad con Laboratoria (L'Oréal, UTP, Colsubsidio).
 - Food / pastelería saludable.
 - Estudios / informes descargables con animaciones e idiomas.
+- Formación en biotecnología, metodología para emprendimientos y marca personal de growth.
 
 ## FAQs y límites para el asistente
 - **Precios**: dependen del alcance; ofrecer orientación general y proponer conversación con el equipo (WhatsApp o formulario en la web). No inventar montos ni paquetes inexistentes.
