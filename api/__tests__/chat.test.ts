@@ -1,33 +1,31 @@
 import { describe, expect, it } from "vitest";
-import { collectStreamReply } from "../chat";
+import { collectSseReply, extractAssistantContent } from "../chat";
 
-async function* fakeStream(
-  chunks: Array<{ content?: string; reasoning_content?: string }>
-) {
-  for (const delta of chunks) {
-    yield { choices: [{ delta }] };
-  }
-}
-
-describe("api/chat stream collector", () => {
-  it("joins visible content and ignores reasoning_content", async () => {
-    const reply = await collectStreamReply(
-      fakeStream([
-        { reasoning_content: "pensando…" },
-        { content: "Hola" },
-        { content: ", soy " },
-        { reasoning_content: "más thinking" },
-        { content: "Ktalweb." },
-      ])
-    );
-
-    expect(reply).toBe("Hola, soy Ktalweb.");
+describe("api/chat helpers", () => {
+  it("extracts assistant content from a non-stream completion", () => {
+    const content = extractAssistantContent({
+      choices: [{ message: { role: "assistant", content: "Hola desde Nemotron" } }],
+    });
+    expect(content).toBe("Hola desde Nemotron");
   });
 
-  it("returns empty string when the stream has no visible content", async () => {
-    const reply = await collectStreamReply(
-      fakeStream([{ reasoning_content: "solo thinking" }, { content: "" }])
-    );
-    expect(reply).toBe("");
+  it("joins visible SSE content and ignores reasoning chunks", async () => {
+    const sse = [
+      'data: {"choices":[{"delta":{"reasoning_content":"pensando"}}]}',
+      'data: {"choices":[{"delta":{"content":"Hola"}}]}',
+      'data: {"choices":[{"delta":{"content":" Ktalweb"}}]}',
+      "data: [DONE]",
+      "",
+    ].join("\n");
+
+    const stream = new ReadableStream<Uint8Array>({
+      start(controller) {
+        controller.enqueue(new TextEncoder().encode(sse));
+        controller.close();
+      },
+    });
+
+    const reply = await collectSseReply(stream);
+    expect(reply).toBe("Hola Ktalweb");
   });
 });

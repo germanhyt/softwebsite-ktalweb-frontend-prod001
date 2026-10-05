@@ -1,4 +1,3 @@
-import OpenAI from "openai";
 import { buildSystemPrompt } from "../src/core/ai/system-prompt";
 
 type ChatRole = "user" | "assistant";
@@ -29,7 +28,7 @@ function getApiKey(): string | undefined {
   return runtimeEnv("NVIDIA_API_KEY") ?? runtimeEnv("DEEPSEEK_API_KEY");
 }
 
-/** Base URL del cliente OpenAI-compatible (sin /chat/completions). */
+/** Base URL OpenAI-compatible (sin /chat/completions). */
 function getBaseUrl(): string {
   const raw =
     runtimeEnv("NVIDIA_BASE_URL") ??
@@ -38,6 +37,10 @@ function getBaseUrl(): string {
     DEFAULT_BASE_URL;
 
   return raw.replace(/\/chat\/completions\/?$/i, "").replace(/\/$/, "");
+}
+
+function getCompletionsUrl(): string {
+  return `${getBaseUrl()}/chat/completions`;
 }
 
 function getModel(): string {
@@ -61,6 +64,12 @@ function getTopP(): number {
 function getMaxTokens(): number {
   const value = Number(runtimeEnv("CHAT_MAX_TOKENS"));
   return Number.isFinite(value) ? Math.min(Math.max(value, 128), 16_384) : 2048;
+}
+
+function useStream(): boolean {
+  const raw = runtimeEnv("CHAT_STREAM");
+  if (raw == null) return false;
+  return raw === "1" || raw.toLowerCase() === "true";
 }
 
 function json(res: any, status: number, body: Record<string, unknown>) {
@@ -120,29 +129,71 @@ function readJsonBody(req: any): Promise<unknown> {
   });
 }
 
-function createNvidiaClient(apiKey: string) {
-  return new OpenAI({
-    apiKey,
-    baseURL: getBaseUrl(),
-  });
+function normalizeMessageContent(content: unknown): string | null {
+  if (typeof content === "string") return content;
+  if (content == null) return null;
+  if (Array.isArray(content)) {
+    const parts: string[] = [];
+    for (const part of content) {
+      if (typeof part === "string") {
+        parts.push(part);
+        continue;
+      }
+      if (!part || typeof part !== "object") continue;
+      const objectPart = part as Record<string, unknown>;
+      if (typeof objectPart.text === "string") parts.push(objectPart.text);
+      else if (typeof objectPart.content === "string") parts.push(objectPart.content);
+    }
+    return parts.length > 0 ? parts.join("") : null;
+  }
+  return null;
 }
 
-type StreamDelta = {
-  content?: string | null;
-  reasoning_content?: string | null;
-};
+export function extractAssistantContent(data: unknown): string | null {
+  if (!data || typeof data !== "object") return null;
+  const choices = (data as { choices?: unknown }).choices;
+  if (!Array.isArray(choices) || choices.length === 0) return null;
+  const first = choices[0];
+  if (!first || typeof first !== "object") return null;
+  const message = (first as { message?: unknown }).message;
+  if (!message || typeof message !== "object") return null;
+  return normalizeMessageContent((message as { content?: unknown }).content);
+}
 
-/** Acumula solo el contenido visible; el thinking (reasoning_content) no se expone al visitante. */
-export async function collectStreamReply(
-  stream: AsyncIterable<{ choices?: Array<{ delta?: StreamDelta }> }>
-): Promise<string> {
+/** Acumula solo el content visible de un stream SSE NVIDIA/OpenAI. */
+export async function collectSseReply(body: ReadableStream<Uint8Array> | null): Promise<string> {
+  if (!body) return "";
+
+  const reader = body.getReader();
+  const decoder = new TextDecoder();
+  let buffer = "";
   let content = "";
-  for await (const chunk of stream) {
-    const delta = chunk.choices?.[0]?.delta;
-    if (typeof delta?.content === "string" && delta.content) {
-      content += delta.content;
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    buffer += decoder.decode(value, { stream: true });
+
+    const lines = buffer.split("\n");
+    buffer = lines.pop() ?? "";
+
+    for (const line of lines) {
+      const trimmed = line.trim();
+      if (!trimmed.startsWith("data:")) continue;
+      const payload = trimmed.slice(5).trim();
+      if (!payload || payload === "[DONE]") continue;
+      try {
+        const parsed = JSON.parse(payload) as {
+          choices?: Array<{ delta?: { content?: string | null } }>;
+        };
+        const piece = parsed.choices?.[0]?.delta?.content;
+        if (typeof piece === "string" && piece) content += piece;
+      } catch {
+        // ignore malformed chunks
+      }
     }
   }
+
   return content.trim();
 }
 
@@ -246,32 +297,82 @@ async function handleChatPost(
     };
   }
 
-  const openai = createNvidiaClient(apiKey);
+  const stream = useStream();
+  const payload = {
+    model: getModel(),
+    messages: [
+      { role: "system" as const, content: buildSystemPrompt() },
+      ...trimMessages(messages).map((message) => ({
+        role: message.role,
+        content: message.content,
+      })),
+    ],
+    temperature: getTemperature(),
+    top_p: getTopP(),
+    max_tokens: getMaxTokens(),
+    stream,
+    chat_template_kwargs: { enable_thinking: true },
+  };
+
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), getUpstreamFetchMs());
 
+  let upstreamResponse: Response;
   try {
-    const completion = await openai.chat.completions.create(
-      {
-        model: getModel(),
-        messages: [
-          { role: "system", content: buildSystemPrompt() },
-          ...trimMessages(messages).map((message) => ({
-            role: message.role,
-            content: message.content,
-          })),
-        ],
-        temperature: getTemperature(),
-        top_p: getTopP(),
-        max_tokens: getMaxTokens(),
-        stream: true,
-        // Parámetro NVIDIA Nemotron (thinking interno; no se muestra al visitante).
-        chat_template_kwargs: { enable_thinking: true },
-      } as OpenAI.Chat.ChatCompletionCreateParamsStreaming,
-      { signal: controller.signal }
-    );
+    upstreamResponse = await fetch(getCompletionsUrl(), {
+      method: "POST",
+      signal: controller.signal,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify(payload),
+    });
+  } catch (error) {
+    const name = error instanceof Error ? error.name : "";
+    const isAbort = name === "AbortError";
+    console.error("NVIDIA/LLM fetch error:", error);
+    return {
+      status: 502,
+      body: {
+        error: isAbort
+          ? "El servicio de IA tardó demasiado. Vuelve a intentar o escribe por WhatsApp."
+          : "No se pudo contactar al servicio de IA",
+      },
+    };
+  } finally {
+    clearTimeout(timeoutId);
+  }
 
-    const content = await collectStreamReply(completion);
+  if (!upstreamResponse.ok) {
+    const errorText = await upstreamResponse.text().catch(() => "");
+    console.error("NVIDIA/LLM API error:", upstreamResponse.status, errorText.slice(0, 500));
+    return {
+      status: 502,
+      body: {
+        error: "Respuesta no válida del proveedor de IA",
+        detail: errorText.slice(0, 240),
+      },
+    };
+  }
+
+  try {
+    if (stream) {
+      const content = await collectSseReply(upstreamResponse.body);
+      if (!content) {
+        return {
+          status: 502,
+          body: { error: "Respuesta vacía del modelo" },
+        };
+      }
+      return {
+        status: 200,
+        body: { reply: content },
+      };
+    }
+
+    const data = await upstreamResponse.json();
+    const content = extractAssistantContent(data)?.trim();
     if (!content) {
       return {
         status: 502,
@@ -284,19 +385,10 @@ async function handleChatPost(
       body: { reply: content },
     };
   } catch (error) {
-    const name = error instanceof Error ? error.name : "";
-    const message = error instanceof Error ? error.message : String(error);
-    const isAbort = name === "AbortError" || /aborted|timeout/i.test(message);
-    console.error("NVIDIA/LLM error:", error);
+    console.error("NVIDIA/LLM parse error:", error);
     return {
       status: 502,
-      body: {
-        error: isAbort
-          ? "El servicio de IA tardó demasiado. Vuelve a intentar o escribe por WhatsApp."
-          : "No se pudo contactar al servicio de IA",
-      },
+      body: { error: "No se pudo leer la respuesta del proveedor" },
     };
-  } finally {
-    clearTimeout(timeoutId);
   }
 }

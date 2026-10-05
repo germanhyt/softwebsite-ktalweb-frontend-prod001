@@ -115,9 +115,14 @@ async function postChat(history: ChatMessage[]): Promise<string> {
       messages: history.map((m) => ({ role: m.role, content: m.content })),
     }),
   });
-  const data = (await res.json().catch(() => ({}))) as { reply?: string; error?: string };
+  const data = (await res.json().catch(() => ({}))) as {
+    reply?: string;
+    error?: string;
+    detail?: string;
+  };
   if (!res.ok) {
-    throw new Error(data.error ?? "No se pudo obtener respuesta");
+    const detail = data.detail ? ` (${data.detail})` : "";
+    throw new Error((data.error ?? `No se pudo obtener respuesta (${res.status})`) + detail);
   }
   if (!data.reply) {
     throw new Error("Respuesta vacía");
