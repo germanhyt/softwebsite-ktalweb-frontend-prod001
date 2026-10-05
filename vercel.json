@@ -3,8 +3,7 @@
   "framework": "astro",
   "functions": {
     "api/chat.ts": {
-      "maxDuration": 60,
-      "includeFiles": "src/core/**"
+      "maxDuration": 60
     }
   }
 }
