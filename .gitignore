@@ -23,6 +23,11 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
-
 # Vercel CLI (enlace local); no subir — el bundle correcto lo genera el build en Vercel
 .vercel/
+
+# ITERATIONS
+ITERATIONS.md
+
+# AGENTS
+.agents
