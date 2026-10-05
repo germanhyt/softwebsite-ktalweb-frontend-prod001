@@ -1,25 +1,16 @@
 ---
 import ChatWidget from "@/components/ChatWidget";
-import { defaultSEO } from "@/../seoConfig.ts";
+import { SITE_URL } from "@/core/site-contact";
+import { buildJsonLd, defaultSEO, type SeoConfig } from "@/../seoConfig.ts";
 
-const {
-  title,
-  description,
-  keywords,
-  author,
-  ogType,
-  ogImage,
-  ogUrl,
-  twitterCard,
-  twitterSite,
-  twitterCreator,
-  canonicalUrl,
-  robots,
-} = Astro.props.seo || defaultSEO;
+const seo: SeoConfig = Astro.props.seo || defaultSEO;
+const jsonLd = buildJsonLd(seo.locale);
+const homeEs = `${SITE_URL}/`;
+const homeEn = `${SITE_URL}/en/`;
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={seo.htmlLang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -33,28 +24,44 @@ const {
     <link rel="icon" type="image/svg+xml" href="/ktalweb.webp" />
     <link rel="apple-touch-icon" href="/ktalweb.webp" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#08070B" />
 
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    <meta name="keywords" content={keywords.join(", ")} />
-    <meta name="author" content={author} />
+    <title>{seo.title}</title>
+    <meta name="description" content={seo.description} />
+    <meta name="keywords" content={seo.keywords.join(", ")} />
+    <meta name="author" content={seo.author} />
+    <meta name="robots" content={seo.robots} />
+    <meta name="googlebot" content={seo.robots} />
 
-    <meta property="og:type" content={ogType} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImage} />
-    <meta property="og:url" content={ogUrl} />
-    <meta name="twitter:card" content={twitterCard} />
-    <meta name="twitter:site" content={twitterSite} />
-    <meta name="twitter:creator" content={twitterCreator} />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage} />
+    <meta name="geo.region" content={seo.geoRegion} />
+    <meta name="geo.placename" content={seo.geoPlacename} />
+    <meta name="geo.position" content={seo.geoPosition} />
+    <meta name="ICBM" content={seo.icbm} />
+    <meta name="language" content={seo.htmlLang} />
+    <meta name="content-language" content={seo.htmlLang} />
 
-    <meta name="robots" content={robots} />
+    <link rel="canonical" href={seo.canonicalUrl} />
+    <link rel="alternate" hreflang="es-PE" href={homeEs} />
+    <link rel="alternate" hreflang="es" href={homeEs} />
+    <link rel="alternate" hreflang="en" href={homeEn} />
+    <link rel="alternate" hreflang="x-default" href={homeEs} />
 
-    <link rel="canonical" href={canonicalUrl} />
-    <link rel="apple-touch-icon" href="/ktalweb.webp" />
+    <meta property="og:type" content={seo.ogType} />
+    <meta property="og:site_name" content="Ktalweb" />
+    <meta property="og:locale" content={seo.ogLocale} />
+    <meta property="og:locale:alternate" content={seo.ogLocaleAlternate} />
+    <meta property="og:title" content={seo.title} />
+    <meta property="og:description" content={seo.description} />
+    <meta property="og:image" content={seo.ogImage} />
+    <meta property="og:url" content={seo.ogUrl} />
+    <meta name="twitter:card" content={seo.twitterCard} />
+    <meta name="twitter:site" content={seo.twitterSite} />
+    <meta name="twitter:creator" content={seo.twitterCreator} />
+    <meta name="twitter:title" content={seo.title} />
+    <meta name="twitter:description" content={seo.description} />
+    <meta name="twitter:image" content={seo.twitterImage} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
     <!-- Google Tag Manager -->
     <script is:inline>
@@ -72,15 +79,17 @@ const {
     <!-- End Google Tag Manager -->
 
     <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-44PWZC0X4P"
-    ></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-44PWZC0X4P"></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-      gtag("config", "G-44PWZC0X4P");
+      gtag("config", "G-44PWZC0X4P", {
+        send_page_view: true,
+        anonymize_ip: true,
+      });
     </script>
     <!-- End Google Analytics 4 -->
   </head>

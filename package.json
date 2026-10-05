@@ -10,7 +10,9 @@
     "dev:api": "tsx --env-file=.env scripts/dev-chat-server.ts",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@astrojs/react": "^4.2.7",
@@ -34,10 +36,15 @@
     "@astrojs/partytown": "^2.1.4",
     "@formspree/react": "^3.0.0",
     "@hookform/resolvers": "^5.1.1",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.0",
+    "@testing-library/react": "^16.2.0",
+    "jsdom": "^26.0.0",
     "react-hook-form": "^7.58.0",
     "resend": "^4.6.0",
     "sweetalert2": "^11.22.0",
     "tsx": "^4.23.11",
+    "vitest": "^3.0.0",
     "yup": "^1.6.1"
   }
 }

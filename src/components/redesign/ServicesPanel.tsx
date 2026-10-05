@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { services } from "@/data/redesign-home";
+import { useLanguage } from "@/core/hooks/context/LanguageContext";
+import { trackEvent } from "@/core/helpers/analytics";
 
 type Box = {
   left: string;
@@ -62,13 +64,34 @@ const scenes: Record<string, Scene> = {
 };
 
 export default function ServicesPanel() {
+  const { t } = useLanguage();
   const [activeId, setActiveId] = useState(services[0].id);
   const previewRef = useRef<HTMLDivElement>(null);
+  const lastTracked = useRef<string | null>(null);
+  const hoverTimer = useRef<number | null>(null);
   const active = services.find((item) => item.id === activeId) ?? services[0];
+
+  const selectService = (id: string, confirmed: boolean) => {
+    setActiveId(id);
+    if (!confirmed || lastTracked.current === id) return;
+    lastTracked.current = id;
+    const copy = t.services.items[id];
+    trackEvent("select_content", {
+      content_type: "service",
+      item_id: id,
+      item_name: copy?.title ?? id,
+    });
+  };
+
+  useEffect(() => {
+    return () => {
+      if (hoverTimer.current) window.clearTimeout(hoverTimer.current);
+    };
+  }, []);
 
   useEffect(() => {
     const root = previewRef.current;
-    const scene = scenes[active.id];
+    const scene = scenes[active.id] ?? scenes.web;
     if (!root || !scene) return;
 
     const wireA = root.querySelector(".wire-a");
@@ -108,6 +131,7 @@ export default function ServicesPanel() {
       <div className="service-list">
         {services.map((service) => {
           const selected = service.id === active.id;
+          const copy = t.services.items[service.id];
           return (
             <button
               key={service.id}
@@ -115,17 +139,25 @@ export default function ServicesPanel() {
               className={selected ? "service is-active" : "service"}
               aria-pressed={selected}
               onPointerEnter={(event) => {
-                if (event.pointerType === "mouse") setActiveId(service.id);
+                if (event.pointerType !== "mouse") return;
+                setActiveId(service.id);
+                if (hoverTimer.current) window.clearTimeout(hoverTimer.current);
+                hoverTimer.current = window.setTimeout(() => {
+                  selectService(service.id, true);
+                }, 450);
               }}
-              onFocus={() => setActiveId(service.id)}
-              onClick={() => setActiveId(service.id)}
+              onPointerLeave={() => {
+                if (hoverTimer.current) window.clearTimeout(hoverTimer.current);
+              }}
+              onFocus={() => selectService(service.id, true)}
+              onClick={() => selectService(service.id, true)}
             >
               <span className="service-row">
                 <span className="service-index">{service.index}</span>
-                <span className="service-title">{service.title}</span>
+                <span className="service-title">{copy?.title ?? service.title}</span>
               </span>
               <p className="service-copy">
-                <span>{service.description}</span>
+                <span>{copy?.description ?? service.description}</span>
               </p>
             </button>
           );
@@ -137,7 +169,9 @@ export default function ServicesPanel() {
         <div className="wire wire-b" />
         <div className="wire wire-c" />
         <div className="wire-fill" />
-        <p className="service-meta">Servicio {active.index} / 07</p>
+        <p className="service-meta">
+          {t.services.preview} {active.index} / 07
+        </p>
         <p className="service-num">{active.index}</p>
       </div>
     </div>

@@ -100,6 +100,45 @@ export const processSteps = [
   },
 ];
 
+export type ReviewItem = {
+  id: string;
+  author: string;
+  rating: number;
+  dateLabel: string;
+  text: string;
+};
+
+export const reviews: ReviewItem[] = [
+  {
+    id: "naddia-schiaffino",
+    author: "Naddia Schiaffino",
+    rating: 5,
+    dateLabel: "Google",
+    text: "Los chicos son unos capos, me encantó cómo quedó mi web. Me asesoran, me dieron alternativas y construimos juntos. Gracias!",
+  },
+  {
+    id: "zukarzen-dulcesano",
+    author: "zukarzen .dulcesano",
+    rating: 5,
+    dateLabel: "Google",
+    text: "¡¡EXELENTE TRABAJO!! 💯",
+  },
+  {
+    id: "renzo-gutierrez-loli",
+    author: "Renzo Gutiérrez Loli",
+    rating: 5,
+    dateLabel: "Google",
+    text: "Trabajar con el equipo de Ketalweb fue un acierto en varios sentidos, sobre todo porque era mi primera vez implementando una página web para mi emprendimiento. Llegué con muchas dudas y poca claridad técnica, y se tomaron el tiempo de explicarme todo desde cero, con paciencia y criterio. Revisamos juntos cada etapa del proceso, desde el tipo de web que realmente necesitaba hasta los detalles finales, siempre considerando lo que quería transmitir sin rezagar la funcionalidad. El resultado final refleja exactamente la identidad del proyecto. Recomiendo a Ketalweb especialmente si es tu primera experiencia desarrollando una web y necesitas acompañamiento real, no solo ejecución técnica.",
+  },
+  {
+    id: "kendy-rua-diaz",
+    author: "Kendy Rua Diaz",
+    rating: 5,
+    dateLabel: "Google",
+    text: "🔥 Excelente trabajo! Me crearon la página web para mi negocio off-road y realmente superaron mis expectativas. Antes no me daba cuenta de lo desordenado que estaba mi e-commerce hasta que comencé a trabajar con ellos. La atención fue de primera, siempre pendientes de cada detalle y acompañándome en todo el proceso. 🚗💨 recomiendo al máximo, son un equipo comprometido y con mucha paciencia. ¡Gracias por todo! 🙌",
+  },
+];
+
 export const aboutAnswers = [
   {
     question: "¿Qué hacemos?",

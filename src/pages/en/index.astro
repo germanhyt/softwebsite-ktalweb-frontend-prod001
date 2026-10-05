@@ -1,13 +1,13 @@
 ---
 export const prerender = true;
 
-import Layout from "../layouts/Layout.astro";
+import Layout from "../../layouts/Layout.astro";
 import HomeLanding from "@/components/redesign/HomeLanding";
-import { defaultSEO } from "@/../seoConfig.ts";
+import { englishSEO } from "@/../seoConfig.ts";
 import "@/assets/styles/global.css";
 import "@/assets/styles/redesign.css";
 ---
 
-<Layout seo={defaultSEO}>
-  <HomeLanding client:load initialLang="es" />
+<Layout seo={englishSEO}>
+  <HomeLanding client:load initialLang="en" />
 </Layout>

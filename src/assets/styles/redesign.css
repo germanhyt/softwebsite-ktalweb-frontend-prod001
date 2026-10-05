@@ -264,6 +264,36 @@
   color: var(--lilac);
 }
 
+.nav-tools {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: auto;
+}
+
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--dim);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.lang-switch button {
+  background: none;
+  border: 0;
+  color: var(--dim);
+  font: inherit;
+  cursor: pointer;
+  padding: 0.15rem 0;
+}
+
+.lang-switch button.is-active {
+  color: var(--paper);
+}
+
 .nav-cta {
   display: none;
 }
@@ -676,16 +706,42 @@
   background: rgb(123 63 255 / 0.55);
 }
 
+.cases-sticky {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  isolation: isolate;
+  margin-inline: calc(var(--pad-x) * -1);
+}
+
 .case {
+  position: sticky;
+  top: 5.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  min-height: calc(100svh - 7.25rem);
+  padding: 1.15rem var(--pad-x) 18vh;
+  background: var(--mist);
+  overflow: hidden;
+}
+
+#proyectos,
+#proyectos .band-inner,
+.cases-sticky {
+  overflow: visible;
+}
+
+.case-body {
   display: flex;
   flex-direction: column;
   gap: 1.1rem;
 }
 
 .case-shot {
-  background: var(--ink);
+  background: transparent;
   min-height: 16rem;
-  padding: 1.2rem;
+  padding: 0;
   display: grid;
   overflow: hidden;
 }
@@ -900,6 +956,99 @@
   color: var(--dim);
 }
 
+.review-carousel {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.review-stage {
+  margin: 0;
+}
+
+.review-more {
+  justify-self: start;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: var(--lilac);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.review-more:hover {
+  color: var(--paper);
+}
+
+.review-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.4rem;
+}
+
+.review-arrow {
+  width: 2.75rem;
+  height: 2.75rem;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--paper);
+  font: inherit;
+  cursor: pointer;
+}
+
+.review-arrow:hover {
+  border-color: var(--lilac);
+  color: var(--lilac);
+}
+
+.review-dots {
+  display: flex;
+  gap: 0.55rem;
+}
+
+.review-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgb(246 245 242 / 0.28);
+  cursor: pointer;
+}
+
+.review-dot.is-active {
+  background: var(--violet);
+}
+
+.review-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  background: rgb(8 7 11 / 0.72);
+}
+
+.review-dialog {
+  width: min(42rem, 100%);
+  max-height: 90vh;
+  overflow: auto;
+  background: var(--ink-2);
+  border: 1px solid var(--line);
+  padding: 1.8rem 1.6rem 1.6rem;
+}
+
+.review-full {
+  margin: 1rem 0 1.4rem;
+  color: var(--paper);
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  line-height: 1.5;
+}
+
 .about-grid {
   display: grid;
   gap: 2rem;
@@ -1035,6 +1184,11 @@
     grid-template-columns: minmax(0, 1.4fr) minmax(16rem, 0.8fr);
     gap: 5rem;
     align-items: start;
+  }
+
+  .service-preview {
+    position: sticky;
+    top: 6.5rem;
   }
 
   .product {

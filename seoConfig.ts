@@ -1,84 +1,175 @@
-export const defaultSEO = {
-    title: 'Ktalweb - Comienza a digitalizar tu negocio',
-    description: 'Ktalweb es la solución para contruir tu página web profesional, rápida y optimizada para SEO. Ofrecemos diseño web personalizado, tiendas virtuales y landing pages que convierten. ¡Digitaliza tu negocio hoy mismo!',
-    keywords: [
-        "ktalweb",
-        "ktalweb.pe",
-        "ktalweb.com.pe",
-        "ktalweb Lima",
-        "ktalweb Perú",
-        "Diseño web profesional",
-        "Desarrollo web a medida",
+import { CONTACT_EMAIL, SITE_URL, WHATSAPP_PHONE_E164 } from "./src/core/site-contact";
+import { translations } from "./src/core/data/translations";
 
-        // Diseño y desarrollo general
-        "Diseño de landing page profesional",
-        "Diseño web responsive para negocios",
-        "Crear página web profesional en Perú",
-        "Diseñador web freelance experto",
-        "Desarrollo de páginas web a medida",
-        "Diseño UX/UI para conversiones",
-        "Páginas web optimizadas para móviles",
-        "Diseño web personalizado para empresas",
-        "Webs rápidas con buen SEO",
-        "Diseño de ecommerce atractivo",
+export type SeoLocale = "es" | "en";
 
-        // Tiendas virtuales y ecommerce
-        "Crear tienda online profesional",
-        "Desarrollo de ecommerce completo",
-        "Tienda virtual con pasarelas de pago",
-        "Integrar MercadoPago en tienda online",
-        "Solución ecommerce para pymes Perú",
-        "Tienda virtual escalable y segura",
-        "Web con carrito de compras integrado",
-        "Vender productos por internet Perú",
-        "Tienda online responsive 2024",
-        "Ecommerce con administrador fácil",
-
-        // Landing pages y conversión
-        "Landing page que convierte visitantes",
-        "Diseñar página de captación leads",
-        "Landing page para campañas Ads",
-        "Página de aterrizaje alta conversión",
-        "Crear squeeze page profesional",
-        "Landing page para generación de leads",
-        "Diseño de funnel de ventas efectivo",
-        "Página de ventas persuasiva",
-        "Landing page con formulario óptimo",
-        "One page site para servicios",
-
-        // SEO y rendimiento
-        "Páginas web con SEO básico incluido",
-        "Optimización velocidad carga web",
-        "Web con certificado SSL gratis",
-        "Diseño web SEO-friendly Perú",
-        "Integración Google Analytics 4",
-        "Web optimizada para buscadores",
-        "Meta tags y SEO técnico profesional",
-        "Estructura web para buen posicionamiento",
-        "Contenido optimizado para SEO",
-        "Migración web sin perder SEO",
-
-        // Soluciones comerciales
-        "Páginas web económicas para emprendedores",
-        "Web corporativa moderna y funcional",
-        "Presencia online profesional económica",
-        "Paquete completo web + hosting Perú",
-        "Mantenimiento web incluido mensual",
-        "Cómo crear mi página web profesional",
-        "Necesito web para mi negocio urgente",
-        "Cuánto cuesta página web en Perú",
-        "Contratar diseñador web confiable",
-    ],
-    author: 'Ktalweb',
-    // ...otras configuraciones SEO...
-    ogType: 'website',
-    ogImage: 'https://ktalweb.com.pe/ktalweb.webp',
-    ogUrl: 'https://ktalweb.com.pe',
-    twitterCard: 'summary_large_image',
-    twitterSite: '@ktalweb',
-    twitterCreator: '@ktalweb',
-    twitterImage: 'https://ktalweb.com.pe/ktalweb.webp',
-
-    canonicalUrl: 'https://ktalweb.com.pe',
-    robots: 'index, follow',
+export type SeoConfig = {
+  title: string;
+  description: string;
+  keywords: string[];
+  author: string;
+  ogType: string;
+  ogImage: string;
+  ogUrl: string;
+  ogLocale: string;
+  ogLocaleAlternate: string;
+  twitterCard: string;
+  twitterSite: string;
+  twitterCreator: string;
+  twitterImage: string;
+  canonicalUrl: string;
+  robots: string;
+  locale: SeoLocale;
+  htmlLang: string;
+  geoRegion: string;
+  geoPlacename: string;
+  geoPosition: string;
+  icbm: string;
 };
+
+const OG_IMAGE = `${SITE_URL}/ktalweb.webp`;
+
+const keywordsEs = [
+  "Ktalweb",
+  "estudio digital Lima",
+  "agencia digital Lima",
+  "diseño UX UI Lima",
+  "desarrollo web Lima",
+  "desarrollo de software Lima",
+  "inteligencia artificial Lima",
+  "diseño web Perú",
+  "software a medida Lima",
+  "consultoría UX Lima",
+];
+
+const keywordsEn = [
+  "Ktalweb",
+  "digital studio Lima",
+  "UX UI agency Lima",
+  "web development Lima Peru",
+  "custom software Lima",
+  "artificial intelligence Lima",
+  "digital product studio Peru",
+];
+
+export function buildSEO(locale: SeoLocale = "es"): SeoConfig {
+  const t = translations[locale];
+  const isEn = locale === "en";
+  return {
+    title: t.seo.title,
+    description: t.seo.description,
+    keywords: isEn ? keywordsEn : keywordsEs,
+    author: "Ktalweb",
+    ogType: "website",
+    ogImage: OG_IMAGE,
+    ogUrl: isEn ? `${SITE_URL}/en/` : `${SITE_URL}/`,
+    ogLocale: isEn ? "en_US" : "es_PE",
+    ogLocaleAlternate: isEn ? "es_PE" : "en_US",
+    twitterCard: "summary_large_image",
+    twitterSite: "@ktalweb",
+    twitterCreator: "@ktalweb",
+    twitterImage: OG_IMAGE,
+    canonicalUrl: isEn ? `${SITE_URL}/en/` : `${SITE_URL}/`,
+    robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    locale,
+    htmlLang: isEn ? "en" : "es-PE",
+    geoRegion: "PE-LIM",
+    geoPlacename: "Lima, Perú",
+    geoPosition: "-12.0464;-77.0428",
+    icbm: "-12.0464, -77.0428",
+  };
+}
+
+export const defaultSEO = buildSEO("es");
+export const englishSEO = buildSEO("en");
+
+export function buildJsonLd(locale: SeoLocale = "es") {
+  const seo = buildSEO(locale);
+  const isEn = locale === "en";
+
+  const organization = {
+    "@type": "Organization",
+    "@id": `${SITE_URL}/#organization`,
+    name: "Ktalweb",
+    alternateName: ["Ktalweb Perú", "Ktalweb Lima"],
+    url: SITE_URL,
+    logo: OG_IMAGE,
+    email: CONTACT_EMAIL,
+    telephone: `+${WHATSAPP_PHONE_E164}`,
+    sameAs: [
+      "https://www.instagram.com/ktalweb.pe",
+      "https://www.tiktok.com/@ktalweb.pe",
+      "https://www.facebook.com/profile.php?id=61574115239227",
+    ],
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Lima",
+      addressRegion: "Lima",
+      addressCountry: "PE",
+    },
+  };
+
+  const localBusiness = {
+    "@type": ["ProfessionalService", "LocalBusiness"],
+    "@id": `${SITE_URL}/#localbusiness`,
+    name: "Ktalweb",
+    image: OG_IMAGE,
+    url: SITE_URL,
+    telephone: `+${WHATSAPP_PHONE_E164}`,
+    email: CONTACT_EMAIL,
+    priceRange: "$$",
+    description: seo.description,
+    areaServed: [
+      { "@type": "City", name: "Lima" },
+      { "@type": "Country", name: "Perú" },
+    ],
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Lima",
+      addressRegion: "Lima",
+      addressCountry: "PE",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: -12.0464,
+      longitude: -77.0428,
+    },
+    knowsLanguage: ["es", "en"],
+    parentOrganization: { "@id": `${SITE_URL}/#organization` },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: isEn ? "Digital services" : "Servicios digitales",
+      itemListElement: [
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: isEn ? "UX/UI consulting" : "Consultoría UX/UI" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: isEn ? "Custom software" : "Desarrollo de software" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: isEn ? "Web design + AI" : "Diseño web + IA" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: isEn ? "AI solutions" : "Soluciones con IA" } },
+      ],
+    },
+  };
+
+  const website = {
+    "@type": "WebSite",
+    "@id": `${SITE_URL}/#website`,
+    url: SITE_URL,
+    name: "Ktalweb",
+    inLanguage: ["es-PE", "en"],
+    publisher: { "@id": `${SITE_URL}/#organization` },
+  };
+
+  const webpage = {
+    "@type": "WebPage",
+    "@id": `${seo.canonicalUrl}#webpage`,
+    url: seo.canonicalUrl,
+    name: seo.title,
+    description: seo.description,
+    inLanguage: seo.htmlLang,
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    about: { "@id": `${SITE_URL}/#localbusiness` },
+  };
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [organization, localBusiness, website, webpage],
+  };
+}

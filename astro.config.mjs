@@ -30,14 +30,16 @@ export default defineConfig({
   integrations: [
     react(),
     sitemap({
-      // filter: (page) => !page.includes("/admin/"), // Excluir
-      // customPages: [
-      //   "https://innovabcp2025.com/",
-      //   "https://innovabcp2025.com/preguntas-frecuentes",
-      // ],
       changefreq: "weekly",
-      priority: 0.7,
-      lastmod: new Date("2025-06-27"),
+      priority: 0.8,
+      lastmod: new Date(),
+      i18n: {
+        defaultLocale: "es",
+        locales: {
+          es: "es-PE",
+          en: "en",
+        },
+      },
     }),
   ],
 });

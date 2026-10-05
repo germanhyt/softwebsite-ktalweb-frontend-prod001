@@ -58,29 +58,39 @@ export default function PageMotion() {
         });
 
         gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((el) => {
-          const media = el.querySelector<HTMLElement>("[data-case-media]");
-          const tween = gsap.timeline({
-            scrollTrigger: {
-              trigger: el,
-              start: "top 86%",
-              once: true,
-            },
-          });
-
-          tween.fromTo(
+          gsap.fromTo(
             el,
             { autoAlpha: 0, y: 32 },
-            { autoAlpha: 1, y: 0, duration: 0.7, ease: "power3.out" }
+            {
+              autoAlpha: 1,
+              y: 0,
+              duration: 0.7,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: el,
+                start: "top 86%",
+                once: true,
+              },
+            }
           );
+        });
 
-          if (media) {
-            tween.fromTo(
-              media,
-              { scale: 1.08 },
-              { scale: 1, duration: 0.9, ease: "power2.out", clearProps: "transform" },
-              0
-            );
-          }
+        gsap.utils.toArray<HTMLElement>("[data-case-media]").forEach((media) => {
+          gsap.fromTo(
+            media,
+            { scale: 1.06 },
+            {
+              scale: 1,
+              duration: 0.9,
+              ease: "power2.out",
+              clearProps: "transform",
+              scrollTrigger: {
+                trigger: media,
+                start: "top 88%",
+                once: true,
+              },
+            }
+          );
         });
       }
     );
