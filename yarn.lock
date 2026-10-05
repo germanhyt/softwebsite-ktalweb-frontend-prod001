@@ -3540,6 +3540,11 @@ oniguruma-to-es@^4.3.3:
     regex "^6.0.1"
     regex-recursion "^6.0.2"
 
+openai@^7.28.0:
+  version "7.28.0"
+  resolved "https://registry.yarnpkg.com/openai/-/openai-7.28.0.tgz#da1c2e1bd3a7dabafdd662f6931c75e6ce47da1e"
+  integrity sha512-HSY4fFLflQGYe2kvO0atm6/GzhD61gpyiOZZUvO4nptMUhuB1to2K3wwFpFqc5gfEK0SxyIIFiu1yE2MtygWcA==
+
 p-limit@^6.2.0:
   version "6.2.0"
   resolved "https://registry.npmjs.org/p-limit/-/p-limit-6.2.0.tgz"
